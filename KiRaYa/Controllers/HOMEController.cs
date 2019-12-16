@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -22,7 +24,7 @@ namespace KiRaYa.Controllers
         {
 
             List<Login> ListUsers = new Login().GetAll();
-            Login ObjUSers = ListUsers.Find(x => x.UserName == Model.UserName && x.Password == Model.Password);
+            Login ObjUSers = ListUsers.Find(x => x.EmailID == Model.EmailID && x.Password == Model.Password);
             if (ObjUSers != null)
             {
                 Session["ID"] = ObjUSers.ID;
@@ -78,20 +80,35 @@ namespace KiRaYa.Controllers
 
         }
         [HttpPost]
-        public ActionResult forgetPassword(Login model)
+        public ActionResult forgetPassword(Login Email)
         {
-            //---------------send E-mail-------------------- 
-            string msg = "<h1> Wel com in iT-Helper </h1> <br> <h2> click here to activate This Email <a href='http://192.168.1.8/Default/Activation?TokenKey=" + model.ID + "'><b>Activate</b></a></h2><br> <br> any problem call <u><mark>8839070602</mark><u>";
-            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("957501deepak@gmail.com", model.EmailID, "iT-Helper", msg);
-            mail.IsBodyHtml = true;
-            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
-            client.Credentials = new System.Net.NetworkCredential("957501deepak@gmail.com", "8839verma13@");
-            //client.UseDefaultCredentials = false;
-            client.EnableSsl = true;
-            client.Timeout = 20000;
-            client.Send(mail);
+            ////---------------send E-mail-------------------- 
+            //string msg = "<h1> Wel com in iT-Helper </h1> <br> <h2> click here to activate This Email <a href='http://192.168.1.8/Default/Activation?TokenKey=" + Email.ID + "'><b>Activate</b></a></h2><br> <br> any problem call <u><mark>8839070602</mark><u>";
+            //System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("957501deepak@gmail.com", Email.EmailID, "iT-Helper", msg);
+            //mail.IsBodyHtml = true;
+            //System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
+            //client.Credentials = new System.Net.NetworkCredential("957501deepak@gmail.com", "deepak602@");
+            ////client.UseDefaultCredentials = false;
+            //client.EnableSsl = true;
+            //client.Timeout = 20000;
+            //client.Send(mail);
             //--------------End sent E-mail ----------------
+            MailMessage mailmsg = new MailMessage();
+            SmtpClient smtpclient = new SmtpClient();
+            mailmsg.To.Add(Email.EmailID);
+            mailmsg.CC.Add("957501deepak@gmail.com");
+            mailmsg.Subject ="forget";
+            mailmsg.From = new MailAddress("957501deepak@gmail.com");
+            mailmsg.Body = "your password";
+            mailmsg.Priority = MailPriority.High;
 
+            smtpclient.Port = 587;
+            smtpclient.Host = "smtp.gmail.com";
+            smtpclient.EnableSsl = true;
+            smtpclient.UseDefaultCredentials = false;
+            smtpclient.Credentials = new NetworkCredential("957501deepak@gmail.com", "deepak1998@");
+            smtpclient.Send(mailmsg);
+            
             ViewData["mgs"] = "Your Password is updated successfully";
             return RedirectToAction("Login");
         }

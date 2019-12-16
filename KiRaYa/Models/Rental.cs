@@ -43,7 +43,7 @@ namespace KiRaYa.Models
 
                 if (this.RantalID == 0)
                 {
-                    Query = "Insert into  Rental  values(@PhotoPath, @Name,@Date,@Mobile,@Address,@VoterID,@AdharcardPhoto,@AdharNumber,@PanPhoto,@PanNumber,@RentAgreementFor,@RID,@v,@Updatedate);";
+                    Query = "Insert into  Rental  values(@PhotoPath, @Name,@Date,@Mobile,@Address,@VoterID,@AdharcardPhoto,@AdharNumber,@PanPhoto,@PanNumber,@RentAgreementFor,@RID,@createBy,@Updatedate);";
                     cmd = new SqlCommand(Query, Con);
                     cmd.Parameters.AddWithValue("@createBy", HttpContext.Current.Session["ID"]);
                     cmd.Parameters.AddWithValue("@Updatedate", DateTime.Now);
@@ -71,8 +71,7 @@ namespace KiRaYa.Models
                 cmd.Parameters.AddWithValue("@PanNumber", this.PanNumber);
                 cmd.Parameters.AddWithValue("@RentAgreementFor", this.RentAgreementFor);
                 cmd.Parameters.AddWithValue("@RID", this.RID);
-                cmd.Parameters.AddWithValue("@createBy", HttpContext.Current.Session["ID"]);
-                cmd.Parameters.AddWithValue("@Updatedate", DateTime.Now);
+                 
                 Row = cmd.ExecuteNonQuery();
             }
             catch (Exception e) { e.ToString(); }
