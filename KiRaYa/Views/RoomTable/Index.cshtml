@@ -1,0 +1,136 @@
+﻿@model IEnumerable<KiRaYa.Models.RoomTable>
+@using KiRaYa.Models
+
+@{ List<RoomTable> listroom = new RoomTable().GetAll();}
+<div class="card">
+    <div class="card-header">
+        <h5 style="text-align:center;color:#000000"><b>Room Details</b></h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover w-100" id="Tbl">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoomNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoomSIZE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ElectriCityCost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RantAmt)
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="@item.RID">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomSIZE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ElectriCityCost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RantAmt)
+                        </td>
+                        <td>
+                            @{
+                                string s = Session["UserType"].ToString();
+                            }
+
+                            @if (Session["UserType"] != null && Session["UserType"].ToString().Contains("Admin"))
+                            {
+
+                                <a href="/RoomTable/CreateEdit?RID=@item.RID " class="btn btn-warning btn-sm "> Edit</a>
+                                <a href="/RoomTable/Delete?ID=@item.RID " class="btn btn-danger btn-sm "> Delete</a>
+                                <a href="/RoomTable/CreateEdit?RID=0" class="btn btn-success"><i class="fa fa-plus"></i>add</a>
+
+                            }
+
+                            @if (Session["UserType"].ToString().Contains("User"))
+
+                            {
+                                @*<a href="/Rental/termpolcy"   id="manual-ajax">Click</a>*@
+                                @*<input type="checkbox" onclick="my();" />*@
+                                <button type="button" class="btn btn-primary" onclick="my(this);" data-toggle="modal" data-target=".bd-example-modal-xl">Click</button>
+
+
+
+                            }
+                        </td>
+
+                        <td></td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<script>
+
+
+    function my(event) {
+        $("#waiting").show();
+
+        var RID = $(event).parent('td').parent('tr').attr('id');
+       // alert(RID);
+        $.ajax({
+            type: 'GET',
+            url: "/Rental/termpolcy?RID=" + RID,
+            success: function (data) {
+                $("#ModelContent").html(data);
+                $("#ModelID").show();
+                $("#waiting").hide();
+
+            },
+            error: function (jqXhr, textStatus, errorMessage) { // error callback
+
+            }
+        });
+    }
+</script>
+<script>
+    
+        $("#RID").on("Select", function () {
+            var PRID = $("#RID").val();
+            if (PRID != "" && PRID != 0) {
+                $.ajax({
+                    url: "/Rental/IDFINDER?PRID=" + RID,
+                    type: "GET",
+                    data: { PRID: PRID },
+                    success: function (data) {
+                        $("#RID").html(data);
+
+                        //alert(data.Name);
+                    },
+                    error: function (xhr) {
+                        alert("Error");
+                    }
+                });
+            }
+            else {
+                $("#RID").html("<option value=0> Select Room No</option>");
+
+
+            }
+        });
+     
+</script>

@@ -1,0 +1,59 @@
+﻿<div class=" row   ">
+
+    <div class="col-md-6  p-4">
+        <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+            <div class="card-header text-center">AVILABLE ROOMS</div>
+            <div class="card-body  ">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        Total ROOM
+                        <a href="#"><span class="badge badge-primary badge-pill">
+                             
+                             @{ int TR = new KiRaYa.Models.RoomTable().GetAll().Count();}
+                             @TR
+                             
+                             </span></a>
+                    </li>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                       Normal Rooms
+                        <a href="#"><span class="badge badge-primary badge-pill">2</span></a>
+                    </li>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                       VIP Rooms
+                        <a href="#"><span class="badge badge-primary badge-pill">1</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-center  p-4">
+        <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+            <div class="card-header text-center">Room Records</div>
+            <div class="card-body  ">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        AVILIABLE ROOM
+                        <a href="#"><span class="badge badge-primary badge-pill">
+    @{ int RemainingR = new KiRaYa.Models.Rental().GetAll().Count();
+        int rr = RemainingR - TR;}
+    @rr
+</span></a>
+                    </li>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        Normal Room
+                        <a href="#"><span class="badge badge-primary badge-pill">2</span></a>
+                    </li>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        VIP Room
+                        <a href="#"><span class="badge badge-primary badge-pill">1</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+ 

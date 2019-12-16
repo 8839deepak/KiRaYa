@@ -1,0 +1,58 @@
+﻿@model IEnumerable<KiRaYa.Models.Login>
+<div class="card">
+    <div class="card-header">
+        <h1 style="text-align:center;color:#000000"><b>UserList</b></h1>
+    </div>
+    <a href="/HOME/CreateEdit?ID=0" class="btn btn-success btn-sm "><i class="fa fa-plus"></i>ADd</a>
+    <div class="card-body">
+
+
+
+
+        <table class="table table-bordered table-hover w-100" id="Tbl">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmailID)
+                    </th>
+                     
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailID)
+                        </td>
+                        
+                        <td>
+                            <a href="/HOME/CreateEdit?ID=@item.ID" class="btn btn-warning btn-sm ">EDIT</a>
+                            <a href="/HOME/Delete?ID=@item.ID" class="btn btn-danger btn-sm ">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

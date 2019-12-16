@@ -1,0 +1,232 @@
+﻿@model IEnumerable<KiRaYa.Models.Rental>
+@using KiRaYa.Models;
+@{ List<RoomTable> Listroom = new RoomTable().GetAll(); }
+
+
+@if (Session["UserType"] != null && Session["UserType"].ToString().Contains("Admin"))
+{
+
+<div class="card">
+    <div class="card-header">
+        <h5 style="text-align:center;color:#000000"><b>Rental Details</b></h5>
+    </div>
+    <a href="/Rental/CreateEdit?RentalID=0" class="btn btn-success"><i class="fa fa-plus"></i> add</a>
+
+    <div class="card-body">
+        <table class="table table-bordered table-hover w-100" id="Tbl">
+            <thead>
+                <tr>
+
+                    <th>
+                        Photo
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mobile)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VoterID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdharcardPhoto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdharNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PanPhoto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PanNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RentAgreementFor)
+                    </th>
+                    <th>
+                        Room Number
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+
+
+                        <td>
+                            <img src="@item.PhotoPath" width="50" height="50" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mobile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VoterID)
+                        </td>
+                        <td>
+                            <img src="@item.AdharcardPhoto" width="50" height="50" />
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdharNumber)
+                        </td>
+                        <td>
+                            <img src="@item.PanPhoto" width="50" height="50" />
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PanNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RentAgreementFor)
+                        </td>
+                        <td>
+                            @{
+                                RoomTable obj = Listroom.Find(x => x.RID == item.RID);
+                                @obj.RoomNumber
+                            }
+                        </td>
+                        <td>
+
+                            <a href="/Rental/Delete?ID=@item.RantalID " class="btn btn-danger btn-sm "> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+}
+
+
+@if (Session["UserType"].ToString().Contains("User"))
+
+{
+    <div class="card">
+        <div class="card-header">
+            <h5 style="text-align:center;color:#000000"><b>Rental Details</b></h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover w-100" id="Tbl">
+                <thead>
+                    <tr>
+
+                        <th>
+                            Photo
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mobile)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.VoterID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdharcardPhoto)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdharNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PanPhoto)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PanNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RentAgreementFor)
+                        </th>
+                        <th>
+                            Room Number
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+
+
+                            <td>
+                                <img src="@item.PhotoPath" width="50" height="50" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mobile)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VoterID)
+                            </td>
+                            <td>
+                                <img src="@item.AdharcardPhoto" width="50" height="50" />
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AdharNumber)
+                            </td>
+                            <td>
+                                <img src="@item.PanPhoto" width="50" height="50" />
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PanNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RentAgreementFor)
+                            </td>
+                            <td>
+                                @{
+                                    RoomTable obj = Listroom.Find(x => x.RID == item.RID);
+                                    @obj.RoomNumber
+                                }
+                            </td>
+                            <td>
+
+                                <a href="/Rental/CreateEdit?ID=@item.RantalID " class="btn btn-danger btn-sm "> Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+}
+
