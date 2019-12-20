@@ -1,0 +1,43 @@
+﻿@model IEnumerable<KiRaYa.Models.UserDetails>
+
+<div class="card">
+    <div class="card-header">
+
+    </div>
+    <a href="/UserDetails/CreateEdit?UserID=0">ADD</a>
+    <div class="card-body">
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserType)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserType)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

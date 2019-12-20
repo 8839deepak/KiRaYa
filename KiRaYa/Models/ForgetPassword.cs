@@ -6,10 +6,11 @@ using System.Web;
 
 namespace KiRaYa.Models
 {
-    public class UserDetails
+    public class ForgetPassword
     {
-        public int UserID { get; set; }
-        public string UserType { get; set; }
+        public int FID { get; set; }
+        public string EmailID { get; set; }
+        public string NewPassword { get; set; }
 
         public int Save()
         {
@@ -21,42 +22,43 @@ namespace KiRaYa.Models
             {
                 Con.Open();
 
-                if (this.UserID == 0)
-                
-                    Query = "Insert into  UserDetails  values(@UserType);";
+                if (this.FID == 0)
+
+                    Query = "Insert into  ForgetPassword  values(@EmailID,@NewPassword);";
                 else
-                    Query = "update  UserDetails set UserType=@UserType where UserID=@UserID";
-                    cmd = new SqlCommand(Query, Con);
-                    cmd.Parameters.AddWithValue("@UserID", this.UserID);
-                    cmd.Parameters.AddWithValue("@UserType", this.UserType);
-                    Row = cmd.ExecuteNonQuery();
+                    Query = "update  ForgetPassword set EmailID=@EmailID,NewPassword=@NewPassword where FID=@FID";
+                cmd = new SqlCommand(Query, Con);
+                cmd.Parameters.AddWithValue("@FID", this.FID);
+                cmd.Parameters.AddWithValue("@EmailID", this.EmailID);
+                cmd.Parameters.AddWithValue("@NewPassword", this.NewPassword);
+                Row = cmd.ExecuteNonQuery();
             }
             catch (Exception e) { e.ToString(); }
             finally { Con.Close(); }
             return Row;
         }
 
-        public List<UserDetails> GetAll()
+        public List<ForgetPassword> GetAll()
         {
 
             SqlConnection Con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ToString());
             Con.Open();
             SqlCommand cmd = null;
             SqlDataReader SDR = null;
-            List<UserDetails> ListTmp = new List<UserDetails>();
+            List<ForgetPassword> ListTmp = new List<ForgetPassword>();
 
             try
             {
-                string Query = "SELECT * FROM  UserDetails ORDER BY UserID DESC";
+                string Query = "SELECT * FROM  ForgetPassword ORDER BY FID DESC";
 
                 cmd = new SqlCommand(Query, Con);
                 SDR = cmd.ExecuteReader();
                 while (SDR.Read())
                 {
-                    UserDetails ObjTmp = new UserDetails();
-                    ObjTmp.UserID = SDR.GetInt32(0);
-                    ObjTmp.UserType = SDR.GetString(1);
-                   
+                    ForgetPassword ObjTmp = new ForgetPassword();
+                    ObjTmp.FID = SDR.GetInt32(0);
+                    ObjTmp.EmailID = SDR.GetString(1);
+
 
                     ListTmp.Add(ObjTmp);
                 }
@@ -65,24 +67,24 @@ namespace KiRaYa.Models
             finally { Con.Close(); }
             return (ListTmp);
         }
-        public UserDetails GetOne(int UserID)
+        public ForgetPassword GetOne(int FID)
         {
             SqlConnection Con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ToString());
             Con.Open();
             SqlCommand cmd = null;
             SqlDataReader SDR = null;
-            UserDetails ObjTmp = new UserDetails();
+            ForgetPassword ObjTmp = new ForgetPassword();
 
             try
             {
-                string Query = "SELECT * FROM  UserDetails where UserID=@UserID";
+                string Query = "SELECT * FROM  ForgetPassword where FID=@FID";
                 cmd = new SqlCommand(Query, Con);
-                cmd.Parameters.AddWithValue("@UserID", UserID);
+                cmd.Parameters.AddWithValue("@FID", FID);
                 SDR = cmd.ExecuteReader();
                 while (SDR.Read())
                 {
-                    ObjTmp.UserID = SDR.GetInt32(0);
-                    ObjTmp.UserType = SDR.GetString(1);
+                    ObjTmp.FID = SDR.GetInt32(0);
+                    ObjTmp.EmailID = SDR.GetString(1);
                 }
             }
             catch (System.Exception e)
@@ -101,7 +103,7 @@ namespace KiRaYa.Models
             SqlCommand cmd = null;
             try
             {
-                string Query = "Delete FROM  UserDetails where UserID=" + ID;
+                string Query = "Delete FROM  ForgetPassword where FID=" + ID;
                 cmd = new SqlCommand(Query, Con);
                 R = cmd.ExecuteNonQuery();
             }

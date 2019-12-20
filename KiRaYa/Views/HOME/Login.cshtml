@@ -37,7 +37,7 @@
             <div class="text-center"> <img src="~/Image/login.png" style="margin-top:-60px" height="100" width="100" /></div><br />
             <h4 style="text-align:center;color:#000000"><b>Login</b></h4>
             <hr />
-            @using (Html.BeginForm())
+            @using (Html.BeginForm(Html.BeginForm("Login", "HOME", FormMethod.Post, new { enctype = "multipart/form-data" })))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })

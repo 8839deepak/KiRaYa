@@ -13,14 +13,14 @@ namespace KiRaYa.Models
         public string Password { get; set; }
         public string UserType { get; set; }
         public string EmailID { get; set; }
-        public string ResetPassword { get; set; }
-        public string NewPassword { get; set; }
-         public Login()
+        public int UserID { get; set; }
+        public Login()
             {
-             ResetPassword = "";
-           
-             NewPassword = "";
-               }
+            UserID = 0;
+
+            }
+
+
         public Login addloginuser(int ID)
         {
 
@@ -42,8 +42,8 @@ namespace KiRaYa.Models
                     ObjTmp.Password = SDR.GetString(2);
                     ObjTmp.UserType = SDR.GetString(3);
                     ObjTmp.EmailID = SDR.GetString(4);
-                    ObjTmp.ResetPassword = SDR.GetString(5);
-                    ObjTmp.NewPassword = SDR.GetString(6);
+                    ObjTmp.UserID = SDR.GetInt32(5);
+                    
                 }
             }
             catch (Exception e) { e.ToString(); }
@@ -59,9 +59,9 @@ namespace KiRaYa.Models
                 Con.Open();
                 string Query = "";
                 if (this.ID == 0)
-                    Query = "Insert into Login values (@UserName,@Password,@UserType,@EmailID,@ResetPassword,@NewPassword);";
+                    Query = "Insert into Login values (@UserName,@Password,@UserType,@EmailID,@UserID);";
                 else
-                    Query = "Update Login set Username=@UserName,Password=@Password,UserType=@UserType,EmailID=@EmailID,ResetPassword=@ResetPassword,NewPassword=@NewPassword where ID=@ID;";
+                    Query = "Update Login set Username=@UserName,Password=@Password,UserType=@UserType,EmailID=@EmailID,UserID=@UserID where ID=@ID;";
 
                 SqlCommand cmd = new SqlCommand(Query, Con);
                 cmd.Parameters.AddWithValue("@ID", this.ID);
@@ -69,8 +69,8 @@ namespace KiRaYa.Models
                 cmd.Parameters.AddWithValue("@Password", this.Password);
                 cmd.Parameters.AddWithValue("@UserType", this.UserType);
                 cmd.Parameters.AddWithValue("@EmailID", this.EmailID);
-                cmd.Parameters.AddWithValue("@ResetPassword", this.ResetPassword);
-                cmd.Parameters.AddWithValue("@NewPassword", this.NewPassword);
+                cmd.Parameters.AddWithValue("@UserID", this.UserID);
+               
                 Row = cmd.ExecuteNonQuery();
 
             }
@@ -84,7 +84,7 @@ namespace KiRaYa.Models
             return Row;
         }
         //Get All Function
-        public Login GetOne(int UID)
+        public Login GetOne(int ID)
         {
             Login ObjTmp = new Login();
             SqlConnection Con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ToString());
@@ -93,7 +93,7 @@ namespace KiRaYa.Models
                 Con.Open();
                 string Query = "Select * from Login where ID=@ID";
                 SqlCommand cmd = new SqlCommand(Query, Con);
-                cmd.Parameters.AddWithValue("@UID", UID);
+                cmd.Parameters.AddWithValue("@ID", ID);
                 SqlDataReader SDR = cmd.ExecuteReader();
                 while (SDR.Read())
                 {
@@ -102,8 +102,8 @@ namespace KiRaYa.Models
                     ObjTmp.Password = SDR.GetString(2);
                     ObjTmp.UserType = SDR.GetString(3);
                     ObjTmp.EmailID = SDR.GetString(4);
-                    ObjTmp.ResetPassword = SDR.GetString(5);
-                    ObjTmp.NewPassword = SDR.GetString(6);
+                    ObjTmp.UserID = SDR.GetInt32(5);
+                     
                 }
             }
             catch (Exception e) { e.ToString(); }
@@ -129,8 +129,8 @@ namespace KiRaYa.Models
                     ObjTmp.Password = SDR.GetString(2);
                     ObjTmp.UserType = SDR.GetString(3);
                     ObjTmp.EmailID = SDR.GetString(4);
-                    ObjTmp.ResetPassword = SDR.GetString(5);
-                    ObjTmp.NewPassword = SDR.GetString(6);
+                    ObjTmp.UserID = SDR.GetInt32(5);
+                    
                     ListTmp.Add(ObjTmp);
                 }
             }

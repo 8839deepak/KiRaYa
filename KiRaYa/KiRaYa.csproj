@@ -9149,6 +9149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ForgetPassword.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\RantPaid.cs" />
     <Compile Include="Models\Rental.cs" />
@@ -9169,6 +9170,8 @@
     <Content Include="Views\HOME\CreateEdit.cshtml" />
     <Content Include="Views\HOME\forgetPassword.cshtml" />
     <Content Include="Views\HOME\Userlist.cshtml" />
+    <Content Include="Views\UserDetails\Index.cshtml" />
+    <Content Include="Views\UserDetails\CreateEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -9178,7 +9181,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\UserDetails\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
