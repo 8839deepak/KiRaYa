@@ -58,6 +58,7 @@ namespace KiRaYa.Models
                     ForgetPassword ObjTmp = new ForgetPassword();
                     ObjTmp.FID = SDR.GetInt32(0);
                     ObjTmp.EmailID = SDR.GetString(1);
+                    ObjTmp.NewPassword = SDR.GetString(2);
 
 
                     ListTmp.Add(ObjTmp);
@@ -85,6 +86,7 @@ namespace KiRaYa.Models
                 {
                     ObjTmp.FID = SDR.GetInt32(0);
                     ObjTmp.EmailID = SDR.GetString(1);
+                    ObjTmp.NewPassword = SDR.GetString(2);
                 }
             }
             catch (System.Exception e)

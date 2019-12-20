@@ -107,30 +107,4 @@
         });
     }
 </script>
-<script>
-    
-        $("#RID").on("Select", function () {
-            var PRID = $("#RID").val();
-            if (PRID != "" && PRID != 0) {
-                $.ajax({
-                    url: "/Rental/IDFINDER?PRID=" + RID,
-                    type: "GET",
-                    data: { PRID: PRID },
-                    success: function (data) {
-                        $("#RID").html(data);
-
-                        //alert(data.Name);
-                    },
-                    error: function (xhr) {
-                        alert("Error");
-                    }
-                });
-            }
-            else {
-                $("#RID").html("<option value=0> Select Room No</option>");
-
-
-            }
-        });
-     
-</script>
+ 

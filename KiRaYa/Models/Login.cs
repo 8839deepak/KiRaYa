@@ -61,7 +61,7 @@ namespace KiRaYa.Models
                 if (this.ID == 0)
                     Query = "Insert into Login values (@UserName,@Password,@UserType,@EmailID,@UserID);";
                 else
-                    Query = "Update Login set Username=@UserName,Password=@Password,UserType=@UserType,EmailID=@EmailID,UserID=@UserID where ID=@ID;";
+                    Query = "Update Login set UserName=@UserName,Password=@Password,UserType=@UserType,EmailID=@EmailID,UserID=@UserID where ID=@ID;";
 
                 SqlCommand cmd = new SqlCommand(Query, Con);
                 cmd.Parameters.AddWithValue("@ID", this.ID);

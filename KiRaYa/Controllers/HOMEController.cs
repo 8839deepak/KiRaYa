@@ -24,7 +24,7 @@ namespace KiRaYa.Controllers
         {
 
             List<Login> ListUsers = new Login().GetAll();
-            Login ObjUSers = ListUsers.Find(x => x.EmailID == Model.EmailID && x.Password == Model.Password);
+            Login ObjUSers = ListUsers.Find(x => x.EmailID == Model.EmailID && x.Password == Model.Password );
             if (ObjUSers != null)
             {
                 Session["ID"] = ObjUSers.ID;
@@ -80,10 +80,10 @@ namespace KiRaYa.Controllers
 
         }
         [HttpPost]
-        public ActionResult forgetPassword(Login Email)
+        public ActionResult forgetPassword(ForgetPassword Email)
         {
             ////---------------send E-mail-------------------- 
-            string msg = "<h1> Wel com in iT-Helper </h1> <br> <h2> click here to activate This Email <a href='http://192.168.1.8/Default/Activation?TokenKey=" + Email.ID + "'><b>Activate</b></a></h2><br> <br> any problem call <u><mark>8839070602</mark><u>";
+            string msg = "<h1> Wel com in iT-Helper </h1> <br> <h2> click here to activate This Email <a href='http://192.168.1.8/Default/Activation?TokenKey=" + Email.FID + "'><b>Activate</b></a></h2><br> <br> any problem call <u><mark>8839070602</mark><u>";
             System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("957501deepak@gmail.com", Email.EmailID, "iT-Helper", msg);
             mail.IsBodyHtml = true;
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
@@ -109,7 +109,17 @@ namespace KiRaYa.Controllers
             //smtpclient.Credentials = new NetworkCredential("957501deepak@gmail.com", "deepak1998@");
             //smtpclient.Send(mailmsg);
 
-            ViewData["mgs"] = "Your Password is updated successfully";
+
+
+            //if()
+            //{
+            //    Email.Save();
+            //    ViewData["mgs"] = "Your Password is updated successfully";
+            //}else
+            //{
+            //    ViewData["mgs"] = "try again";
+            //}
+           
             return RedirectToAction("Login");
         }
         public ActionResult Delete(int ID)

@@ -35,6 +35,16 @@ namespace KiRaYa.Controllers
                 return RedirectToAction("Index");
             return RedirectToAction("Error");
         }
+        public ActionResult Delete(int ID)
+        {
+            UserDetails ObjCon = new UserDetails();
+            int d = ObjCon.Dell(ID);
+            if (d > 0)
+
+                return RedirectToAction("Index");
+            return RedirectToAction("Error");
+
+        }
         public ActionResult Error()
         {
             return View();

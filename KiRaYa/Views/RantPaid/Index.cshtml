@@ -38,7 +38,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Amt)
                         </th>
-                        <th>  Remaining Peyment</th>
+                         
                         <th></th>
                     </tr>
                 </thead>
@@ -75,9 +75,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Amt)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Remaining)
-                            </td>
+                             
                             <td>
                                 <a href="/RantPaid/CreateEdit?RPID=@item.RPID " class="btn btn-warning btn-sm "> Edit</a>
                                 <a href="/RantPaid/Delete?ID=@item.RPID " class="btn btn-danger btn-sm "> Delete</a>

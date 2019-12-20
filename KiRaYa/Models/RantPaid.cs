@@ -34,6 +34,10 @@ namespace KiRaYa.Models
         public DateTime Create_Date { get; set; }
         public int Update_By { get; set; }
         public DateTime Update_Date { get; set; }
+        public RantPaid()
+        {
+            Remaining = 0;
+        }
         public int Save()
         {
             int Row = 0;
