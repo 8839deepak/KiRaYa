@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+ 
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -11,16 +12,8 @@ namespace KiRaYa.Models
         public int ID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string UserType { get; set; }
         public string EmailID { get; set; }
         public int UserID { get; set; }
-        public Login()
-            {
-            UserID = 0;
-
-            }
-
-
         public Login addloginuser(int ID)
         {
 
@@ -40,9 +33,8 @@ namespace KiRaYa.Models
                     ObjTmp.ID = SDR.GetInt32(0);
                     ObjTmp.UserName = SDR.GetString(1);
                     ObjTmp.Password = SDR.GetString(2);
-                    ObjTmp.UserType = SDR.GetString(3);
-                    ObjTmp.EmailID = SDR.GetString(4);
-                    ObjTmp.UserID = SDR.GetInt32(5);
+                    ObjTmp.EmailID = SDR.GetString(3);
+                    ObjTmp.UserID = SDR.GetInt32(4);
                     
                 }
             }
@@ -59,15 +51,14 @@ namespace KiRaYa.Models
                 Con.Open();
                 string Query = "";
                 if (this.ID == 0)
-                    Query = "Insert into Login values (@UserName,@Password,@UserType,@EmailID,@UserID);";
+                    Query = "Insert into Login values (@UserName,@Password ,@EmailID,@UserID);";
                 else
-                    Query = "Update Login set UserName=@UserName,Password=@Password,UserType=@UserType,EmailID=@EmailID,UserID=@UserID where ID=@ID;";
+                    Query = "Update Login set UserName=@UserName,Password=@Password ,EmailID=@EmailID,UserID=@UserID where ID=@ID;";
 
                 SqlCommand cmd = new SqlCommand(Query, Con);
                 cmd.Parameters.AddWithValue("@ID", this.ID);
                 cmd.Parameters.AddWithValue("@UserName", this.UserName);
                 cmd.Parameters.AddWithValue("@Password", this.Password);
-                cmd.Parameters.AddWithValue("@UserType", this.UserType);
                 cmd.Parameters.AddWithValue("@EmailID", this.EmailID);
                 cmd.Parameters.AddWithValue("@UserID", this.UserID);
                
@@ -100,9 +91,8 @@ namespace KiRaYa.Models
                     ObjTmp.ID = SDR.GetInt32(0);
                     ObjTmp.UserName = SDR.GetString(1);
                     ObjTmp.Password = SDR.GetString(2);
-                    ObjTmp.UserType = SDR.GetString(3);
-                    ObjTmp.EmailID = SDR.GetString(4);
-                    ObjTmp.UserID = SDR.GetInt32(5);
+                    ObjTmp.EmailID = SDR.GetString(3);
+                    ObjTmp.UserID = SDR.GetInt32(4);
                      
                 }
             }
@@ -127,9 +117,8 @@ namespace KiRaYa.Models
                     ObjTmp.ID = SDR.GetInt32(0);
                     ObjTmp.UserName = SDR.GetString(1);
                     ObjTmp.Password = SDR.GetString(2);
-                    ObjTmp.UserType = SDR.GetString(3);
-                    ObjTmp.EmailID = SDR.GetString(4);
-                    ObjTmp.UserID = SDR.GetInt32(5);
+                    ObjTmp.EmailID = SDR.GetString(3);
+                    ObjTmp.UserID = SDR.GetInt32(4);
                     
                     ListTmp.Add(ObjTmp);
                 }

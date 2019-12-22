@@ -10,6 +10,7 @@
         <table class="table table-bordered table-hover w-100" id="Tbl">
             <thead>
                 <tr>
+                    <th>@Html.DisplayNameFor(Model=>Model.BBID)</th>
                     <th>
                         @Html.DisplayNameFor(model => model.RID)
                     </th>
@@ -34,6 +35,9 @@
                 {
                     <tr id="@item.RID">
                         <td>
+                            @Html.DisplayFor(modelItem => item.BBID)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.RID)
                         </td>
                         <td>
@@ -50,10 +54,10 @@
                         </td>
                         <td>
                             @{
-                                string s = Session["UserType"].ToString();
+                                string s = Session["UserID"].ToString();
                             }
 
-                            @if (Session["UserType"] != null && Session["UserType"].ToString().Contains("Admin"))
+                            @if (Session["UserID"] != null && Session["UserID"].ToString().Contains("1"))
                             {
 
                                 <a href="/RoomTable/CreateEdit?RID=@item.RID " class="btn btn-warning btn-sm "> Edit</a>
@@ -62,7 +66,7 @@
 
                             }
 
-                            @if (Session["UserType"].ToString().Contains("User"))
+                            @if (Session["UserID"].ToString().Contains("2"))
 
                             {
                                 @*<a href="/Rental/termpolcy"   id="manual-ajax">Click</a>*@

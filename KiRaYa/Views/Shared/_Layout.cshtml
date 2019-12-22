@@ -112,7 +112,7 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header"></li>
 
-                    @if (Session["UserType"] != null && Session["UserType"].ToString().Contains("Admin"))
+                    @if (Session["UserID"] != null && Session["UserID"].ToString().Contains("1"))
                     {
 
                         <li><a href="/HOME/Admin"><i class="fa fa-circle-o text-aqua"></i> Home</a></li>
@@ -125,7 +125,7 @@
                         <li> <a href="/UserDetails/Index"  style="display:none"><i class="fa fa-circle-o text-aqua"></i> <span>UserType </span></a></li>
 
                     }
-                    @if (Session["UserType"].ToString().Contains("User"))
+                    @if (Session["UserID"].ToString().Contains("2"))
 
                     {
                         <li><a href="/HOME/Admin"><i class="fa fa-circle-o text-aqua"></i> Home</a></li>

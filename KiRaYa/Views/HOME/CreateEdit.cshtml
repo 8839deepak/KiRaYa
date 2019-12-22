@@ -1,7 +1,7 @@
 ﻿@model KiRaYa.Models.Login
 @using KiRaYa.Models;
 @{ List<UserDetails> listuser = new UserDetails().GetAll();}
-@if (Session["UserType"] != null && Session["UserType"].ToString().Contains("Admin"))
+@if (Session["UserID"] != null && Session["UserID"].ToString().Contains("1"))
 {
 
     <div class="card">
@@ -14,7 +14,7 @@
             @using (Html.BeginForm("CreateEdit", "HOME", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
-
+                @Html.HiddenFor(model=>model.ID)
                 <div class="row">
 
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })

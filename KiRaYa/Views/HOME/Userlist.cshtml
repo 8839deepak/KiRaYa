@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<KiRaYa.Models.Login>
 @using KiRaYa.Models
 @{ List<UserDetails> listuser = new UserDetails().GetAll();}
-@if (Session["UserType"] != null && Session["UserType"].ToString().Contains("Admin"))
+@if (Session["UserID"] != null && Session["UserID"].ToString().Contains("1"))
 {
 
     <div class="card">
@@ -24,7 +24,7 @@
                             @Html.DisplayNameFor(model => model.Password)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.UserType)
+                             UserType
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.EmailID)

@@ -66,10 +66,12 @@ namespace KiRaYa.Controllers
             Rental Objrental = listrental.Find(x => x.RantalID ==  rant.RantalID);
             List<RoomTable> listroom = new RoomTable().GetAll();
             RoomTable Objroom = listroom.Find(x => x.RID == Objrental.RID);
+            List<Login> listlogin = new Login().GetAll();
+            Login OBJLogin = listlogin.Find(x => x.ID == rant.RantalID);
              MailMessage mailmsg = new MailMessage();
             SmtpClient smtpclient = new SmtpClient();
            // mailmsg.To.Add(rant.EmailID);
-            mailmsg.CC.Add("957501deepak@gmail.com");
+            mailmsg.CC.Add(OBJLogin.EmailID);
             mailmsg.Subject =  " Room Rent";
             mailmsg.From = new MailAddress("957501deepak@gmail.com");
             string html = "<div class='card'>";

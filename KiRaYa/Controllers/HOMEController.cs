@@ -29,7 +29,7 @@ namespace KiRaYa.Controllers
             {
                 Session["ID"] = ObjUSers.ID;
                 Session["UserName"] = ObjUSers.UserName;
-                Session["UserType"] = ObjUSers.UserType;
+                Session["UserID"] = ObjUSers.UserID;
                 return RedirectToAction("Admin");
             }
 
@@ -59,7 +59,7 @@ namespace KiRaYa.Controllers
         public ActionResult CreateEdit(int ID)
         {
             Login loginuser = new Login();
-            loginuser = loginuser.addloginuser(ID);
+            loginuser = loginuser.GetOne(ID);
             return View(loginuser);
         }
         [HttpPost]
@@ -80,10 +80,10 @@ namespace KiRaYa.Controllers
 
         }
         [HttpPost]
-        public ActionResult forgetPassword(ForgetPassword Email)
+        public ActionResult forgetPassword(Login Email)
         {
             ////---------------send E-mail-------------------- 
-            string msg = "<h1> Wel com in iT-Helper </h1> <br> <h2> click here to activate This Email <a href='http://192.168.1.8/Default/Activation?TokenKey=" + Email.FID + "'><b>Activate</b></a></h2><br> <br> any problem call <u><mark>8839070602</mark><u>";
+            string msg = "<h1> Wel com in iT-Helper </h1> <br> <h2> click here to activate This Email <a href='http://192.168.1.8/Default/Activation?TokenKey=" + Email.ID + "'><b>Activate</b></a></h2><br> <br> any problem call <u><mark>8839070602</mark><u>";
             System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("957501deepak@gmail.com", Email.EmailID, "iT-Helper", msg);
             mail.IsBodyHtml = true;
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
@@ -119,7 +119,8 @@ namespace KiRaYa.Controllers
             //{
             //    ViewData["mgs"] = "try again";
             //}
-           
+
+
             return RedirectToAction("Login");
         }
         public ActionResult Delete(int ID)
