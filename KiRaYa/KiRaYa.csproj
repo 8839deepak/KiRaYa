@@ -9149,8 +9149,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BlockBRoom.cs" />
-    <Compile Include="Models\BlockC.cs" />
     <Compile Include="Models\BlockD.cs" />
     <Compile Include="Models\ForgetPassword.cs" />
     <Compile Include="Models\Login.cs" />

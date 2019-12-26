@@ -50,5 +50,6 @@ namespace KiRaYa.Controllers
         {
             return View();
         }
+        
     }
 }

@@ -54,10 +54,13 @@ namespace KiRaYa.Controllers
 
             List<RantPaid> ListRentPaids = new RantPaid().GetAll();
             RantPaid RentPaidsobj = ListRentPaids.Find(x => x.RantalID == PRID);
+            List<BlockD> listblock = new BlockD().GetAll();
+            BlockD objblock = listblock.Find(x => x.DDID == PRID);
+            int BlockName = ObjRooms.DDID;
             int RentPaid = ObjRooms.RantAmt;
              
             
-            return Json(new { RID = ObjRooms.RID, RoomNumber = ObjRooms.RoomNumber, RantAmt = RentPaid }, JsonRequestBehavior.AllowGet);
+            return Json(new { RID = ObjRooms.RID, RoomNumber = ObjRooms.RoomNumber, RantAmt = RentPaid,DDID=BlockName }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult SentMail(RantPaid rant)
         {

@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<KiRaYa.Models.RantPaid>
 @using KiRaYa.Models
 @{List<Rental> Listrental = new Rental().GetAll();
-    List<RoomTable> ListRoom = new RoomTable().GetAll(); }
+    List<RoomTable> ListRoom = new RoomTable().GetAll();
+    List<BlockD> listBlock = new BlockD().GetAll();
+    }
 @if (Session["UserID"] != null && Session["UserID"].ToString().Contains("1"))
 {
 
@@ -13,7 +15,9 @@
             <table class="table table-bordered table-hover w-100" id="Tbl">
                 <thead>
                     <tr>
-
+                        <th>
+                            Block Name
+                        </th>
                         <th>
                             Rental Name
                         </th>
@@ -47,7 +51,10 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-
+                            <td>
+                                @{ BlockD ONJBLOCK = listBlock.Find(x => x.DDID == item.DDID);}
+                                @ONJBLOCK.Name
+                            </td>
                             <td>
                                 @{ Rental objrant = Listrental.Find(x => x.RantalID == item.RantalID);}
                                 @objrant.Name

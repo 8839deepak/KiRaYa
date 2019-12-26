@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<KiRaYa.Models.RoomTable>
 @using KiRaYa.Models
 
-@{ List<RoomTable> listroom = new RoomTable().GetAll();}
+@{ List<BlockD> listroom = new BlockD().GetAll();}
 <div class="card">
     <div class="card-header">
         <h5 style="text-align:center;color:#000000"><b>Room Details</b></h5>
@@ -10,7 +10,7 @@
         <table class="table table-bordered table-hover w-100" id="Tbl">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(Model=>Model.BBID)</th>
+                    <th> Block Name</th>
                     <th>
                         @Html.DisplayNameFor(model => model.RID)
                     </th>
@@ -35,7 +35,8 @@
                 {
                     <tr id="@item.RID">
                         <td>
-                            @Html.DisplayFor(modelItem => item.BBID)
+                            @{ BlockD OBJBLOCK = listroom.Find(x => x.DDID == item.DDID);}
+                            @OBJBLOCK.Name
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.RID)
@@ -71,7 +72,7 @@
                             {
                                 @*<a href="/Rental/termpolcy"   id="manual-ajax">Click</a>*@
                                 @*<input type="checkbox" onclick="my();" />*@
-                                <button type="button" class="btn btn-primary" onclick="my(this);" data-toggle="modal" data-target=".bd-example-modal-xl">Click</button>
+                                <button type="button" class="btn btn-primary" onclick="my(@item.RID , @item.DDID);" data-toggle="modal" data-target=".bd-example-modal-xl">Click</button>
 
 
 
@@ -91,14 +92,15 @@
 <script>
 
 
-    function my(event) {
+    function my(RID, DDID) {
         $("#waiting").show();
 
-        var RID = $(event).parent('td').parent('tr').attr('id');
-       // alert(RID);
+        ////var RID = $(event).parent('td').parent('tr').attr('id');
+        ////var DDID = $(event).parent('td').parent('tr').attr('id')
+       
         $.ajax({
             type: 'GET',
-            url: "/Rental/termpolcy?RID=" + RID,
+            url: "/Rental/termpolcy?RID=" + RID + "&DDID=" + DDID,
             success: function (data) {
                 $("#ModelContent").html(data);
                 $("#ModelID").show();

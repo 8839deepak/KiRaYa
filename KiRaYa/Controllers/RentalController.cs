@@ -14,7 +14,7 @@ namespace KiRaYa.Controllers
         public ActionResult Index()
         {
             List<Rental> listrental = new Rental().GetAll();
-            if(Session["UserType"].ToString().Contains("User"))
+            if(Session["UserID"].ToString().Contains("2"))
             {
                 int ID = int.Parse(Session["ID"].ToString());
                 listrental = listrental.FindAll(x => x.createBy == ID);
@@ -29,9 +29,13 @@ namespace KiRaYa.Controllers
         // Create and edit Rental
         public ActionResult CreateEdit(int RentalID)
         {
-            if (Request.QueryString["RID"] != null)
+            if ( Request.QueryString["RID"] != null)
+           {
+                ViewData["RID"]=(Request.QueryString["RID"]);
+            }
+            if(Request.QueryString["DDID"]!=null)
             {
-                int rID = int.Parse(Request.QueryString["RID"]);
+                ViewData["DDID"]=(Request.QueryString["DDID"]);
             }
             //ViewData["msg"] = "";
             Rental objpad = new Rental();
@@ -112,8 +116,12 @@ namespace KiRaYa.Controllers
         {
             return View();
         }
-        public ActionResult termpolcy()
+        public ActionResult termpolcy(int RID , int DDID)
         {
+            ViewData["RID"] = RID;
+            ViewData["DDID"] = DDID;
+
+            
             return View();
         }
         

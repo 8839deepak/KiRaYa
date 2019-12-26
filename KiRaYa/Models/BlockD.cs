@@ -10,6 +10,7 @@ namespace KiRaYa.Models
     {
         public int DDID { get; set; }
         public string Name { get; set; }
+        public int Size { get; set; }
         public int Save()
         {
             int Row = 0;
@@ -22,12 +23,13 @@ namespace KiRaYa.Models
 
                 if (this. DDID  == 0)
 
-                    Query = "Insert into  BlockD  values(@Name );";
+                    Query = "Insert into  BlockD  values(@Name,@Size );";
                 else
-                    Query = "update  BlockD set Name=@Name  where  DDID =@ DDID ";
+                    Query = "update  BlockD set Name=@Name,Size=@Size  where  DDID =@ DDID ";
                 cmd = new SqlCommand(Query, Con);
                 cmd.Parameters.AddWithValue("@DDID", this.DDID);
                 cmd.Parameters.AddWithValue("@Name", this.Name);
+                cmd.Parameters.AddWithValue("@Size", this.Size);
                
                 Row = cmd.ExecuteNonQuery();
             }
@@ -56,6 +58,7 @@ namespace KiRaYa.Models
                     BlockD ObjTmp = new BlockD();
                     ObjTmp.DDID  = SDR.GetInt32(0);
                     ObjTmp.Name = SDR.GetString(1);
+                    ObjTmp.Size = SDR.GetInt32(2);
                     
 
 
@@ -84,7 +87,8 @@ namespace KiRaYa.Models
                 {
                     ObjTmp.DDID  = SDR.GetInt32(0);
                     ObjTmp.Name = SDR.GetString(1);
-                     
+                    ObjTmp.Size = SDR.GetInt32(2);
+
                 }
             }
             catch (System.Exception e)

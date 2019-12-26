@@ -135,30 +135,39 @@
 
             </div>
             <div class="col-md-6">
-               @{ var items = new List<SelectListItem>
-                      ()
-                    {
-                    new SelectListItem() { Text = "1Month", Value = "1Month" },
-                    new SelectListItem() { Text = "3Month", Value = "3Month" },
-                    new SelectListItem() { Text = "5Month", Value = "5Month" },
-                    new SelectListItem() { Text = "7Month", Value = "7Month" },
-                    new SelectListItem() { Text = "10Month", Value = "10Month" },
-                    new SelectListItem() { Text = "12Month", Value = "12Month" },
-                    };
-               }
-                    @Html.LabelFor(model => model.RentAgreementFor, htmlAttributes: new { @class = "control-label" })
+                @{ var items = new List<SelectListItem>
+                        ()
+                        {
+                        new SelectListItem() { Text = "1Month", Value = "1Month" },
+                        new SelectListItem() { Text = "3Month", Value = "3Month" },
+                        new SelectListItem() { Text = "5Month", Value = "5Month" },
+                        new SelectListItem() { Text = "7Month", Value = "7Month" },
+                        new SelectListItem() { Text = "10Month", Value = "10Month" },
+                        new SelectListItem() { Text = "12Month", Value = "12Month" },
+                        };
+                }
+                @Html.LabelFor(model => model.RentAgreementFor, htmlAttributes: new { @class = "control-label" })
 
-                    @Html.DropDownListFor(model => model.RentAgreementFor,items, new { @class = "form-control", required = "required" } )
-                    @Html.ValidationMessageFor(model => model.RentAgreementFor, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.RentAgreementFor, items, new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.RentAgreementFor, "", new { @class = "text-danger" })
 
             </div>
             <div class="col-md-6">
                 @Html.LabelFor(model => model.RID, htmlAttributes: new { @class = "control-label  " })
-                @{ 
-                    var RID =int.Parse( Request.QueryString["RID"]);
+                @{
+                    
                 }
-                @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber", RID), new { @class = "form-control", required = "required" ,value= RID })
+                @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber", Convert.ToInt32(ViewData["RID"])) , "Select Room", new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.RID, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.DDID, htmlAttributes: new { @class = "control-label  " })
+                @{
+                    
+                }
+                @Html.DropDownListFor(model => model.DDID, new SelectList(new BlockD().GetAll(), "DDID", "Name", Convert.ToInt32(ViewData["DDID"])), "Select Block", new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.DDID, "", new { @class = "text-danger" })
 
             </div>
 
@@ -175,4 +184,6 @@
 <script>
     var value = $("#RID").attr("value");
     $("#RID").val(value);
+    var value1 = $("#DDID").attr("value1");
+    $("#DDID").val(value1);
 </script>

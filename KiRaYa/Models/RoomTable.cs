@@ -19,7 +19,7 @@ namespace KiRaYa.Models
         public string ElectriCityCost { get; set; }
         [Display(Name = "Rant Amount")]
         public int RantAmt { get; set; }
-        public int BBID { get; set; }
+        public int DDID { get; set; }
         public int Save()
         {
             int Row = 0;
@@ -31,9 +31,9 @@ namespace KiRaYa.Models
 
                 if (this.RID== 0)
 
-                    Query = "Insert into  RoomTable  values(@RoomNumber,@RoomSIZE,@ElectriCityCost,@RantAmt,@BBID);";
+                    Query = "Insert into  RoomTable  values(@RoomNumber,@RoomSIZE,@ElectriCityCost,@RantAmt,@DDID);";
                 else
-                    Query = "update  RoomTable set RoomNumber=@RoomNumber,RoomSIZE=@RoomSIZE,ElectriCityCost=@ElectriCityCost,RantAmt=@RantAmt,BBID=@BBID where RID=@RID";
+                    Query = "update  RoomTable set RoomNumber=@RoomNumber,RoomSIZE=@RoomSIZE,ElectriCityCost=@ElectriCityCost,RantAmt=@RantAmt,DDID=@DDID where RID=@RID";
 
 
                 SqlCommand cmd = new SqlCommand(Query, Con);
@@ -42,7 +42,7 @@ namespace KiRaYa.Models
                 cmd.Parameters.AddWithValue("@RoomSIZE", this.RoomSIZE);
                 cmd.Parameters.AddWithValue("@ElectriCityCost", this.ElectriCityCost);
                 cmd.Parameters.AddWithValue("@RantAmt", this.RantAmt);
-                cmd.Parameters.AddWithValue("@BBID", this.BBID);
+                cmd.Parameters.AddWithValue("@DDID", this.DDID);
                 Row = cmd.ExecuteNonQuery();
             }
             catch (Exception e) { e.ToString(); }
@@ -71,7 +71,7 @@ namespace KiRaYa.Models
                     ObjTmp.RoomSIZE = SDR.GetString(2);
                     ObjTmp.ElectriCityCost = SDR.GetString(3);
                     ObjTmp.RantAmt = SDR.GetInt32(4);
-                    ObjTmp.BBID = SDR.GetInt32(5);
+                    ObjTmp.DDID = SDR.GetInt32(5);
 
                     ListTmp.Add(ObjTmp);
                 }
@@ -102,7 +102,7 @@ namespace KiRaYa.Models
                     ObjTmp.RoomSIZE = SDR.GetString(2);
                     ObjTmp.ElectriCityCost = SDR.GetString(3);
                     ObjTmp.RantAmt = SDR.GetInt32(4);
-                    ObjTmp.BBID = SDR.GetInt32(5);
+                    ObjTmp.DDID = SDR.GetInt32(5);
                 }
             }
             catch (System.Exception e)
