@@ -153,7 +153,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    @Html.LabelFor(model => model.RID, htmlAttributes: new { @class = "control-label  " })
+                   @Html.Label("Room Number")
                     @{
                         ViewData["RID"] = Request.QueryString["RID"];
                     }
@@ -162,13 +162,19 @@
 
                 </div>
                 <div class="col-md-6">
-                    @Html.LabelFor(model => model.DDID, htmlAttributes: new { @class = "control-label  " })
+                   @Html.Label("Block")
                     @{
                         ViewData["DDID"] = Request.QueryString["DDID"];
                     }
                     @Html.DropDownListFor(model => model.DDID, new SelectList(new BlockD().GetAll(), "DDID", "Name", Convert.ToInt32(Request.QueryString["DDID"])), "Select Block", new { @class = "form-control", required = "required" })
                     @Html.ValidationMessageFor(model => model.DDID, "", new { @class = "text-danger" })
 
+                </div>
+                <div class=" col-md-6">
+                    @Html.Label("EmailID")
+                    @Html.DropDownListFor(model => model.ID, new SelectList(new Login().GetAll(), "ID", "EmailID", Model.ID), "Select EmailID", new { @class = "form-control", required = "required" })
+
+                    @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
                 </div>
 
 

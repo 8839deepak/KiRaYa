@@ -32,6 +32,7 @@ namespace KiRaYa.Models
         public int createBy { get; set; }
         public DateTime Updatedate { get; set; }
         public int DDID { get; set; }
+        public int ID { get; set; }
         public int Save()
         {
             int Row = 0;
@@ -44,7 +45,7 @@ namespace KiRaYa.Models
 
                 if (this.RantalID == 0)
                 {
-                    Query = "Insert into  Rental  values(@PhotoPath, @Name,@Date,@Mobile,@Address,@VoterID,@AdharcardPhoto,@AdharNumber,@PanPhoto,@PanNumber,@RentAgreementFor,@RID,@createBy,@Updatedate,@DDID);";
+                    Query = "Insert into  Rental  values(@PhotoPath, @Name,@Date,@Mobile,@Address,@VoterID,@AdharcardPhoto,@AdharNumber,@PanPhoto,@PanNumber,@RentAgreementFor,@RID,@createBy,@Updatedate,@DDID,@ID);";
                     cmd = new SqlCommand(Query, Con);
                     cmd.Parameters.AddWithValue("@createBy", HttpContext.Current.Session["ID"]);
                     cmd.Parameters.AddWithValue("@Updatedate", DateTime.Now);
@@ -52,7 +53,7 @@ namespace KiRaYa.Models
                     
                 else
                 { 
-                    Query = "update  Rental set  PhotoPath=@PhotoPath, Name=@Name,Date=@Date,Mobile=@Mobile,Address=@Address,VoterID=@VoterID,AdharcardPhoto=@AdharcardPhoto,AdharNumber=@AdharNumber,PanPhoto=@PanPhoto,PanNumber=@PanNumber,RentAgreementFor=@RentAgreementFor,RID=@RID,createBy=@createBy,Updatedate=@Updatedate,DDID=@DDID where RantalID=@RantalID";
+                    Query = "update  Rental set  PhotoPath=@PhotoPath, Name=@Name,Date=@Date,Mobile=@Mobile,Address=@Address,VoterID=@VoterID,AdharcardPhoto=@AdharcardPhoto,AdharNumber=@AdharNumber,PanPhoto=@PanPhoto,PanNumber=@PanNumber,RentAgreementFor=@RentAgreementFor,RID=@RID,createBy=@createBy,Updatedate=@Updatedate,DDID=@DDID ,ID=@ID where RantalID=@RantalID";
                  cmd = new SqlCommand(Query, Con);
                     cmd.Parameters.AddWithValue("@RantalID", this.RantalID);
                     cmd.Parameters.AddWithValue("@createBy", HttpContext.Current.Session["ID"]);
@@ -73,6 +74,7 @@ namespace KiRaYa.Models
                 cmd.Parameters.AddWithValue("@RentAgreementFor", this.RentAgreementFor);
                 cmd.Parameters.AddWithValue("@RID", this.RID);
                 cmd.Parameters.AddWithValue("@DDID", this.DDID);
+                cmd.Parameters.AddWithValue("@ID", this.ID);
                  
                 Row = cmd.ExecuteNonQuery();
             }
@@ -115,6 +117,7 @@ namespace KiRaYa.Models
                     ObjTmp.createBy = SDR.GetInt32(13);
                     ObjTmp.Updatedate = SDR.GetDateTime(14);
                     ObjTmp.DDID = SDR.GetInt32(15);
+                    ObjTmp.ID = SDR.GetInt32(16);
 
                     ListTmp.Add(ObjTmp);
                 }
@@ -155,6 +158,7 @@ namespace KiRaYa.Models
                     ObjTmp.createBy = SDR.GetInt32(13);
                     ObjTmp.Updatedate = SDR.GetDateTime(14);
                     ObjTmp.DDID = SDR.GetInt32(15);
+                    ObjTmp.ID = SDR.GetInt32(16);
                 }
             }
             catch (System.Exception e)

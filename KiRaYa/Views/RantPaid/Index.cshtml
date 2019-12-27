@@ -3,114 +3,138 @@
 @{List<Rental> Listrental = new Rental().GetAll();
     List<RoomTable> ListRoom = new RoomTable().GetAll();
     List<BlockD> listBlock = new BlockD().GetAll();
-    }
+    List<Login> listlogin = new Login().GetAll();
+}
 @if (Session["UserID"] != null && Session["UserID"].ToString().Contains("1"))
 {
 
-    <div class="card">
-        <div class="card-header">
-            <h5 style="text-align:center;color:#000000"><b>Rent Pay Details</b></h5>
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered table-hover w-100" id="Tbl">
-                <thead>
-                    <tr>
-                        <th>
-                            Block Name
-                        </th>
-                        <th>
-                            Rental Name
-                        </th>
-                        <th>
-                            Room Number
-                        </th>
-                        <th>
-                            Last Reading
-                        </th>
-                        <th>
-                            Current Reading
-                        </th>
-                        <th>
-                            Used Electricity
-                        </th>
-                        <th>
-                            Total Rant
-                        </th>
-                        <th>
-                            Total Pay
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Amt)
-                        </th>
-                         
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @{ BlockD ONJBLOCK = listBlock.Find(x => x.DDID == item.DDID);}
-                                @ONJBLOCK.Name
-                            </td>
-                            <td>
-                                @{ Rental objrant = Listrental.Find(x => x.RantalID == item.RantalID);}
-                                @objrant.Name
-                            </td>
-                            <td>
-                                @{RoomTable objRoom = ListRoom.Find(x => x.RID == item.RID);}
-                                @objRoom.RoomNumber
-
-                            </td>
-                            <td>
-                                @Html.DisplayFor(ModelItem => item.LastReading)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(ModelItem => item.CurrentReading)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UsedElectricity)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TotalRant)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TotalPay)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Amt)
-                            </td>
-                             
-                            <td>
-                                <a href="/RantPaid/CreateEdit?RPID=@item.RPID " class="btn btn-warning btn-sm "> Edit</a>
-                                <a href="/RantPaid/Delete?ID=@item.RPID " class="btn btn-danger btn-sm "> Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <h5 style="text-align:center;color:#000000"><b>Rent Pay Details</b></h5>
     </div>
+    <a href="/RantPaid/CreateEdit?RPID=0 " class="btn btn-success"><i class="fa fa-plus">aDd</i></a>
+
+    <div class="card-body">
+        <table class="table table-bordered table-hover w-100" id="Tbl">
+            <thead>
+                <tr>
+                    <th>
+                        Block Name
+                    </th>
+                    <th>
+                        Rental Name
+                    </th>
+                    <th>
+                        Room Number
+                    </th>
+                    <th>
+                        Last Reading
+                    </th>
+                    <th>
+                        Current Reading
+                    </th>
+                    <th>
+                        Used Electricity
+                    </th>
+                    <th>
+                        Total Rant
+                    </th>
+                    <th>
+                        Total Pay
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amt)
+                    </th>
+                    <th>EmailID</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @{ BlockD ONJBLOCK = listBlock.Find(x => x.DDID == item.DDID);}
+                            @ONJBLOCK.Name
+                        </td>
+                        <td>
+                            @{ Rental objrant = Listrental.Find(x => x.RantalID == item.RantalID);}
+                            @objrant.Name
+                        </td>
+                        <td>
+                            @{RoomTable objRoom = ListRoom.Find(x => x.RID == item.RID);}
+                            @objRoom.RoomNumber
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(ModelItem => item.LastReading)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(ModelItem => item.CurrentReading)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UsedElectricity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalRant)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalPay)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amt)
+                        </td>
+                        <td>
+                            @{Login OBJLOGIN = listlogin.Find(x => x.ID == item.ID);}
+                            @OBJLOGIN.EmailID
+
+                        </td>
+                        <td>
+                            <a href="/RantPaid/CreateEdit?RPID=@item.RPID " class="btn btn-warning btn-sm "> Edit</a>
+                            <a href="/RantPaid/Delete?ID=@item.RPID " class="btn btn-danger btn-sm "> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 }
 @if (Session["UserID"].ToString().Contains("2"))
 
 {
-    <div class=" row">
-        <div class="col-sm-4">
-
-        </div>
-        <div class="col-sm-4">
-            <a href=" /RantPaid/CreateEdit?RPID=0 " class="btn btn-success"><i class="fa fa-plus"></i> PAY RENT</a>
-
-        </div>
+<div class=" row">
+    <div class="col-sm-4">
 
     </div>
+    <div class="col-sm-4">
+        <a href="" class="btn btn-success"><i class="fa fa-plus"></i> PAY RENT</a>
+        <a href="/RantPaid/POPUPWINDOW" class="btn btn-vimeo" onclick="my();"><i class="fa fa-eye"></i>view</a>
+    </div>
+   @* onclick="window.location.href = 'http://localhost:57665/RantPaid/Index*@
+</div>
     <div class="col-sm-4">
 
     </div>
 
 
 }
+    <script>
+        function my() {
+            $("#waiting").show();
+            $.ajax({
+                type: 'GET',
+                url: "/RantPaid/POPUPWINDOW" ,
+                success: function (data) {
+                    $("#ModelContent").html(data);
+                    $("#ModelID").show();
+                    $("#waiting").hide();
 
+                },
+                error: function (jqXhr, textStatus, errorMessage) { // error callback
+
+                }
+            });
+        }
+    </script>

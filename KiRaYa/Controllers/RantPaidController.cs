@@ -14,7 +14,18 @@ namespace KiRaYa.Controllers
         // GET:List RantPaid
         public ActionResult Index()
         {
-            return View(new RantPaid().GetAll());
+            List<RantPaid> listpaid = new RantPaid().GetAll();
+            if (Session["UserID"].ToString().Contains("2"))
+            {
+                int ID = int.Parse(Session["ID"].ToString());
+                listpaid = listpaid.FindAll(x => x.Create_By == ID);
+            }
+            else
+            {
+                listpaid = new RantPaid().GetAll();
+            }
+
+                return View(listpaid);
         }
         // Create and edit Rantpaid
         public ActionResult CreateEdit( int RPID)
@@ -32,7 +43,11 @@ namespace KiRaYa.Controllers
             int i = objpad.Save();
 
             if (i > 0)
+            {
+                SentMail(objpad);
                 return RedirectToAction("Index");
+
+            }
             return RedirectToAction("Error");
         }
 
@@ -56,22 +71,27 @@ namespace KiRaYa.Controllers
             RantPaid RentPaidsobj = ListRentPaids.Find(x => x.RantalID == PRID);
             List<BlockD> listblock = new BlockD().GetAll();
             BlockD objblock = listblock.Find(x => x.DDID == PRID);
+            List<Login> listlogin = new Login().GetAll();
+            Login OBJLogin = listlogin.Find(x => x.ID == OnjRentals.ID);
             int BlockName = ObjRooms.DDID;
             int RentPaid = ObjRooms.RantAmt;
+            int EmilID = OBJLogin.ID;
              
             
-            return Json(new { RID = ObjRooms.RID, RoomNumber = ObjRooms.RoomNumber, RantAmt = RentPaid,DDID=BlockName }, JsonRequestBehavior.AllowGet);
+            return Json(new { RID = ObjRooms.RID, RoomNumber = ObjRooms.RoomNumber, RantAmt = RentPaid,DDID=BlockName,ID=EmilID }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult SentMail(RantPaid rant)
         {
-           
+            
             List<Rental> listrental = new Rental().GetAll();
            Rental Objrental = listrental.Find(x => x.RantalID ==  rant.RantalID);
             List<RoomTable> listroom = new RoomTable().GetAll();
             RoomTable Objroom = listroom.Find(x => x.RID == Objrental.RID);
             List<Login> listlogin = new Login().GetAll();
-            Login OBJLogin = listlogin.Find(x =>x. ID==rant.RantalID);
-             MailMessage mailmsg = new MailMessage();
+            Login OBJLogin = listlogin.Find(x =>x.ID==rant.ID);
+            List<RantPaid> listrantpaid = new RantPaid().GetAll();
+            RantPaid ObjRant = listrantpaid.Find(x => x.RPID == OBJLogin.ID);
+            MailMessage mailmsg = new MailMessage();
             SmtpClient smtpclient = new SmtpClient();
            // mailmsg.To.Add(rant.EmailID);
             mailmsg.CC.Add(OBJLogin.EmailID);
@@ -123,6 +143,21 @@ namespace KiRaYa.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult POPUPWINDOW()
+        {
+            RantPaid rantPaid = new RantPaid();
+            List<RantPaid> listrentpaid = rantPaid.GetAll();
 
+            if (Session["UserID"].ToString().Contains("2"))
+            {
+                int ID = int.Parse(Session["ID"].ToString());
+                listrentpaid = listrentpaid.FindAll(x => x.Create_By == ID);
+            }
+            else
+            {
+                listrentpaid = new RantPaid().GetAll();
+            }
+            return View(listrentpaid);
+        }
     }
 }

@@ -8,7 +8,7 @@
     <div class="card-body">
 
 
-        @using (Html.BeginForm(Html.BeginForm("SentMail", "RantPaid", FormMethod.Post, new { enctype = "multipart/form-data" })))
+        @using (Html.BeginForm(Html.BeginForm("CreateEdit", "RantPaid", FormMethod.Post, new { enctype = "multipart/form-data" })))
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor(model => model.RPID)
@@ -81,6 +81,13 @@
                 @Html.ValidationMessageFor(model => model.Amt, "", new { @class = "text-danger" })
 
             </div>
+            <div class="col-md-4">
+                @Html.Label("EmailID")
+
+                @Html.DropDownListFor(model => model.ID, new  SelectList(new Login().GetAll(), "ID", "EmailID",Model.ID),"Select EmailID", new { @class = "form-control", onchange = "change();" } )
+                @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+
+            </div>
 
 
 
@@ -95,6 +102,7 @@
 </div>
   
 <script>
+   
     $("#RantalID").on("change", function () {
         var PRID = $("#RantalID").val();
         if (PRID != "" && PRID != 0) {
@@ -106,6 +114,7 @@
                     $("#RID").html("<option value=" + data.RID + "> " + data.RoomNumber + " </option>");
                     $("#TotalRant").val(data.RantAmt);
                     $("#DDID").val(data.DDID);
+                    $("#ID").val(data.ID);
                    
                     //alert(data.Name);
                 },

@@ -9276,6 +9276,7 @@
     <Content Include="Views\HOME\Userlist.cshtml" />
     <Content Include="Views\UserDetails\Index.cshtml" />
     <Content Include="Views\UserDetails\CreateEdit.cshtml" />
+    <Content Include="Views\RantPaid\POPUPWINDOW.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
