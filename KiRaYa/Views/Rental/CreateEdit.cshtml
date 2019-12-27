@@ -13,177 +13,177 @@
             @Html.HiddenFor(model => model.RantalID)
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="row">
-            @if (Model.RantalID == 0)
-            {
-                <div class="col-sm-12 text-center">
-                    <img id="DemoUser" src="~/Image/man-polaroid-pictures.png" width="100" height="100" class="img img-rounded" />
-                </div>
-                <div class="col-sm-12">
-                    @Html.LabelFor(model => model.PhotoPath, htmlAttributes: new { @class = "control-label  " })
-                    @Html.EditorFor(model => model.PhotoPath, new { htmlAttributes = new { Type = "file", @class = "form-control", required = "required", accept = "image/jpeg", onchange = "document.getElementById('DemoUser').src = window.URL.createObjectURL(this.files[0])" } })
-                    @Html.ValidationMessageFor(model => model.PhotoPath, "", new { @class = "text-danger" })
-                </div>
-            }
-            else
-            {
-                <div class="col-sm-12 text-center">
-                    <img id="DemoUser" src="@Model.PhotoPath" width="100" height="100" class="img img-rounded" />
-                </div>
-                <div class="col-sm-12">
-                    @Html.LabelFor(model => model.PhotoPath, htmlAttributes: new { @class = "control-label  " })
-                    @Html.EditorFor(model => model.PhotoPath, new { htmlAttributes = new { Type = "file", @class = "form-control", accept = "image/jpeg", onchange = "document.getElementById('DemoUser').src = window.URL.createObjectURL(this.files[0])" } })
-                    @Html.ValidationMessageFor(model => model.PhotoPath, "", new { @class = "text-danger" })
-                </div>
-            }
-
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label  " })
-
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label  " })
-
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", required = "required", type = "date" } })
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label ", required = "required" })
-
-                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
-
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.VoterID, htmlAttributes: new { @class = "control-label" })
-
-                @Html.EditorFor(model => model.VoterID, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-                @Html.ValidationMessageFor(model => model.VoterID, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
+            <div class="row">
                 @if (Model.RantalID == 0)
                 {
                     <div class="col-sm-12 text-center">
-                        <img id="Demo" src="~/Image/man-polaroid-pictures.png" width="100" height="100" class="img img-rounded" />
+                        <img id="DemoUser" src="~/Image/man-polaroid-pictures.png" width="100" height="100" class="img img-rounded" />
                     </div>
                     <div class="col-sm-12">
-                        @Html.LabelFor(model => model.AdharcardPhoto, htmlAttributes: new { @class = "control-label  " })
-                        @Html.EditorFor(model => model.AdharcardPhoto, new { htmlAttributes = new { Type = "file", @class = "form-control", required = "required", accept = "image/jpeg", onchange = "document.getElementById('Demo').src = window.URL.createObjectURL(this.files[0])" } })
-                        @Html.ValidationMessageFor(model => model.AdharcardPhoto, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.PhotoPath, htmlAttributes: new { @class = "control-label  " })
+                        @Html.EditorFor(model => model.PhotoPath, new { htmlAttributes = new { Type = "file", @class = "form-control", required = "required", accept = "image/jpeg", onchange = "document.getElementById('DemoUser').src = window.URL.createObjectURL(this.files[0])" } })
+                        @Html.ValidationMessageFor(model => model.PhotoPath, "", new { @class = "text-danger" })
                     </div>
                 }
                 else
                 {
                     <div class="col-sm-12 text-center">
-                        <img id="Demo" src="@Model.AdharcardPhoto" width="100" height="100" class="img img-rounded" />
+                        <img id="DemoUser" src="@Model.PhotoPath" width="100" height="100" class="img img-rounded" />
                     </div>
                     <div class="col-sm-12">
-                        @Html.LabelFor(model => model.AdharcardPhoto, htmlAttributes: new { @class = "control-label  " })
-                        @Html.EditorFor(model => model.AdharcardPhoto, new { htmlAttributes = new { Type = "file", @class = "form-control", accept = "image/jpeg", onchange = "document.getElementById('Demo').src = window.URL.createObjectURL(this.files[0])" } })
-                        @Html.ValidationMessageFor(model => model.AdharcardPhoto, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.PhotoPath, htmlAttributes: new { @class = "control-label  " })
+                        @Html.EditorFor(model => model.PhotoPath, new { htmlAttributes = new { Type = "file", @class = "form-control", accept = "image/jpeg", onchange = "document.getElementById('DemoUser').src = window.URL.createObjectURL(this.files[0])" } })
+                        @Html.ValidationMessageFor(model => model.PhotoPath, "", new { @class = "text-danger" })
                     </div>
                 }
+
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label  " })
+
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label  " })
+
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", required = "required", type = "date" } })
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label ", required = "required" })
+
+                    @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.VoterID, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.EditorFor(model => model.VoterID, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.VoterID, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @if (Model.RantalID == 0)
+                    {
+                        <div class="col-sm-12 text-center">
+                            <img id="Demo" src="~/Image/man-polaroid-pictures.png" width="100" height="100" class="img img-rounded" />
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.AdharcardPhoto, htmlAttributes: new { @class = "control-label  " })
+                            @Html.EditorFor(model => model.AdharcardPhoto, new { htmlAttributes = new { Type = "file", @class = "form-control", required = "required", accept = "image/jpeg", onchange = "document.getElementById('Demo').src = window.URL.createObjectURL(this.files[0])" } })
+                            @Html.ValidationMessageFor(model => model.AdharcardPhoto, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-sm-12 text-center">
+                            <img id="Demo" src="@Model.AdharcardPhoto" width="100" height="100" class="img img-rounded" />
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.AdharcardPhoto, htmlAttributes: new { @class = "control-label  " })
+                            @Html.EditorFor(model => model.AdharcardPhoto, new { htmlAttributes = new { Type = "file", @class = "form-control", accept = "image/jpeg", onchange = "document.getElementById('Demo').src = window.URL.createObjectURL(this.files[0])" } })
+                            @Html.ValidationMessageFor(model => model.AdharcardPhoto, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AdharNumber, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.EditorFor(model => model.AdharNumber, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.AdharNumber, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @if (Model.RantalID == 0)
+                    {
+                        <div class="col-sm-12 text-center">
+                            <img id="User" src="~/Image/man-polaroid-pictures.png" width="100" height="100" class="img img-rounded" />
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.PanPhoto, htmlAttributes: new { @class = "control-label  " })
+                            @Html.EditorFor(model => model.PanPhoto, new { htmlAttributes = new { Type = "file", @class = "form-control", required = "required", accept = "image/jpeg", onchange = "document.getElementById('User').src = window.URL.createObjectURL(this.files[0])" } })
+                            @Html.ValidationMessageFor(model => model.PanPhoto, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-sm-12 text-center">
+                            <img id="User" src="@Model.PanPhoto" width="100" height="100" class="img img-rounded" />
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.PanPhoto, htmlAttributes: new { @class = "control-label  " })
+                            @Html.EditorFor(model => model.PanPhoto, new { htmlAttributes = new { Type = "file", @class = "form-control", accept = "image/jpeg", onchange = "document.getElementById('User').src = window.URL.createObjectURL(this.files[0])" } })
+                            @Html.ValidationMessageFor(model => model.PanPhoto, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.PanNumber, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.EditorFor(model => model.PanNumber, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.PanNumber, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @{ var items = new List<SelectListItem>
+                             ()
+                                {
+                                new SelectListItem() { Text = "1Month", Value = "1Month" },
+                                new SelectListItem() { Text = "3Month", Value = "3Month" },
+                                new SelectListItem() { Text = "5Month", Value = "5Month" },
+                                new SelectListItem() { Text = "7Month", Value = "7Month" },
+                                new SelectListItem() { Text = "10Month", Value = "10Month" },
+                                new SelectListItem() { Text = "12Month", Value = "12Month" },
+                                };
+                    }
+                    @Html.LabelFor(model => model.RentAgreementFor, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.DropDownListFor(model => model.RentAgreementFor, items, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.RentAgreementFor, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.RID, htmlAttributes: new { @class = "control-label  " })
+                    @{
+                        ViewData["RID"] = Request.QueryString["RID"];
+                    }
+                    @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber", Convert.ToInt32(Request.QueryString["RID"])), "Select Room", new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.RID, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.DDID, htmlAttributes: new { @class = "control-label  " })
+                    @{
+                        ViewData["DDID"] = Request.QueryString["DDID"];
+                    }
+                    @Html.DropDownListFor(model => model.DDID, new SelectList(new BlockD().GetAll(), "DDID", "Name", Convert.ToInt32(Request.QueryString["DDID"])), "Select Block", new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.DDID, "", new { @class = "text-danger" })
+
+                </div>
+
+
+                <div class="col-sm-12 mt-3 text-right">
+                    <input type="submit" value="SaVe" class="btn btn-success" />
+                </div>
             </div>
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.AdharNumber, htmlAttributes: new { @class = "control-label" })
-
-                @Html.EditorFor(model => model.AdharNumber, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-                @Html.ValidationMessageFor(model => model.AdharNumber, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
-                @if (Model.RantalID == 0)
-                {
-                    <div class="col-sm-12 text-center">
-                        <img id="User" src="~/Image/man-polaroid-pictures.png" width="100" height="100" class="img img-rounded" />
-                    </div>
-                    <div class="col-sm-12">
-                        @Html.LabelFor(model => model.PanPhoto, htmlAttributes: new { @class = "control-label  " })
-                        @Html.EditorFor(model => model.PanPhoto, new { htmlAttributes = new { Type = "file", @class = "form-control", required = "required", accept = "image/jpeg", onchange = "document.getElementById('User').src = window.URL.createObjectURL(this.files[0])" } })
-                        @Html.ValidationMessageFor(model => model.PanPhoto, "", new { @class = "text-danger" })
-                    </div>
-                }
-                else
-                {
-                    <div class="col-sm-12 text-center">
-                        <img id="User" src="@Model.PanPhoto" width="100" height="100" class="img img-rounded" />
-                    </div>
-                    <div class="col-sm-12">
-                        @Html.LabelFor(model => model.PanPhoto, htmlAttributes: new { @class = "control-label  " })
-                        @Html.EditorFor(model => model.PanPhoto, new { htmlAttributes = new { Type = "file", @class = "form-control", accept = "image/jpeg", onchange = "document.getElementById('User').src = window.URL.createObjectURL(this.files[0])" } })
-                        @Html.ValidationMessageFor(model => model.PanPhoto, "", new { @class = "text-danger" })
-                    </div>
-                }
-            </div>
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.PanNumber, htmlAttributes: new { @class = "control-label" })
-
-                @Html.EditorFor(model => model.PanNumber, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-                @Html.ValidationMessageFor(model => model.PanNumber, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
-                @{ var items = new List<SelectListItem>
-                        ()
-                        {
-                        new SelectListItem() { Text = "1Month", Value = "1Month" },
-                        new SelectListItem() { Text = "3Month", Value = "3Month" },
-                        new SelectListItem() { Text = "5Month", Value = "5Month" },
-                        new SelectListItem() { Text = "7Month", Value = "7Month" },
-                        new SelectListItem() { Text = "10Month", Value = "10Month" },
-                        new SelectListItem() { Text = "12Month", Value = "12Month" },
-                        };
-                }
-                @Html.LabelFor(model => model.RentAgreementFor, htmlAttributes: new { @class = "control-label" })
-
-                @Html.DropDownListFor(model => model.RentAgreementFor, items, new { @class = "form-control", required = "required" })
-                @Html.ValidationMessageFor(model => model.RentAgreementFor, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.RID, htmlAttributes: new { @class = "control-label  " })
-                @{
-                    
-                }
-                @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber", Convert.ToInt32(ViewData["RID"])) , "Select Room", new { @class = "form-control", required = "required" })
-                @Html.ValidationMessageFor(model => model.RID, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="col-md-6">
-                @Html.LabelFor(model => model.DDID, htmlAttributes: new { @class = "control-label  " })
-                @{
-                    
-                }
-                @Html.DropDownListFor(model => model.DDID, new SelectList(new BlockD().GetAll(), "DDID", "Name", Convert.ToInt32(ViewData["DDID"])), "Select Block", new { @class = "form-control", required = "required" })
-                @Html.ValidationMessageFor(model => model.DDID, "", new { @class = "text-danger" })
-
-            </div>
-
-
-            <div class="col-sm-12 mt-3 text-right">
-                <input type="submit" value="SaVe" class="btn btn-success" />
-            </div>
-        </div>
         }
 
 
     </div>
-</div> 
+</div>
 <script>
-    var value = $("#RID").attr("value");
+    var value = $("#RID").attr(value);
     $("#RID").val(value);
-    var value1 = $("#DDID").attr("value1");
+    var value1 = $("#DDID").attr(value1);
     $("#DDID").val(value1);
 </script>

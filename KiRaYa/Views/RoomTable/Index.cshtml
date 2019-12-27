@@ -33,7 +33,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr id="@item.RID">
+                    <tr id="@item.RID , @item.DDID">
                         <td>
                             @{ BlockD OBJBLOCK = listroom.Find(x => x.DDID == item.DDID);}
                             @OBJBLOCK.Name
@@ -92,11 +92,12 @@
 <script>
 
 
-    function my(RID, DDID) {
+    function my(RID , DDID) {
         $("#waiting").show();
 
-        ////var RID = $(event).parent('td').parent('tr').attr('id');
-        ////var DDID = $(event).parent('td').parent('tr').attr('id')
+        //var RID = $('RID[value="7"]').attr("selected", true);
+        //var RID = $(RID).parent('td').parent('tr').attr('id');
+        //var DDID = $(DDID).parent('td').parent('tr').attr('id')
        
         $.ajax({
             type: 'GET',

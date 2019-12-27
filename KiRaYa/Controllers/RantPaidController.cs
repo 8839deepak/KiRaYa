@@ -66,11 +66,11 @@ namespace KiRaYa.Controllers
         {
            
             List<Rental> listrental = new Rental().GetAll();
-            Rental Objrental = listrental.Find(x => x.RantalID ==  rant.RantalID);
+           Rental Objrental = listrental.Find(x => x.RantalID ==  rant.RantalID);
             List<RoomTable> listroom = new RoomTable().GetAll();
             RoomTable Objroom = listroom.Find(x => x.RID == Objrental.RID);
             List<Login> listlogin = new Login().GetAll();
-            Login OBJLogin = listlogin.Find(x => x.ID == rant.RantalID);
+            Login OBJLogin = listlogin.Find(x =>x. ID==rant.RantalID);
              MailMessage mailmsg = new MailMessage();
             SmtpClient smtpclient = new SmtpClient();
            // mailmsg.To.Add(rant.EmailID);

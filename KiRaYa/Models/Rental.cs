@@ -92,7 +92,7 @@ namespace KiRaYa.Models
 
             try
             {
-                string Query = "SELECT * FROM  Rental ORDER DDID="+DDID.ToString()+" BY RantalID DESC";
+                string Query = "SELECT * FROM  Rental ORDER  BY RantalID DESC";
                
                 cmd = new SqlCommand(Query, Con);
                 SDR = cmd.ExecuteReader();

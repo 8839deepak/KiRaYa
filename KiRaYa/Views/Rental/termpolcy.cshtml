@@ -121,7 +121,7 @@
 
                     </div>
                     <div class="col-md-1">
-                        <input type="checkbox" class=" form-control Checkbox" onclick="window.location.href = 'http://localhost:57665/Rental/CreateEdit?RentalID=0&DDID=@ViewData["DDID"]&RID=@ViewData["RID"]'" style="border:dashed;padding-bottom:20px">
+                        <input type="checkbox" class=" form-control Checkbox" onclick="window.location.href = 'http://localhost:57665/Rental/CreateEdit?RentalID=0&DDID=@Request.QueryString["DDID"]&RID=@Request.QueryString["RID"]'" style="border:dashed;padding-bottom:20px">
                     </div>
                 </div>
                

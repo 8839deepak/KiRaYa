@@ -27,9 +27,20 @@ namespace KiRaYa.Controllers
             Login ObjUSers = ListUsers.Find(x => x.EmailID == Model.EmailID && x.Password == Model.Password );
             if (ObjUSers != null)
             {
+                if (Session["EmailID"] != null && Session["resulttype"] != null)
+                {
+                    return View();
+                }
+
+                else if (Session["EmailID"] != null && Session["resulttype"] != null)
+                {
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
+
                 Session["ID"] = ObjUSers.ID;
                 Session["UserName"] = ObjUSers.UserName;
                 Session["UserID"] = ObjUSers.UserID;
+                Session["EmailID"] = ObjUSers.EmailID;
                 return RedirectToAction("Admin");
             }
 
