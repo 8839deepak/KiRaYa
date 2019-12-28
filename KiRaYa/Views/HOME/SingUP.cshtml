@@ -1,5 +1,7 @@
 ﻿@model KiRaYa.Models.Login
 @{ Layout = null;}
+@using KiRaYa.Models;
+@{ List<UserDetails> listuser = new UserDetails().GetAll();}
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,32 +27,39 @@
         </div>
         <div class="card-body">
 
-            @using (Html.BeginForm("forgetPassword", "HOME", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("SingUP", "HOME", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(model => model.UserID)
-                <div class="form-horizontal">
-                    <h4>Login</h4>
-                    <hr />
+                @Html.HiddenFor(model => model.ID)
+                <div class="row">
+
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class=" col-sm-4">
-                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label  " })
 
                         @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
                     </div>
 
-                    <div class=" col-sm-4">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label  " })
 
                         @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
                     </div>
 
-                    <div class=" col-sm-4">
-                        @Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label  " })
+                        @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @*  @Html.DropDownListFor(model => model.UserID, new SelectList(new UserDetails().GetAll(), "UserID", " UserType", Model.UserID), "Select User Type", new { @class = "form-control", required = "required" })*@
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "control-label  " })
 
                         @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
@@ -58,13 +67,15 @@
                     </div>
 
 
-
                     <div class="col-sm-1  ">
                         @Html.Label("SAVE", new { @class = "text-white" })
                         <input type="submit" value="SAVE" class="btn btn-success" />
                     </div>
+
                 </div>
             }
+
         </div>
+    </div>
 </body>
 </html>

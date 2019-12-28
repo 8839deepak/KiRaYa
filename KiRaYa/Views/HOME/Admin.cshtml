@@ -1,17 +1,26 @@
-﻿<div class=" row   ">
+﻿@using KiRaYa.Models
+
+ 
+
+<div class=" row   ">
 
     <div class="col-md-6  p-4">
         <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
             <div class="card-header text-center">Block A ROOMS</div>
             <div class="card-body  ">
                 <ul class="list-group">
+                    <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@ViewData["mgs"]</h5>
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
                         Total ROOM
+
                         <a href="#">
                             <span class="badge badge-primary badge-pill">
+                                @{ int TR = new KiRaYa.Models.RoomTable().GetAll().Count();
 
-                                @{ int TR = new KiRaYa.Models.RoomTable().GetAll().Count();}
+                                }
                                 @TR
+
+
 
                             </span>
                         </a>

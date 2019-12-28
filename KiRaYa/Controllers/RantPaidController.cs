@@ -145,9 +145,9 @@ namespace KiRaYa.Controllers
         }
         public ActionResult POPUPWINDOW()
         {
-            RantPaid rantPaid = new RantPaid();
-            List<RantPaid> listrentpaid = rantPaid.GetAll();
-
+           
+            List<RantPaid> listrentpaid = new RantPaid().GetAll();
+            
             if (Session["UserID"].ToString().Contains("2"))
             {
                 int ID = int.Parse(Session["ID"].ToString());

@@ -219,8 +219,8 @@ output {
 // Designed to help with the organization and spacing of vertical forms. For
 // horizontal forms, use the predefined grid classes.
 
-.form-group {
-  margin-bottom: @form-group-margin-bottom;
+. col-sm-4 {
+  margin-bottom: @ col-sm-4-margin-bottom;
 }
 
 
@@ -315,13 +315,13 @@ output {
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
 //
-// The `.form-group-* form-control` variations are sadly duplicated to avoid the
+// The `. col-sm-4-* form-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .input-sm {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
 }
-.form-group-sm {
+. col-sm-4-sm {
   .form-control {
     height: @input-height-small;
     padding: @padding-small-vertical @padding-small-horizontal;
@@ -349,7 +349,7 @@ output {
 .input-lg {
   .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
 }
-.form-group-lg {
+. col-sm-4-lg {
   .form-control {
     height: @input-height-large;
     padding: @padding-large-vertical @padding-large-horizontal;
@@ -403,14 +403,14 @@ output {
 }
 .input-lg + .form-control-feedback,
 .input-group-lg + .form-control-feedback,
-.form-group-lg .form-control + .form-control-feedback {
+. col-sm-4-lg .form-control + .form-control-feedback {
   width: @input-height-large;
   height: @input-height-large;
   line-height: @input-height-large;
 }
 .input-sm + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
-.form-group-sm .form-control + .form-control-feedback {
+. col-sm-4-sm .form-control + .form-control-feedback {
   width: @input-height-small;
   height: @input-height-small;
   line-height: @input-height-small;
@@ -458,7 +458,7 @@ output {
 // forms begin stacked on extra small (mobile) devices and then go inline when
 // viewports reach <768px.
 //
-// Requires wrapping inputs and labels with `.form-group` for proper display of
+// Requires wrapping inputs and labels with `. col-sm-4` for proper display of
 // default HTML form controls and our custom form controls (e.g., input groups).
 //
 // Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
@@ -468,16 +468,16 @@ output {
   // Kick in the inline
   @media (min-width: @screen-sm-min) {
     // Inline-block all the things for "inline"
-    .form-group {
+    . col-sm-4 {
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle;
     }
 
-    // In navbar-form, allow folks to *not* use `.form-group`
+    // In navbar-form, allow folks to *not* use `. col-sm-4`
     .form-control {
       display: inline-block;
-      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      width: auto; // Prevent labels from stacking above inputs in `. col-sm-4`
       vertical-align: middle;
     }
 
@@ -560,7 +560,7 @@ output {
   }
 
   // Make form groups behave like rows
-  .form-group {
+  . col-sm-4 {
     .make-row();
   }
 
@@ -585,8 +585,8 @@ output {
   // Form group sizes
   //
   // Quick utility class for applying `.input-lg` and `.input-sm` styles to the
-  // inputs and labels within a `.form-group`.
-  .form-group-lg {
+  // inputs and labels within a `. col-sm-4`.
+  . col-sm-4-lg {
     @media (min-width: @screen-sm-min) {
       .control-label {
         padding-top: (@padding-large-vertical + 1);
@@ -594,7 +594,7 @@ output {
       }
     }
   }
-  .form-group-sm {
+  . col-sm-4-sm {
     @media (min-width: @screen-sm-min) {
       .control-label {
         padding-top: (@padding-small-vertical + 1);

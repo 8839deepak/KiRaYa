@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
- 
+
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -27,7 +27,7 @@ namespace KiRaYa.Models
                 string Query = "SELECT * FROM Login where ID=@ID";
                 cmd = new SqlCommand(Query, Con);
                 SDR = cmd.ExecuteReader();
-                while(SDR.Read())
+                while (SDR.Read())
                 {
                     Login ObjTmp = new Login();
                     ObjTmp.ID = SDR.GetInt32(0);
@@ -35,7 +35,7 @@ namespace KiRaYa.Models
                     ObjTmp.Password = SDR.GetString(2);
                     ObjTmp.EmailID = SDR.GetString(3);
                     ObjTmp.UserID = SDR.GetInt32(4);
-                    
+
                 }
             }
             catch (Exception e) { e.ToString(); }
@@ -51,9 +51,15 @@ namespace KiRaYa.Models
                 Con.Open();
                 string Query = "";
                 if (this.ID == 0)
+                {
                     Query = "Insert into Login values (@UserName,@Password ,@EmailID,@UserID);";
+                }
+               
                 else
+                {
                     Query = "Update Login set UserName=@UserName,Password=@Password ,EmailID=@EmailID,UserID=@UserID where ID=@ID;";
+
+                }
 
                 SqlCommand cmd = new SqlCommand(Query, Con);
                 cmd.Parameters.AddWithValue("@ID", this.ID);
@@ -61,7 +67,7 @@ namespace KiRaYa.Models
                 cmd.Parameters.AddWithValue("@Password", this.Password);
                 cmd.Parameters.AddWithValue("@EmailID", this.EmailID);
                 cmd.Parameters.AddWithValue("@UserID", this.UserID);
-               
+
                 Row = cmd.ExecuteNonQuery();
 
             }
@@ -93,7 +99,7 @@ namespace KiRaYa.Models
                     ObjTmp.Password = SDR.GetString(2);
                     ObjTmp.EmailID = SDR.GetString(3);
                     ObjTmp.UserID = SDR.GetInt32(4);
-                     
+
                 }
             }
             catch (Exception e) { e.ToString(); }
@@ -119,7 +125,7 @@ namespace KiRaYa.Models
                     ObjTmp.Password = SDR.GetString(2);
                     ObjTmp.EmailID = SDR.GetString(3);
                     ObjTmp.UserID = SDR.GetInt32(4);
-                    
+
                     ListTmp.Add(ObjTmp);
                 }
             }

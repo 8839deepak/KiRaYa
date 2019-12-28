@@ -9272,11 +9272,12 @@
     <Content Include="Views\Rental\Error.cshtml" />
     <Content Include="Views\Rental\termpolcy.cshtml" />
     <Content Include="Views\HOME\CreateEdit.cshtml" />
-    <Content Include="Views\HOME\forgetPassword.cshtml" />
     <Content Include="Views\HOME\Userlist.cshtml" />
     <Content Include="Views\UserDetails\Index.cshtml" />
     <Content Include="Views\UserDetails\CreateEdit.cshtml" />
     <Content Include="Views\RantPaid\POPUPWINDOW.cshtml" />
+    <Content Include="Views\HOME\SingUP.cshtml" />
+    <Content Include="Views\HOME\forgetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
