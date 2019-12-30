@@ -1,9 +1,8 @@
 ﻿@using KiRaYa.Models
 
- 
+@{List<RoomTable> roomTables = new RoomTable().GetAll();}
 
-<div class=" row   ">
-
+<div class=" row">
     <div class="col-md-6  p-4">
         <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
             <div class="card-header text-center">Block A ROOMS</div>
@@ -13,7 +12,7 @@
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
                         Total ROOM
 
-                        <a href="#">
+                        <a href="/RoomTable/Index" onclick="y(@roomTables.FindAll(x=>x.RID==2));"value="1">
                             <span class="badge badge-primary badge-pill">
                                 @{ int TR = new KiRaYa.Models.RoomTable().GetAll().Count();
 
@@ -48,7 +47,7 @@
                 <ul class="list-group">
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
                         Total ROOM
-                        <a href="#">
+                        <a href="/RoomTable/Index" onclick="my();">
                             <span class="badge badge-primary badge-pill">
 
                                 @{ int RT = new KiRaYa.Models.RoomTable().GetAll().Count();}
@@ -60,9 +59,9 @@
                         AVILIABLE Room
                         <a href="#">
                             <span class="badge badge-primary badge-pill">
-                                
+
                                 @{ int REMAININGROOM = new KiRaYa.Models.Rental().GetAll().Count();
-                                    int EE = RT - REMAININGROOM  ;}
+                                    int EE = RT - REMAININGROOM;}
                                 @rr
                             </span>
                         </a>
@@ -76,3 +75,77 @@
 
 
 </div>
+<div class=" row">
+    <div class="col-md-6  p-4">
+        <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+            <div class="card-header text-center">Block C ROOMS</div>
+            <div class="card-body  ">
+                <ul class="list-group">
+                    <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@ViewData["mgs"]</h5>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        Total ROOM
+
+                        <a href="/RoomTable/Blockc" >
+                            <span class="badge badge-primary badge-pill">
+                                @{ int QT = new KiRaYa.Models.RoomTable().GetAll().Count();
+
+                                }
+                                @QT
+
+
+
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        AVILIABLE ROOM
+                        <a href="#">
+                            <span class="badge badge-primary badge-pill">
+                                @{ int gR = new KiRaYa.Models.Rental().GetAll().Count();
+                                    int R = RemainingR - TR;}
+                                @rr
+                            </span>
+                        </a>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-center  p-4">
+        <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+            <div class="card-header text-center">Block D Rooms</div>
+            <div class="card-body  ">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        Total ROOM
+                        <a href="/RoomTable/Blockd" >
+                            <span class="badge badge-primary badge-pill">
+
+                                @{ int yt = new KiRaYa.Models.RoomTable().GetAll().Count();}
+                                @yt
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        AVILIABLE Room
+                        <a href="#">
+                            <span class="badge badge-primary badge-pill">
+
+                                @{ int ROOM = new KiRaYa.Models.Rental().GetAll().Count();
+                                    int E = RT - REMAININGROOM;}
+                                @rr
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+ 

@@ -27,7 +27,7 @@
                         @Html.DisplayNameFor(model => model.RantAmt)
                     </th>
                     <th></th>
-                    
+
                 </tr>
             </thead>
             <tbody>
@@ -91,11 +91,11 @@
     $("#Tbl").DataTable({
 
         "search": {
-            "search": "BLockA"
+            "search": "BlockB"
         }
     });
 
-    function my(RID , DDID) {
+    function my(RID, DDID) {
         $("#waiting").show();
         $.ajax({
             type: 'GET',
@@ -112,5 +112,3 @@
         });
     }
 </script>
- 
- 

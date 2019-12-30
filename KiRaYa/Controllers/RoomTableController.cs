@@ -50,6 +50,24 @@ namespace KiRaYa.Controllers
         {
             return View();
         }
-        
+        public ActionResult FilterFunction()
+        {
+            RoomTable objpad = new RoomTable();
+            List<RoomTable> objrant = new RoomTable().GetAll();
+
+            return View(objrant);
+        } public ActionResult blockc()
+        {
+            RoomTable objpad = new RoomTable();
+            List<RoomTable> objrant = new RoomTable().GetAll();
+
+            return View(objrant);
+        } public ActionResult blockd()
+        {
+            RoomTable objpad = new RoomTable();
+            List<RoomTable> objrant = new RoomTable().GetAll();
+
+            return View(objrant);
+        }
     }
 }

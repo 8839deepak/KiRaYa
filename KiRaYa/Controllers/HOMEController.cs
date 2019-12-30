@@ -48,19 +48,32 @@ namespace KiRaYa.Controllers
 
             return View();
         }
-        public ActionResult Admin()
+        public ActionResult Admin( )
         {
             int TR = new KiRaYa.Models.RoomTable().GetAll().Count();
-            if(TR<5)
+            if(TR>5)
             {
-                ViewData["mgs"] = "All Room is Full";
+                
+                List<RoomTable> yr = new RoomTable().GetAll();
+                yr = yr.FindAll(x => x.DDID == 1);
+                ViewData["mgs"] = "some room is left";
+
+                return (yr);
+
+            }
+            int QT = new KiRaYa.Models.Rental().GetAll().Count();
+            if (QT < 2)
+            {
+                List<RoomTable> yr = new RoomTable().GetAll();
+                yr = yr.FindAll(x => x.DDID == 1);
+                ViewData["mgs"] = "some room is left";
             }
             else
             {
-                ViewData["mgs"] = "some room is left";
+                ViewData["mgs"] = "All Room is Full";
             }
 
-            return View();
+            return View(TR);
         }
         public ActionResult LogOut()
         {
