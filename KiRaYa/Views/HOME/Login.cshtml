@@ -104,14 +104,16 @@
 
                         <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                             <span class="label-input100">EmailID</span>
-                            @Html.TextBoxFor(model => Model.EmailID, new { @class = "input100", type = "text", name = "EmailID", placeholder = "Type your EmailID", id = "usrname" })
+                            @Html.TextBoxFor(model => Model.EmailID, new { @class = "input100", type = "text", name = "EmailID", placeholder = "Type your EmailID", id = "usrname",required="required" })
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Password is required">
                             <span class="label-input100">Password</span>
-
-                            @Html.TextBoxFor(Model => Model.Password, new { @class = "input100", type = "password", id = "psw", name = "pass", placeholder = "Type your password" })
+                            <h5 style="color:red">
+                                @ViewData["msg"]
+                            </h5>
+                            @Html.TextBoxFor(Model => Model.Password, new { @class = "input100", type = "password", id = "psw", name = "pass", placeholder = "Type your password", required = "required" })
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
                         <div class="text-left  ">

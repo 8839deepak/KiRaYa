@@ -13,9 +13,14 @@ namespace KiRaYa.Controllers
         public ActionResult Index()
         {
             RoomTable objpad = new RoomTable();
-            List<RoomTable> objrant = new RoomTable().GetAll();
+            List<RoomTable> ListRant = new RoomTable().GetAll();
+            if (Request.QueryString["DDID"] != null)
+            {
+                int DDID = int.Parse(Request.QueryString["DDID"]);
+                ListRant = ListRant.FindAll(x => x.DDID == DDID);
+            }
 
-            return View(objrant);
+            return View(ListRant);
         }
         // Create and edit RoomTable
         public ActionResult CreateEdit(int RID)
@@ -53,21 +58,16 @@ namespace KiRaYa.Controllers
         public ActionResult FilterFunction()
         {
             RoomTable objpad = new RoomTable();
-            List<RoomTable> objrant = new RoomTable().GetAll();
+            List<RoomTable> ListRant = new RoomTable().GetAll();
+            if (Request.QueryString["DDID"] != null)
+            {
+                int DDID = int.Parse(Request.QueryString["DDID"]);
+                ListRant = ListRant.FindAll(x => x.DDID == DDID);
+            }
 
-            return View(objrant);
-        } public ActionResult blockc()
-        {
-            RoomTable objpad = new RoomTable();
-            List<RoomTable> objrant = new RoomTable().GetAll();
-
-            return View(objrant);
-        } public ActionResult blockd()
-        {
-            RoomTable objpad = new RoomTable();
-            List<RoomTable> objrant = new RoomTable().GetAll();
-
-            return View(objrant);
-        }
+            return View(ListRant);
+        } 
+         
+         
     }
 }

@@ -72,7 +72,7 @@
                             {
                                 @*<a href="/Rental/termpolcy"   id="manual-ajax">Click</a>*@
                                 @*<input type="checkbox" onclick="my();" />*@
-                                <button type="button" class="btn btn-primary" onclick="my(@item.RID , @item.DDID);" data-toggle="modal" data-target=".bd-example-modal-xl">Click</button>
+                                <button type="button" class="btn btn-primary" onclick="CLick(@item.RID , @item.DDID);">Click</button>
 
 
 
@@ -88,23 +88,18 @@
 
 </div>
 <script>
-    $("#Tbl").DataTable({
-
-        "search": {
-            "search": "BLockA"
-        }
-    });
-
-    function my(RID , DDID) {
+    function CLick(RID , DDID) {
         $("#waiting").show();
         $.ajax({
             type: 'GET',
             url: "/Rental/termpolcy?RID=" + RID + "&DDID=" + DDID,
             success: function (data) {
-                $("#ModelContent").html(data);
-                $("#ModelID").show();
+                alert(data);
+                $("#ModelContent2").html('');
+                $("#ModelContent2").html(data);
+                setTimeout(function () { $("#ModelID2").show();}, 500);
                 $("#waiting").hide();
-
+                
             },
             error: function (jqXhr, textStatus, errorMessage) { // error callback
 

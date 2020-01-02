@@ -2,19 +2,19 @@
 
 @{List<RoomTable> roomTables = new RoomTable().GetAll();}
 
-<div class=" row">
+<div class=" row" id="1">
     <div class="col-md-6  p-4">
         <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
             <div class="card-header text-center">Block A ROOMS</div>
             <div class="card-body  ">
                 <ul class="list-group">
-                    <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@ViewData["mgs"]</h5>
+                    <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@TempData["mgs"]</h5>
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
                         Total ROOM
-
-                        <a href="/RoomTable/Index" onclick="y(@roomTables.FindAll(x=>x.RID==2));"value="1">
+                        <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                       @* <a href="/RoomTable/Index?DDID=1" >*@
                             <span class="badge badge-primary badge-pill">
-                                @{ int TR = new KiRaYa.Models.RoomTable().GetAll().Count();
+                                @{ int TR = roomTables.FindAll(x => x.DDID == 2).Count();
 
                                 }
                                 @TR
@@ -28,7 +28,7 @@
                         AVILIABLE ROOM
                         <a href="#">
                             <span class="badge badge-primary badge-pill">
-                                @{ int RemainingR = new KiRaYa.Models.Rental().GetAll().Count();
+                                @{ int RemainingR = roomTables.FindAll(x => x.DDID == 2).Count();
                                     int rr = RemainingR - TR;}
                                 @rr
                             </span>
@@ -45,12 +45,14 @@
             <div class="card-header text-center">Block B Rooms</div>
             <div class="card-body  ">
                 <ul class="list-group">
+                    <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@TempData["mgs"]</h5>
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
                         Total ROOM
-                        <a href="/RoomTable/Index" onclick="my();">
+                        <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                            @* <a href="/RoomTable/Index?DDID=2">*@
                             <span class="badge badge-primary badge-pill">
 
-                                @{ int RT = new KiRaYa.Models.RoomTable().GetAll().Count();}
+                                @{ int RT = roomTables.FindAll(x => x.DDID == 3).Count();}
                                 @RT
                             </span>
                         </a>
@@ -60,7 +62,7 @@
                         <a href="#">
                             <span class="badge badge-primary badge-pill">
 
-                                @{ int REMAININGROOM = new KiRaYa.Models.Rental().GetAll().Count();
+                                @{ int REMAININGROOM = roomTables.FindAll(x => x.DDID == 3).Count();
                                     int EE = RT - REMAININGROOM;}
                                 @rr
                             </span>
@@ -75,21 +77,21 @@
 
 
 </div>
-<div class=" row">
+<div class=" row" id="2">
     <div class="col-md-6  p-4">
         <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
             <div class="card-header text-center">Block C ROOMS</div>
             <div class="card-body  ">
                 <ul class="list-group">
-                    <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@ViewData["mgs"]</h5>
+                    <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@TempData["mgs"]</h5>
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
                         Total ROOM
 
-                        <a href="/RoomTable/Blockc" >
+                        <a onclick="mys();" data-toggle="modal" data-target=".bd-example-modal-xl">
                             <span class="badge badge-primary badge-pill">
-                                @{ int QT = new KiRaYa.Models.RoomTable().GetAll().Count();
+                                @{ int QT = roomTables.FindAll(x => x.DDID == 4).Count();}
 
-                                }
+
                                 @QT
 
 
@@ -101,7 +103,7 @@
                         AVILIABLE ROOM
                         <a href="#">
                             <span class="badge badge-primary badge-pill">
-                                @{ int gR = new KiRaYa.Models.Rental().GetAll().Count();
+                                @{ int gR = roomTables.FindAll(x => x.DDID == 4).Count();
                                     int R = RemainingR - TR;}
                                 @rr
                             </span>
@@ -118,12 +120,17 @@
             <div class="card-header text-center">Block D Rooms</div>
             <div class="card-body  ">
                 <ul class="list-group">
+                    <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@TempData["mgs"]</h5>
+
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
                         Total ROOM
-                        <a href="/RoomTable/Blockd" >
+                        <a onclick="my();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                            @* <a href="/RoomTable/Index?DDID=4">*@
                             <span class="badge badge-primary badge-pill">
 
-                                @{ int yt = new KiRaYa.Models.RoomTable().GetAll().Count();}
+                                @{ int yt = roomTables.FindAll(x => x.DDID == 1).Count();}
+
+
                                 @yt
                             </span>
                         </a>
@@ -133,7 +140,7 @@
                         <a href="#">
                             <span class="badge badge-primary badge-pill">
 
-                                @{ int ROOM = new KiRaYa.Models.Rental().GetAll().Count();
+                                @{ int ROOM = roomTables.FindAll(x => x.DDID == 1).Count();
                                     int E = RT - REMAININGROOM;}
                                 @rr
                             </span>
@@ -148,4 +155,82 @@
 
 
 </div>
- 
+<script>
+    function my() {
+        $("#waiting").show();
+        $("#1").show();
+        $("#2").show();
+        $.ajax({
+            type: 'GET',
+            url: "/RoomTable/FilterFunction?DDID=1",
+            success: function (data) {
+                $("#ModelContent").html(data);
+                $("#ModelID").show();
+                $("#waiting").hide();
+                $("#1").hide();
+                $("#2").hide();
+
+            },
+            error: function (jqXhr, textStatus, errorMessage) { // error callback
+
+            }
+        });
+    }
+    function m() {
+        $("#waiting").show();
+        $("#1").show();
+        $("#2").show();
+        $.ajax({
+            type: 'GET',
+            url: "/RoomTable/FilterFunction?DDID=2",
+            success: function (data) {
+                $("#ModelContent").html(data);
+                $("#ModelID").show();
+                $("#waiting").hide();
+                $("#1").hide();
+                $("#2").hide();
+            },
+            error: function (jqXhr, textStatus, errorMessage) { // error callback
+
+            }
+        });
+    }
+    function y() {
+        $("#waiting").show();
+        $("#1").show();
+        $("#2").show();
+        $.ajax({
+            type: 'GET',
+            url: "/RoomTable/FilterFunction?DDID=3",
+            success: function (data) {
+                $("#ModelContent").html(data);
+                $("#ModelID").show();
+                $("#waiting").hide();
+                $("#1").hide();
+                $("#2").hide();
+            },
+            error: function (jqXhr, textStatus, errorMessage) { // error callback
+
+            }
+        });
+    }
+    function mys() {
+        $("#waiting").show();
+        $("#1").show();
+        $("#2").show();
+        $.ajax({
+            type: 'GET',
+            url: "/RoomTable/FilterFunction?DDID=4",
+            success: function (data) {
+                $("#ModelContent").html(data);
+                $("#ModelID").show();
+                $("#waiting").hide();
+                $("#1").hide();
+                $("#2").hide();
+            },
+            error: function (jqXhr, textStatus, errorMessage) { // error callback
+
+            }
+        });
+    }
+</script>

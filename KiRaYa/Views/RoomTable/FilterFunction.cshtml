@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<KiRaYa.Models.RoomTable>
 @using KiRaYa.Models
-
+@{ Layout = null;}
 @{ List<BlockD> listroom = new BlockD().GetAll();}
+@{ List<RoomTable> listRoom = new RoomTable().GetAll();}
 <div class="card">
     <div class="card-header">
         <h5 style="text-align:center;color:#000000"><b>Room Details</b></h5>
@@ -39,19 +40,26 @@
                             @OBJBLOCK.Name
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RID)
+                            @{RoomTable objroom= listRoom.Find(x=>x.RID== item.RID); }
+                            @objroom.RID
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RoomNumber)
+                            @{RoomTable objroomnumber = listRoom.Find(x => x.RID == item.RID); }
+                            @objroomnumber.RoomNumber
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RoomSIZE)
+                            @{RoomTable objroomsize = listRoom.Find(x => x.RID == item.RID); }
+                            @objroomsize.RoomSIZE
+                            
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ElectriCityCost)
+                            @{RoomTable objroomelectricity = listRoom.Find(x => x.RID == item.RID); }
+                            @objroomelectricity.ElectriCityCost
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RantAmt)
+                            @{RoomTable objroomrent = listRoom.Find(x => x.RID == item.RID); }
+                            @objroomrent.RantAmt
+                           
                         </td>
                         <td>
                             @{
@@ -88,13 +96,7 @@
 
 </div>
 <script>
-    $("#Tbl").DataTable({
-
-        "search": {
-            "search": "BlockB"
-        }
-    });
-
+   
     function my(RID, DDID) {
         $("#waiting").show();
         $.ajax({
