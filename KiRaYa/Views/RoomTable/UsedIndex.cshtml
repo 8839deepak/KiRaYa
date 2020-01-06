@@ -2,11 +2,11 @@
 @using KiRaYa.Models
 
 @{ List<BlockD> listroom = new BlockD().GetAll();
-    List<RoomTable>roomtable= new RoomTable().GetAll();
-    }
+    List<RoomTable> roomtable = new RoomTable().GetAll();
+}
 <div class="card">
     <div class="card-header">
-        <h5 style="text-align:center;color:#000000"><b>Room Details</b></h5>
+        <h5 style="text-align:center;color:#000000"><b> Used Room Details</b></h5>
     </div>
     <div class="card-body">
         <table class="table table-bordered table-hover w-100" id="Tbl">
@@ -28,9 +28,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.RantAmt)
                     </th>
-                    <th>@Html.DisplayNameFor(model=>model.Status)</th>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
                     <th></th>
-                    
+
                 </tr>
             </thead>
             <tbody>
@@ -48,10 +48,10 @@
                             @Html.DisplayFor(modelItem => item.RoomNumber)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RoomSIZ)
+                            @Html.DisplayFor(modelItem => item.RoomSIZE)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ElectriCityCost )
+                            @Html.DisplayFor(modelItem => item.ElectriCityCost)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.RantAmt)
@@ -94,5 +94,4 @@
 
 </div>
  
- 
- 
+

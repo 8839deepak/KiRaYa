@@ -7,107 +7,110 @@
     List<Login> listlogin = new Login().GetAll();
     List<RantPaid> listrantpaid = new RantPaid().GetAll();
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-</head>
-<body>
-    <div class="card">
-        <div class="card-header">
-            <h5 style="text-align:center;color:#000000"><b>Rent Pay Details</b></h5>
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered table-hover w-100" id="Tbl">
-                <thead>
-                    <tr>
-                        <th>
-                            Block Name
-                        </th>
-                        <th>
-                            Rental Name
-                        </th>
-                        <th>
-                            Room Number
-                        </th>
-                        <th>
-                            Last Reading
-                        </th>
-                        <th>
-                            Current Reading
-                        </th>
-                        <th>
-                            Used Electricity
-                        </th>
-                        <th>
-                            Total Rant
-                        </th>
-                        <th>
-                            Total Pay
-                        </th>
-                        <th>
-                            Amount
-                        </th>
-                        <th>EmailID</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
+@if (Session["UserID"] != null && Session["UserID"].ToString().Contains("2"))
+{
 
-                    @foreach (var item in Model)
-                    {
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+        <div class="card">
+            <div class="card-header">
+                <h5 style="text-align:center;color:#000000"><b>Rent Pay Details</b></h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover w-100" id="Tbl">
+                    <thead>
                         <tr>
-                            <td>
-                                @{ BlockD ONJBLOCK = listBlock.Find(x => x.DDID == item.DDID);}
-                                @ONJBLOCK.Name
-                            </td>
-                            <td>
-                                @{ Rental objrant = Listrental.Find(x => x.RantalID == item.RantalID);}
-                                @objrant.Name
-                            </td>
-                            <td>
-                                @{RoomTable objRoom = ListRoom.Find(x => x.RID == item.RID);}
-                                @objRoom.RoomNumber
-
-                            </td>
-                            <td>
-                                @{ RantPaid OBJRAnt = listrantpaid.Find(x => x.RPID == item.RPID);}
-                                @OBJRAnt.LastReading
-                            </td>
-                            <td>
-                                @{ RantPaid OBJrent = listrantpaid.Find(x => x.RPID == item.RPID);}
-                                @OBJrent.CurrentReading
-                            </td>
-                            <td>
-                                @{ RantPaid RANT = listrantpaid.Find(x => x.RPID == item.RPID);}
-                                @RANT.UsedElectricity
-                            </td>
-                            <td>
-                                @{ RantPaid OBJRANT = listrantpaid.Find(x => x.RPID == item.RPID);}
-                                @OBJRANT.TotalRant
-                            </td>
-                            <td>
-                                @{ RantPaid OBJRANTAL = listrantpaid.Find(x => x.RPID == item.RPID);}
-                                @OBJRANTAL.TotalPay
-                            </td>
-                            <td>
-                                @{ RantPaid OBJRANTALA = listrantpaid.Find(x => x.RPID == item.RPID);}
-                                @OBJRANTALA.Amt
-                            </td>
-                            <td>
-                                @{Login OBJLOGIN = listlogin.Find(x => x.ID == item.ID);}
-                                @OBJLOGIN.EmailID
-
-                            </td>
-
+                            <th>
+                                Block Name
+                            </th>
+                            <th>
+                                Rental Name
+                            </th>
+                            <th>
+                                Room Number
+                            </th>
+                            <th>
+                                Last Reading
+                            </th>
+                            <th>
+                                Current Reading
+                            </th>
+                            <th>
+                                Used Electricity
+                            </th>
+                            <th>
+                                Total Rant
+                            </th>
+                            <th>
+                                Total Pay
+                            </th>
+                            <th>
+                                Amount
+                            </th>
+                            <th>EmailID</th>
+                            <th></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @{ BlockD ONJBLOCK = listBlock.Find(x => x.DDID == item.DDID);}
+                                    @ONJBLOCK.Name
+                                </td>
+                                <td>
+                                    @{ Rental objrant = Listrental.Find(x => x.RantalID == item.RantalID);}
+                                    @objrant.Name
+                                </td>
+                                <td>
+                                    @{RoomTable objRoom = ListRoom.Find(x => x.RID == item.RID);}
+                                    @objRoom.RoomNumber
+
+                                </td>
+                                <td>
+                                    @{ RantPaid OBJRAnt = listrantpaid.Find(x => x.RPID == item.RPID);}
+                                    @OBJRAnt.LastReading
+                                </td>
+                                <td>
+                                    @{ RantPaid OBJrent = listrantpaid.Find(x => x.RPID == item.RPID);}
+                                    @OBJrent.CurrentReading
+                                </td>
+                                <td>
+                                    @{ RantPaid RANT = listrantpaid.Find(x => x.RPID == item.RPID);}
+                                    @RANT.UsedElectricity
+                                </td>
+                                <td>
+                                    @{ RantPaid OBJRANT = listrantpaid.Find(x => x.RPID == item.RPID);}
+                                    @OBJRANT.TotalRant
+                                </td>
+                                <td>
+                                    @{ RantPaid OBJRANTAL = listrantpaid.Find(x => x.RPID == item.RPID);}
+                                    @OBJRANTAL.TotalPay
+                                </td>
+                                <td>
+                                    @{ RantPaid OBJRANTALA = listrantpaid.Find(x => x.RPID == item.RPID);}
+                                    @OBJRANTALA.Amt
+                                </td>
+                                <td>
+                                    @{Login OBJLOGIN = listlogin.Find(x => x.ID == item.ID);}
+                                    @OBJLOGIN.EmailID
+
+                                </td>
+
+                            </tr>
+                                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
- 
+                                        }

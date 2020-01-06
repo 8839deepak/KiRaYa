@@ -1,42 +1,44 @@
 ﻿@model IEnumerable<KiRaYa.Models.UserDetails>
+@if (Session["UserID"] != null && Session["UserID"].ToString().Contains("1"))
+{ 
+    <div class="card">
+        <div class="card-header">
 
-<div class="card">
-    <div class="card-header">
-
-    </div>
-    <a href="/UserDetails/CreateEdit?UserID=0">ADD</a>
-    <div class="card-body">
+        </div>
+        <a href="/UserDetails/CreateEdit?UserID=0">ADD</a>
+        <div class="card-body">
 
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UserID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UserType)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UserID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UserType)
-                        </td>
-                        <td>
-                            <a href="/UserDetails/CreateEdit?UserID=@item.UserID">Edit</a>
-                            <a href="/UserDetails/Delete?ID=@item.UserID">Delete</a>
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserType)
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserType)
+                            </td>
+                            <td>
+                                <a href="/UserDetails/CreateEdit?UserID=@item.UserID">Edit</a>
+                                <a href="/UserDetails/Delete?ID=@item.UserID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+}

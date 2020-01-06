@@ -44,9 +44,8 @@
                                 @Html.DisplayFor(modelItem => item.Password)
                             </td>
                             <td>
-                                @{ UserDetails OBJUser = listuser.Find(x => x.UserID == item.UserID);}
-                                @OBJUser.UserType
-
+                                @{UserDetails userDetails = listuser.Find(x => x.UserID == item.UserID); }
+                                @userDetails.UserType
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.EmailID)

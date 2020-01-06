@@ -9267,6 +9267,8 @@
     <Content Include="Views\HOME\SingUP.cshtml" />
     <Content Include="Views\HOME\forgetPassword.cshtml" />
     <Content Include="Views\RoomTable\FilterFunction.cshtml" />
+    <Content Include="Views\RoomTable\AdminIndex.cshtml" />
+    <Content Include="Views\RoomTable\UsedIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

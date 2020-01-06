@@ -151,7 +151,7 @@ namespace KiRaYa.Controllers
             if (Session["UserID"].ToString().Contains("2"))
             {
                 int ID = int.Parse(Session["ID"].ToString());
-                listrentpaid = listrentpaid.FindAll(x => x.Create_By == ID);
+                listrentpaid = listrentpaid.FindAll(x => x.ID == ID);
             }
             else
             {

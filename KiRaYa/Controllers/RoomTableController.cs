@@ -9,18 +9,50 @@ namespace KiRaYa.Controllers
 {
     public class RoomTableController : Controller
     {
-        // GET: RoomTable
+        // GET: RoomTable only for availabel room
+
         public ActionResult Index()
         {
             RoomTable objpad = new RoomTable();
             List<RoomTable> ListRant = new RoomTable().GetAll();
-            if (Request.QueryString["DDID"] != null && Request.QueryString["Status"] != null)
+            if (Request.QueryString["Status"] != null)
+            {
+                //int RID = int.Parse(Request.QueryString["Status"]);
+                // int status = bool.Parse(Request.QueryString["Status"]);
+                ListRant = ListRant.FindAll(x => x.Status == false);
+
+            }
+            else
             {
 
-                int DDID = int.Parse(Request.QueryString["DDID"]);
+                //int RID = int.Parse(Request.QueryString["Status"]);
                 // int status = bool.Parse(Request.QueryString["Status"]);
-                ListRant = ListRant.FindAll(x => x.DDID == DDID && x.Status == false);
+                ListRant = ListRant.FindAll(x => x.Status == false);
+            }
 
+
+            return View(ListRant);
+        }
+        // list for all the rooms only for  admin
+        public ActionResult AdminIndex()
+        {
+            RoomTable objpad = new RoomTable();
+            List<RoomTable> ListRant = new RoomTable().GetAll();
+            return View(ListRant);
+        }
+        //list for used room 
+
+        public ActionResult UsedIndex()
+        {
+            RoomTable objpad = new RoomTable();
+            List<RoomTable> ListRant = new RoomTable().GetAll();
+            if (Request.QueryString["Status"] != null)
+            {     
+                ListRant = ListRant.FindAll(x => x.Status == true);
+            }
+            else
+            {
+                ListRant = ListRant.FindAll(x => x.Status == true);
             }
 
 
@@ -65,16 +97,15 @@ namespace KiRaYa.Controllers
             List<RoomTable> ListRant = new RoomTable().GetAll();
             if (Request.QueryString["DDID"] != null && Request.QueryString["Status"] != null)
             {
-                
+
                 int DDID = int.Parse(Request.QueryString["DDID"]);
-               // int status = bool.Parse(Request.QueryString["Status"]);
                 ListRant = ListRant.FindAll(x => x.DDID == DDID && x.Status == false);
 
             }
 
             return View(ListRant);
-        } 
-         
-         
+        }
+
+
     }
 }
