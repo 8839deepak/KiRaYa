@@ -14,11 +14,15 @@ namespace KiRaYa.Controllers
         {
             RoomTable objpad = new RoomTable();
             List<RoomTable> ListRant = new RoomTable().GetAll();
-            if (Request.QueryString["DDID"] != null)
+            if (Request.QueryString["DDID"] != null && Request.QueryString["Status"] != null)
             {
+
                 int DDID = int.Parse(Request.QueryString["DDID"]);
-                ListRant = ListRant.FindAll(x => x.DDID == DDID);
+                // int status = bool.Parse(Request.QueryString["Status"]);
+                ListRant = ListRant.FindAll(x => x.DDID == DDID && x.Status == false);
+
             }
+
 
             return View(ListRant);
         }
@@ -59,10 +63,13 @@ namespace KiRaYa.Controllers
         {
             RoomTable objpad = new RoomTable();
             List<RoomTable> ListRant = new RoomTable().GetAll();
-            if (Request.QueryString["DDID"] != null)
+            if (Request.QueryString["DDID"] != null && Request.QueryString["Status"] != null)
             {
+                
                 int DDID = int.Parse(Request.QueryString["DDID"]);
-                ListRant = ListRant.FindAll(x => x.DDID == DDID);
+               // int status = bool.Parse(Request.QueryString["Status"]);
+                ListRant = ListRant.FindAll(x => x.DDID == DDID && x.Status == false);
+
             }
 
             return View(ListRant);

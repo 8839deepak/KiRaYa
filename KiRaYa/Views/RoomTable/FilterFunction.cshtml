@@ -27,6 +27,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.RantAmt)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
                     <th></th>
 
                 </tr>
@@ -59,6 +62,11 @@
                         <td>
                             @{RoomTable objroomrent = listRoom.Find(x => x.RID == item.RID); }
                             @objroomrent.RantAmt
+                           
+                        </td>
+                        <td>
+                            @{RoomTable objroomrents = listRoom.Find(x => x.RID == item.RID); }
+                            @objroomrents.Status
                            
                         </td>
                         <td>

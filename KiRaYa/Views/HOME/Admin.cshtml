@@ -14,7 +14,7 @@
                         <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
                        @* <a href="/RoomTable/Index?DDID=1" >*@
                             <span class="badge badge-primary badge-pill">
-                                @{ int TR = roomTables.FindAll(x => x.DDID == 2).Count();
+                                @{ int TR = roomTables.FindAll(x => x.DDID == 2 && x.Status==false).Count();
 
                                 }
                                 @TR
@@ -48,11 +48,11 @@
                     <h5 class="text-center" style="color:red;box-shadow:2px 4px 4px black">@TempData["mgs"]</h5>
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
                         Total ROOM
-                        <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                            @* <a href="/RoomTable/Index?DDID=2">*@
+                       <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                            @*<a href="/RoomTable/Index?DDID=2">*@
                             <span class="badge badge-primary badge-pill">
 
-                                @{ int RT = roomTables.FindAll(x => x.DDID == 3).Count();}
+                                @{ int RT = roomTables.FindAll(x => x.DDID == 3 &&x.Status==false).Count();}
                                 @RT
                             </span>
                         </a>
@@ -62,7 +62,7 @@
                         <a href="#">
                             <span class="badge badge-primary badge-pill">
 
-                                @{ int REMAININGROOM = roomTables.FindAll(x => x.DDID == 3).Count();
+                                @{ int REMAININGROOM = roomTables.FindAll(x => x.DDID == 3 &&x.Status==false).Count();
                                     int EE = RT - REMAININGROOM;}
                                 @rr
                             </span>
@@ -89,7 +89,7 @@
 
                         <a onclick="mys();" data-toggle="modal" data-target=".bd-example-modal-xl">
                             <span class="badge badge-primary badge-pill">
-                                @{ int QT = roomTables.FindAll(x => x.DDID == 4).Count();}
+                                @{ int QT = roomTables.FindAll(x => x.DDID == 4&&x.Status==false).Count();}
 
 
                                 @QT
@@ -128,7 +128,7 @@
                             @* <a href="/RoomTable/Index?DDID=4">*@
                             <span class="badge badge-primary badge-pill">
 
-                                @{ int yt = roomTables.FindAll(x => x.DDID == 1).Count();}
+                                @{ int yt = roomTables.FindAll(x => x.DDID == 1&& x.Status==false).Count();}
 
 
                                 @yt
@@ -162,7 +162,7 @@
         $("#2").show();
         $.ajax({
             type: 'GET',
-            url: "/RoomTable/FilterFunction?DDID=1",
+            url: "/RoomTable/FilterFunction?DDID=" + 1 + "&Status=" + false,
             success: function (data) {
                 $("#ModelContent").html(data);
                 $("#ModelID").show();
@@ -182,7 +182,7 @@
         $("#2").show();
         $.ajax({
             type: 'GET',
-            url: "/RoomTable/FilterFunction?DDID=2",
+            url: "/RoomTable/FilterFunction?DDID=" + 2 + "&Status=" + false,
             success: function (data) {
                 $("#ModelContent").html(data);
                 $("#ModelID").show();
@@ -201,7 +201,7 @@
         $("#2").show();
         $.ajax({
             type: 'GET',
-            url: "/RoomTable/FilterFunction?DDID=3",
+            url: "/RoomTable/FilterFunction?DDID=" + 3 + "&Status=" + false,
             success: function (data) {
                 $("#ModelContent").html(data);
                 $("#ModelID").show();
@@ -220,7 +220,7 @@
         $("#2").show();
         $.ajax({
             type: 'GET',
-            url: "/RoomTable/FilterFunction?DDID=4",
+            url: "/RoomTable/FilterFunction?DDID=" + 4 + "&Status=" + false,
             success: function (data) {
                 $("#ModelContent").html(data);
                 $("#ModelID").show();

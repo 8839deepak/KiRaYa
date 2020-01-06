@@ -9221,19 +9221,8 @@
     <Content Include="Assests\link\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Assests\link\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Assests\link\vendor\bootstrap\css\bootstrap.min.css.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Image\login.png" />
     <Content Include="Image\man-polaroid-pictures.png" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Views\RantPaid\CreateEdit.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
@@ -9266,7 +9255,6 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\HOME\Login.cshtml" />
     <Content Include="Views\RantPaid\Index.cshtml" />
     <Content Include="Views\Rental\Error.cshtml" />

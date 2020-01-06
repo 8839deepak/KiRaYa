@@ -26,6 +26,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.RantAmt)
                     </th>
+                    <th>@Html.DisplayNameFor(model=>model.Status)</th>
                     <th></th>
                     
                 </tr>
@@ -33,25 +34,28 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr id="@item.RID , @item.DDID">
+                    <tr id="@item.RID , @item.DDID,vaa ">
                         <td>
                             @{ BlockD OBJBLOCK = listroom.Find(x => x.DDID == item.DDID);}
                             @OBJBLOCK.Name
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RID)
+                            @Html.DisplayFor(modelItem => item.RID,new {id="RID" })
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RoomNumber)
+                            @Html.DisplayFor(modelItem => item.RoomNumber,new { id= "RoomNumber" })
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RoomSIZE)
+                            @Html.DisplayFor(modelItem => item.RoomSIZE,new {id= "RoomSIZE" })
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ElectriCityCost)
+                            @Html.DisplayFor(modelItem => item.ElectriCityCost ,new  {id= "ElectriCityCost" })
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RantAmt)
+                            @Html.DisplayFor(modelItem => item.RantAmt,new { id = "RantAmt"})
+                        </td>
+                        <td id="444">
+                            @Html.DisplayFor(modelItem => item.Status, new { id = "MyId" })
                         </td>
                         <td>
                             @{
@@ -98,7 +102,7 @@
                
                 $("#ModelContent1").html(data);
                ("#ModelID1")
-                $("#waiting").hide();
+                $("#waiting").val().hide();
                 
             },
             error: function (jqXhr, textStatus, errorMessage) { // error callback
@@ -106,6 +110,33 @@
             }
         });
     }
+    $(document).ready(function (status) {
+        Cal();
+       
+        function Cal() {
+            var status = $("#MyId").val();
+            if (status != true) {
+                alert("sadd");
+                $("#RID").hide();
+                $("#Name").hide();
+                $("#RoomNumber").hide();
+                $("#RoomSize").hide();
+                $("#ElectriCityCost").hide();
+                $("#RantAmt").hide();
+                $("#Status").hide();
+            } else
+            {
+                $("#RID").show();
+                $("#Name").show();
+                $("#RoomNumber").show();
+                $("#RoomSize").show();
+                $("#ElectriCityCost").show();
+                $("#RantAmt").show();
+                $("#Status").show();
+            }
+        }
+       
+    });
 </script>
  
  

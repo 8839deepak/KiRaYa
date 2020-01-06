@@ -20,6 +20,7 @@ namespace KiRaYa.Models
         [Display(Name = "Rant Amount")]
         public int RantAmt { get; set; }
         public int DDID { get; set; }
+        public bool Status { get; set; }
         public int Save()
         {
             int Row = 0;
@@ -31,9 +32,9 @@ namespace KiRaYa.Models
 
                 if (this.RID== 0)
 
-                    Query = "Insert into  RoomTable  values(@RoomNumber,@RoomSIZE,@ElectriCityCost,@RantAmt,@DDID);";
+                    Query = "Insert into  RoomTable  values(@RoomNumber,@RoomSIZE,@ElectriCityCost,@RantAmt,@DDID,@Status);";
                 else
-                    Query = "update  RoomTable set RoomNumber=@RoomNumber,RoomSIZE=@RoomSIZE,ElectriCityCost=@ElectriCityCost,RantAmt=@RantAmt,DDID=@DDID where RID=@RID";
+                    Query = "update  RoomTable set RoomNumber=@RoomNumber,RoomSIZE=@RoomSIZE,ElectriCityCost=@ElectriCityCost,RantAmt=@RantAmt,DDID=@DDID,Status=@Status where RID=@RID";
 
 
                 SqlCommand cmd = new SqlCommand(Query, Con);
@@ -43,6 +44,7 @@ namespace KiRaYa.Models
                 cmd.Parameters.AddWithValue("@ElectriCityCost", this.ElectriCityCost);
                 cmd.Parameters.AddWithValue("@RantAmt", this.RantAmt);
                 cmd.Parameters.AddWithValue("@DDID", this.DDID);
+                cmd.Parameters.AddWithValue("@Status", this.Status);
                 Row = cmd.ExecuteNonQuery();
             }
             catch (Exception e) { e.ToString(); }
@@ -72,6 +74,7 @@ namespace KiRaYa.Models
                     ObjTmp.ElectriCityCost = SDR.GetString(3);
                     ObjTmp.RantAmt = SDR.GetInt32(4);
                     ObjTmp.DDID = SDR.GetInt32(5);
+                    ObjTmp.Status = SDR.GetBoolean(6);
 
                     ListTmp.Add(ObjTmp);
                 }
@@ -103,6 +106,7 @@ namespace KiRaYa.Models
                     ObjTmp.ElectriCityCost = SDR.GetString(3);
                     ObjTmp.RantAmt = SDR.GetInt32(4);
                     ObjTmp.DDID = SDR.GetInt32(5);
+                    ObjTmp.Status = SDR.GetBoolean(6);
                 }
             }
             catch (System.Exception e)
