@@ -17,30 +17,37 @@ namespace KiRaYa.Controllers
             if (Session["UserID"].ToString().Contains("2"))
             {
                 int ID = int.Parse(Session["ID"].ToString());
-                listrental = listrental.FindAll(x => x.createBy == ID);
+                listrental = listrental.FindAll(x => x.RantalID == ID);
             }else
             {
                   listrental = new Rental().GetAll();
             }
-            return View(new Rental().GetAll());
+            return View(listrental);
         }
         // Create and edit Rental
         public ActionResult CreateEdit(int RentalID)
         {
-            if ( Request.QueryString != null)
-           {
-                  ViewData["RID"]=(Request.QueryString["RID"]);
-            }
-            if(ViewData["DDID"]!=null)
-            {
-                ViewData["DDID"]=(Request.QueryString["DDID"]);
-            }
-            //ViewData["msg"] = "";
+            int ID = Convert.ToInt32(Session["ID"]);
             Rental objpad = new Rental();
             if (RentalID > 0)
             {
                 objpad = objpad.GetOne(RentalID);
             }
+            if ( Request.QueryString["RID"] != null)
+           {
+                  ViewData["RID"]=(Request.QueryString["RID"]);
+            }
+            if(Request.QueryString["DDID"]!=null)
+            {
+                ViewData["DDID"]=(Request.QueryString["DDID"]);
+                objpad.ID = ID;
+            }
+            
+            
+            
+
+                ViewData["msg"] = "";
+                
             return View(objpad);
         }
         [HttpPost]
@@ -118,21 +125,9 @@ namespace KiRaYa.Controllers
         {
             ViewData["RID"] = RID;
             ViewData["DDID"] = DDID;
-
+           
             
             return View();
-        }
-         
-        public ActionResult GetUserEditView(int RantalID)
-        {
-            List<Login> listlogin = new Login().GetAll();
-
-            if (Request.QueryString["ID"] != null)
-            {
-                int ID =int.Parse(Request.QueryString["RantalID"]);
-                listlogin = listlogin.FindAll(x => x.ID == ID);
-            }
-            return View(listlogin);
         }
         
     }

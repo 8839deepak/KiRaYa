@@ -121,10 +121,11 @@
                                 @{Login login = ListLogin.Find(x => x.ID == item.ID);}
                             @login.EmailID
                         </td>
-                        <td>
+                            <td>
+                                <a href="/Rental/CreateEdit?RentalID=@item.RantalID&RID=@item.RID&DDID=@item.DDID " class="btn btn-danger btn-sm "> Edit</a>
 
-                            <a href="/Rental/Delete?ID=@item.RantalID " class="btn btn-danger btn-sm "> Delete</a>
-                        </td>
+                                <a href="/Rental/Delete?ID=@item.RantalID " class="btn btn-danger btn-sm "> Delete</a>
+                            </td>
                     </tr>
                 }
                 </tbody>
@@ -248,7 +249,7 @@
                             </td>
                             <td>
 
-                                <a href="/Rental/CreateEdit?ID=@item.RantalID " class="btn btn-danger btn-sm "> Edit</a>
+                                <a href="/Rental/CreateEdit?RentalID=@item.RantalID&RID=@item.RID&DDID=@item.DDID " class="btn btn-danger btn-sm "> Edit</a>
                             </td>
                         </tr>
                     }

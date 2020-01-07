@@ -157,7 +157,7 @@
                     @{
                         ViewData["RID"] = Request.QueryString["RID"];
                     }
-                    @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber", Convert.ToInt32(Request.QueryString["RID"])), "Select Room", new { @class = "form-control", required = "required" })
+                    @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber",(Request.QueryString["RID"])), "Select Room", new { @class = "form-control", required = "required" })
                     @Html.ValidationMessageFor(model => model.RID, "", new { @class = "text-danger" })
 
                 </div>
@@ -166,7 +166,7 @@
                     @{
                         ViewData["DDID"] = Request.QueryString["DDID"];
                     }
-                    @Html.DropDownListFor(model => model.DDID, new SelectList(new BlockD().GetAll(), "DDID", "Name", Convert.ToInt32(Request.QueryString["DDID"])), "Select Block", new { @class = "form-control", required = "required" })
+                    @Html.DropDownListFor(model => model.DDID, new SelectList(new BlockD().GetAll(), "DDID", "Name", (Request.QueryString["DDID"])), "Select Block", new { @class = "form-control", required = "required" })
                     @Html.ValidationMessageFor(model => model.DDID, "", new { @class = "text-danger" })
 
                 </div>
