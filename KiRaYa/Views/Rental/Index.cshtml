@@ -4,6 +4,7 @@
 
     List<BlockD> blockDs = new BlockD().GetAll();
     List<Login> ListLogin = new Login().GetAll();
+   
 
 }
 
@@ -62,6 +63,7 @@
                             Room Number
                         </th>
                         <th>EmailID</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -121,6 +123,9 @@
                                 @{Login login = ListLogin.Find(x => x.ID == item.ID);}
                             @login.EmailID
                         </td>
+                            <td>
+                                @Html.DisplayFor(modelItem=>item.Status)
+                            </td>
                             <td>
                                 <a href="/Rental/CreateEdit?RentalID=@item.RantalID&RID=@item.RID&DDID=@item.DDID " class="btn btn-danger btn-sm "> Edit</a>
 
@@ -187,71 +192,75 @@
                             Room Number
                         </th>
                         <th> EmailID</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
+                    <tr>
 
 
 
-                            <td>
-                                <img src="@item.PhotoPath" width="50" height="50" />
-                            </td>
-                            <td>
-                                @{ BlockD block = blockDs.Find(x => x.DDID == item.DDID);}
-                                @block.Name
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Date)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Mobile)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Address)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.VoterID)
-                            </td>
-                            <td>
-                                <img src="@item.AdharcardPhoto" width="50" height="50" />
+                        <td>
+                            <img src="@item.PhotoPath" width="50" height="50" />
+                        </td>
+                        <td>
+                            @{ BlockD block = blockDs.Find(x => x.DDID == item.DDID);}
+                            @block.Name
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mobile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VoterID)
+                        </td>
+                        <td>
+                            <img src="@item.AdharcardPhoto" width="50" height="50" />
 
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AdharNumber)
-                            </td>
-                            <td>
-                                <img src="@item.PanPhoto" width="50" height="50" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdharNumber)
+                        </td>
+                        <td>
+                            <img src="@item.PanPhoto" width="50" height="50" />
 
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PanNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.RentAgreementFor)
-                            </td>
-                            <td>
-                                @{
-                                    RoomTable obj = Listroom.Find(x => x.RID == item.RID);
-                                    @obj.RoomNumber
-                                }
-                            </td>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PanNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RentAgreementFor)
+                        </td>
+                        <td>
+                            @{
+                                RoomTable obj = Listroom.Find(x => x.RID == item.RID);
+                                @obj.RoomNumber
+                            }
+                        </td>
 
-                            <td>
-                                @{Login login = ListLogin.Find(x => x.ID == item.ID);}
-                                @login.EmailID
-                            </td>
-                            <td>
+                        <td>
+                            @{Login login = ListLogin.Find(x => x.ID == item.ID);}
+                            @login.EmailID
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
 
-                                <a href="/Rental/CreateEdit?RentalID=@item.RantalID&RID=@item.RID&DDID=@item.DDID " class="btn btn-danger btn-sm "> Edit</a>
-                            </td>
-                        </tr>
+                            <a href="/Rental/CreateEdit?RentalID=@item.RantalID&RID=@item.RID&DDID=@item.DDID " class="btn btn-danger btn-sm "> Edit</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

@@ -1,5 +1,16 @@
 ﻿@model KiRaYa.Models.Rental
 @using KiRaYa.Models
+@{ Rental objpad = new Rental();
+    int i = objpad.Save();
+    if (i > 0)
+    {
+
+    }
+    else
+    {
+        <li><a href="/RoomTable/Index"><i class="fa fa-circle-o text-aqua"></i> <span>UserRooms</span></a></li>
+    }
+}
 <div class="card">
     <div class="card-header">
         <h4 style="text-align:center;color:#000000"><b>Rental</b></h4>
@@ -54,7 +65,7 @@
                 <div class="col-md-6">
                     @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label ", required = "required" })
 
-                    @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", required = "required", maxlength = "10" } })
                     @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
 
                 </div>
@@ -136,15 +147,15 @@
                 </div>
                 <div class="col-md-6">
                     @{ var items = new List<SelectListItem>
-                             ()
-                                {
-                                new SelectListItem() { Text = "1Month", Value = "1Month" },
-                                new SelectListItem() { Text = "3Month", Value = "3Month" },
-                                new SelectListItem() { Text = "5Month", Value = "5Month" },
-                                new SelectListItem() { Text = "7Month", Value = "7Month" },
-                                new SelectListItem() { Text = "10Month", Value = "10Month" },
-                                new SelectListItem() { Text = "12Month", Value = "12Month" },
-                                };
+                                ()
+                                                        {
+                                                        new SelectListItem() { Text = "1Month", Value = "1Month" },
+                                                        new SelectListItem() { Text = "3Month", Value = "3Month" },
+                                                        new SelectListItem() { Text = "5Month", Value = "5Month" },
+                                                        new SelectListItem() { Text = "7Month", Value = "7Month" },
+                                                        new SelectListItem() { Text = "10Month", Value = "10Month" },
+                                                        new SelectListItem() { Text = "12Month", Value = "12Month" },
+                                                        };
                     }
                     @Html.LabelFor(model => model.RentAgreementFor, htmlAttributes: new { @class = "control-label" })
 
@@ -153,16 +164,16 @@
 
                 </div>
                 <div class="col-md-6">
-                   @Html.Label("Room Number")
+                    @Html.Label("Room Number")
                     @{
                         ViewData["RID"] = Request.QueryString["RID"];
                     }
-                    @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber",(Request.QueryString["RID"])), "Select Room", new { @class = "form-control", required = "required" })
+                    @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber", (Request.QueryString["RID"])), "Select Room", new { @class = "form-control", required = "required" })
                     @Html.ValidationMessageFor(model => model.RID, "", new { @class = "text-danger" })
 
                 </div>
                 <div class="col-md-6">
-                   @Html.Label("Block")
+                    @Html.Label("Block")
                     @{
                         ViewData["DDID"] = Request.QueryString["DDID"];
                     }
@@ -176,10 +187,17 @@
 
                     @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
                 </div>
+                <div class=" col-md-6">
+                    @Html.Label("Status")
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Status)
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
 
                 <div class="col-sm-12 mt-3 text-right">
-                    <input type="submit" value="SaVe" class="btn btn-success" />
+                    <input type="submit" value="SaVe" class="btn btn-success"  />
                 </div>
             </div>
         }
@@ -187,9 +205,4 @@
 
     </div>
 </div>
-<script>
-    var value = $("#RID").attr(value);
-    $("#RID").val(value);
-    var value1 = $("#DDID").attr(value1);
-    $("#DDID").val(value1);
-</script>
+ 

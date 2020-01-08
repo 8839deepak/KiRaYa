@@ -11,9 +11,9 @@
             <div class="card-header text-center">Block A ROOMS</div>
             <div class="card-body  ">
                 <ul class="list-group">
-                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@ViewData["mgs"]</marquee>
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        Total ROOM
+                        ROOM AviAlABLE IN BLOCK
                         <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
                             @* <a href="/RoomTable/Index?DDID=1" >*@
                             <span class="badge badge-primary badge-pill">
@@ -27,17 +27,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        AVILIABLE ROOM
-                        <a href="#">
-                            <span class="badge badge-primary badge-pill">
-                                @{ int RemainingR = roomTables.FindAll(x => x.DDID == 2).Count();
-                                    int rr = RemainingR - TR;}
-                                @rr
-                            </span>
-                        </a>
-
-                    </li>
+                    
                 </ul>
 
             </div>
@@ -50,24 +40,13 @@
                 <ul class="list-group">
                     <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        Total ROOM
+                        ROOM AviAlABLE IN BLOCK
                         <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
                             @*<a href="/RoomTable/Index?DDID=2">*@
                             <span class="badge badge-primary badge-pill">
 
                                 @{ int RT = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();}
                                 @RT
-                            </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        AVILIABLE Room
-                        <a href="#">
-                            <span class="badge badge-primary badge-pill">
-
-                                @{ int REMAININGROOM = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();
-                                    int EE = RT - REMAININGROOM;}
-                                @rr
                             </span>
                         </a>
                     </li>
@@ -87,8 +66,6 @@
                                     View Details
                                 </span>
                             </button>
-
-                        @* } *@
                     
                 </ul>
 
@@ -104,32 +81,22 @@
             <div class="card-body  ">
                 <ul class="list-group">
                     <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
-                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                            Total ROOM
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        ROOM AviAlABLE IN BLOCK
 
-                            <a onclick="mys();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                                <span class="badge badge-primary badge-pill">
-                                    @{ int QT = roomTables.FindAll(x => x.DDID == 4 && x.Status == false).Count();}
-
-
-                                    @QT
+                        <a onclick="mys();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                            <span class="badge badge-primary badge-pill">
+                                @{ int QT = roomTables.FindAll(x => x.DDID == 4 && x.Status == false).Count();}
 
 
+                                @QT
 
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                            AVILIABLE ROOM
-                            <a href="#">
-                                <span class="badge badge-primary badge-pill">
-                                    @{ int gR = roomTables.FindAll(x => x.DDID == 4).Count();
-                                        int R = RemainingR - TR;}
-                                    @rr
-                                </span>
-                            </a>
 
-                        </li>
+
+                            </span>
+                        </a>
+                    </li>
+                        
                 </ul>
 
             </div>
@@ -142,7 +109,7 @@
                 <ul class="list-group">
                     <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
                     <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        Total ROOM
+                        ROOM AviAlABLE IN BLOCK
                         <a onclick="my();" data-toggle="modal" data-target=".bd-example-modal-xl">
                             @* <a href="/RoomTable/Index?DDID=4">*@
                             <span class="badge badge-primary badge-pill">
@@ -151,17 +118,6 @@
 
 
                                 @yt
-                            </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        AVILIABLE Room
-                        <a href="#">
-                            <span class="badge badge-primary badge-pill">
-
-                                @{ int ROOM = roomTables.FindAll(x => x.DDID == 1).Count();
-                                    int E = RT - REMAININGROOM;}
-                                @rr
                             </span>
                         </a>
                     </li>

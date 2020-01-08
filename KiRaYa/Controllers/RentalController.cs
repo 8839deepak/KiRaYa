@@ -27,6 +27,7 @@ namespace KiRaYa.Controllers
         // Create and edit Rental
         public ActionResult CreateEdit(int RentalID)
         {
+            bool Status = Convert.ToBoolean(Session["ID"]);
             int ID = Convert.ToInt32(Session["ID"]);
             Rental objpad = new Rental();
             if (RentalID > 0)
@@ -41,11 +42,13 @@ namespace KiRaYa.Controllers
             {
                 ViewData["DDID"]=(Request.QueryString["DDID"]);
                 objpad.ID = ID;
+                objpad.Status = Status;
             }
-            
-            
-            
-
+            if (Request.QueryString["Status"] != null)
+            {
+                    ViewData["Status"] = (Request.QueryString["Status"]);
+            }
+               
                 ViewData["msg"] = "";
                 
             return View(objpad);
@@ -99,9 +102,14 @@ namespace KiRaYa.Controllers
             objpad.AdharcardPhoto = loca;
             objpad.PanPhoto = tion;
             int i = objpad.Save();
-           
+           if(objpad.RID>0)
+            {
+                RoomTable objroom = new RoomTable().GetOne(objpad.RID);
+                objroom.Status = objpad.Status;
+                objroom.Save();
+            }
             if (i > 0)
-                
+            
 
             return RedirectToAction("Index");
             return RedirectToAction("Error");
@@ -129,6 +137,9 @@ namespace KiRaYa.Controllers
             
             return View();
         }
-        
+        public ActionResult HIDEFUNCTION(Rental objpad)
+        {
+            return View();
+        }
     }
 }

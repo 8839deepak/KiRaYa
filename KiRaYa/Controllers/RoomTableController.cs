@@ -13,13 +13,13 @@ namespace KiRaYa.Controllers
 
         public ActionResult Index()
         {
+           
             RoomTable objpad = new RoomTable();
             List<RoomTable> ListRant = new RoomTable().GetAll();
-            if (Request.QueryString["Status"] != null)
+            if (Request.QueryString["Status"] != null )
             {
-                //int RID = int.Parse(Request.QueryString["Status"]);
-                // int status = bool.Parse(Request.QueryString["Status"]);
-                ListRant = ListRant.FindAll(x => x.Status == false);
+               
+                ListRant = ListRant.FindAll(x => x.Status == true);
 
             }
             else

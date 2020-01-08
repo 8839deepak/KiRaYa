@@ -104,11 +104,11 @@
 </div>
 <script>
    
-    function my(RID, DDID ) {
+    function my(RID, DDID, Status ) {
         $("#waiting").show();
         $.ajax({
             type: 'GET',
-            url: "/Rental/termpolcy?RID=" + RID + "&DDID=" + DDID ,
+            url: "/Rental/termpolcy?RID=" + RID + "&DDID=" + DDID + "&Status=" + Status ,
             success: function (data) {
                 $("#Expression").html(data);
                 $("#exampleModalLong").show();
