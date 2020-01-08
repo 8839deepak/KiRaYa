@@ -4,10 +4,12 @@
 @{ List<BlockD> listroom = new BlockD().GetAll();
     List<RoomTable> roomtable = new RoomTable().GetAll();
 }
+
 <div class="card">
     <div class="card-header">
         <h5 style="text-align:center;color:#000000"><b>Room Details</b></h5>
     </div>
+    <a href="/RoomTable/CreateEdit?RID=0" class="btn btn-success"><i class="fa fa-plus"></i>add</a>
     <div class="card-body">
         <table class="table table-bordered table-hover w-100" id="Tbl">
             <thead>
@@ -69,7 +71,6 @@
 
                                 <a href="/RoomTable/CreateEdit?RID=@item.RID " class="btn btn-warning btn-sm "> Edit</a>
                                 <a href="/RoomTable/Delete?ID=@item.RID " class="btn btn-danger btn-sm "> Delete</a>
-                                <a href="/RoomTable/CreateEdit?RID=0" class="btn btn-success"><i class="fa fa-plus"></i>add</a>
 
                             }
 

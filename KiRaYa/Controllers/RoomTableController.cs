@@ -37,8 +37,8 @@ namespace KiRaYa.Controllers
         public ActionResult AdminIndex()
         {
             RoomTable objpad = new RoomTable();
-            List<RoomTable> ListRant = new RoomTable().GetAll();
-            return View(ListRant);
+            List<RoomTable> ListRat = new RoomTable().GetAll();
+            return View(ListRat);
         }
         //list for used room 
 
@@ -74,7 +74,7 @@ namespace KiRaYa.Controllers
             int i = objpad.Save();
 
             if (i > 0)
-                return RedirectToAction("Index");
+                return RedirectToAction("AdminIndex");
             return RedirectToAction("Error");
         }
 

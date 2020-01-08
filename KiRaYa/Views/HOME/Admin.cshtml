@@ -2,135 +2,279 @@
 
 @{List<RoomTable> roomTables = new RoomTable().GetAll();
     List<Rental> listrental = new Rental().GetAll();
-    }
+}
+@if (Session["UserID"].ToString().Contains("1"))
+{
+    <div class=" row" id="1">
+        <div class="col-md-5  p-4">
+            <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block A ROOMS</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@ViewData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
+                            <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                @* <a href="/RoomTable/Index?DDID=1" >*@
+                                <span class="badge badge-primary badge-pill">
+                                    @{ int TR = roomTables.FindAll(x => x.DDID == 2 && x.Status == false).Count();
+
+                                    }
+                                    @TR
 
 
-<div class=" row" id="1">
-    <div class="col-md-5  p-4">
-        <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
-            <div class="card-header text-center">Block A ROOMS</div>
-            <div class="card-body  ">
-                <ul class="list-group">
-                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@ViewData["mgs"]</marquee>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        ROOM AviAlABLE IN BLOCK
-                        <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                            @* <a href="/RoomTable/Index?DDID=1" >*@
-                            <span class="badge badge-primary badge-pill">
-                                @{ int TR = roomTables.FindAll(x => x.DDID == 2 && x.Status == false).Count();
 
-                                }
-                                @TR
-
-
-
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
-
-            </div>
-        </div>
-    </div>
-    <div class="col-md-5 text-center  p-4">
-        <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
-            <div class="card-header text-center">Block B Rooms</div>
-            <div class="card-body  ">
-                <ul class="list-group">
-                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        ROOM AviAlABLE IN BLOCK
-                        <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                            @*<a href="/RoomTable/Index?DDID=2">*@
-                            <span class="badge badge-primary badge-pill">
-
-                                @{ int RT = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();}
-                                @RT
-                            </span>
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-        </div>
-    </div>
-    <div class="col-2 text-center  p-4">
-        <div class="card text-white bg-warning mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
-            <div class="card-header text-center">User Details</div>
-            <div class="card-body  ">
-                <ul class="list-group">
-                            <button type="button" onclick="window.location.href = 'http://localhost:57665/Rental/Index?RentalID=0'">
-                                <span class="badge badge-primary badge-pill text-center">
-                                    View Details
                                 </span>
-                            </button>
-                    
-                </ul>
+                            </a>
+                        </li>
 
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 text-center  p-4">
+            <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block B Rooms</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
+                            <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                @*<a href="/RoomTable/Index?DDID=2">*@
+                                <span class="badge badge-primary badge-pill">
+
+                                    @{ int RT = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();}
+                                    @RT
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
             </div>
         </div>
     </div>
+    <div class=" row" id="2">
+        <div class="col-md-5  p-4">
+            <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block C ROOMS</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
 
-</div>
-<div class=" row" id="2">
-    <div class="col-md-5  p-4">
-        <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
-            <div class="card-header text-center">Block C ROOMS</div>
-            <div class="card-body  ">
-                <ul class="list-group">
-                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        ROOM AviAlABLE IN BLOCK
-
-                        <a onclick="mys();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                            <span class="badge badge-primary badge-pill">
-                                @{ int QT = roomTables.FindAll(x => x.DDID == 4 && x.Status == false).Count();}
+                            <a onclick="mys();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                <span class="badge badge-primary badge-pill">
+                                    @{ int QT = roomTables.FindAll(x => x.DDID == 4 && x.Status == false).Count();}
 
 
-                                @QT
+                                    @QT
 
 
 
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 text-center  p-4">
+            <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block D Rooms</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
+                            <a onclick="my();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                @* <a href="/RoomTable/Index?DDID=4">*@
+                                <span class="badge badge-primary badge-pill">
+
+                                    @{ int yt = roomTables.FindAll(x => x.DDID == 1 && x.Status == false).Count();}
+
+
+                                    @yt
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+@if (Session["UserID"].ToString().Contains("2"))
+
+{
+
+    <div class=" row" id="1">
+        <div class="col-md-5  p-4">
+            <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block A ROOMS</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@ViewData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
+                            <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                @* <a href="/RoomTable/Index?DDID=1" >*@
+                                <span class="badge badge-primary badge-pill">
+                                    @{ int TR = roomTables.FindAll(x => x.DDID == 2 && x.Status == false).Count();
+
+                                    }
+                                    @TR
+
+
+
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 text-center  p-4">
+            <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block B Rooms</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
+                            <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                @*<a href="/RoomTable/Index?DDID=2">*@
+                                <span class="badge badge-primary badge-pill">
+
+                                    @{ int RT = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();}
+                                    @RT
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-2 text-center  p-4">
+            <div class="card text-white bg-warning mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">User Details</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <button type="button" onclick="window.location.href = 'http://localhost:57665/Rental/Index?RentalID=0'">
+                            <span class="badge badge-primary badge-pill text-center">
+                                View Details
                             </span>
-                        </a>
-                    </li>
-                        
-                </ul>
+                        </button>
 
+                    </ul>
+
+                </div>
             </div>
         </div>
+
     </div>
-    <div class="col-md-5 text-center  p-4">
-        <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
-            <div class="card-header text-center">Block D Rooms</div>
-            <div class="card-body  ">
-                <ul class="list-group">
-                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        ROOM AviAlABLE IN BLOCK
-                        <a onclick="my();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                            @* <a href="/RoomTable/Index?DDID=4">*@
-                            <span class="badge badge-primary badge-pill">
+    <div class=" row" id="2">
+        <div class="col-md-5  p-4">
+            <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block C ROOMS</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
 
-                                @{ int yt = roomTables.FindAll(x => x.DDID == 1 && x.Status == false).Count();}
+                            <a onclick="mys();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                <span class="badge badge-primary badge-pill">
+                                    @{ int QT = roomTables.FindAll(x => x.DDID == 4 && x.Status == false).Count();}
 
 
-                                @yt
-                            </span>
-                        </a>
-                    </li>
+                                    @QT
 
-                </ul>
 
+
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
             </div>
         </div>
+        <div class="col-md-5 text-center  p-4">
+            <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block D Rooms</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
+                            <a onclick="my();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                @* <a href="/RoomTable/Index?DDID=4">*@
+                                <span class="badge badge-primary badge-pill">
+
+                                    @{ int yt = roomTables.FindAll(x => x.DDID == 1 && x.Status == false).Count();}
+
+
+                                    @yt
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
     </div>
+}
+
+<script>
+
+    $("#RantalID").on("change", function () {
+        var PRID = $("#RantalID").val();
+        if (PRID != "" && PRID != 0) {
+            $.ajax({
+                url: "/HOME/HideFunction",
+                type: "GET",
+                data: { PRID: PRID },
+                success: function (data) {
+                    $(".1").hide();
+                    $(".2").hide();
 
 
-</div>
-  
+                    //alert(data.Name);
+                },
+                error: function (xhr) {
+                    alert("Error");
+                }
+            });
+        }
+        else {
+            $("#RID").html("<option value=0> Select Room No</option>");
+            $("#Amt").val(0);
+
+
+        }
+    });
+</script>
 <script>
     function my() {
         $("#waiting").show();

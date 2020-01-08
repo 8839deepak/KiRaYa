@@ -76,8 +76,6 @@ namespace KiRaYa.Controllers
             int BlockName = ObjRooms.DDID;
             int RentPaid = ObjRooms.RantAmt;
             int EmilID = OBJLogin.ID;
-             
-            
             return Json(new { RID = ObjRooms.RID, RoomNumber = ObjRooms.RoomNumber, RantAmt = RentPaid,DDID=BlockName,ID=EmilID }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult SentMail(RantPaid rant)

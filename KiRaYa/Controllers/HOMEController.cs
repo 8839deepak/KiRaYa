@@ -52,7 +52,7 @@ namespace KiRaYa.Controllers
         {
             List<RoomTable> roomTables = new RoomTable().GetAll();
             int TR = roomTables.FindAll(x => x.DDID == 2).Count();
-            if (TR>20)
+            if (TR<20)
             {
                 ViewData["mgs"] = "some room is left";
             }
@@ -61,7 +61,7 @@ namespace KiRaYa.Controllers
                 ViewData["mgs"] = "All Room is Full";
             }
             int RT = roomTables.FindAll(x => x.DDID == 3).Count();
-            if (RT >20)
+            if (RT <20)
             {
                 
                 TempData["mgs"] = "some room is left";
@@ -71,7 +71,7 @@ namespace KiRaYa.Controllers
                 TempData["mgs"] = "All Room is Full";
             }
             int QT = roomTables.FindAll(x => x.DDID == 4).Count();
-            if (QT>20)
+            if (QT<20)
             {
                 TempData["mgs"] = "some room is left";
 
@@ -81,7 +81,7 @@ namespace KiRaYa.Controllers
                 TempData["mgs"] = "All Room is Full";
             }
             int yt = roomTables.FindAll(x => x.DDID == 1).Count();
-            if(yt>20)
+            if(yt<20)
             {
                 TempData["mgs"] = "some room is left";
             }
@@ -191,6 +191,17 @@ namespace KiRaYa.Controllers
             if (i > 0)
                 return RedirectToAction("Login");
             return RedirectToAction("Error");
+        }
+        public JsonResult HideFunction(Rental rental)
+        {
+            int i = rental.Save();
+            if(rental.RantalID>0)
+            {
+                
+            }
+            int currentid = rental.RantalID;
+           
+            return Json(new { RantalID = currentid }, JsonRequestBehavior.AllowGet);
         }
     }
 
