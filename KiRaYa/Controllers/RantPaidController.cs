@@ -157,5 +157,9 @@ namespace KiRaYa.Controllers
             }
             return View(listrentpaid);
         }
+        public ActionResult peytm()
+        {
+            return View();
+        }
     }
 }
