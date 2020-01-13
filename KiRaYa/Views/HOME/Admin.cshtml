@@ -5,61 +5,62 @@
 }
 @if (Session["UserID"].ToString().Contains("1"))
 {
-    <div class=" row" id="1">
-        <div class="col-md-5  p-4">
-            <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
-                <div class="card-header text-center">Block A ROOMS</div>
-                <div class="card-body  ">
-                    <ul class="list-group">
-                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@ViewData["mgs"]</marquee>
-                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                            ROOM AviAlABLE IN BLOCK
-                            <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                                @* <a href="/RoomTable/Index?DDID=1" >*@
-                                <span class="badge badge-primary badge-pill">
-                                    @{ int TR = roomTables.FindAll(x => x.DDID == 2 && x.Status == false).Count();
+<div class=" row" id="1">
+    <div class="col-md-5  ">
+        <div class="card text-white bg-primary mx-auto  " style="  box-shadow:2px 4px 4px black ;z-index:10000">
+            <div class="card-header text-center">Block A ROOMS</div>
+            <div class="card-body  ">
+                <ul class="list-group">
+                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@ViewData["mgs"]</marquee>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        ROOM AviAlABLE IN BLOCK
+                        <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                            @* <a href="/RoomTable/Index?DDID=1" >*@
+                            <span class="badge badge-primary badge-pill">
+                                @{ int TR = roomTables.FindAll(x => x.DDID == 2 && x.Status == false).Count();
 
-                                    }
-                                    @TR
+                                }
+                                @TR
 
 
 
-                                </span>
-                            </a>
-                        </li>
+                            </span>
+                        </a>
+                    </li>
 
-                    </ul>
+                </ul>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5 text-center  p-4">
-            <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
-                <div class="card-header text-center">Block B Rooms</div>
-                <div class="card-body  ">
-                    <ul class="list-group">
-                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
-                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                            ROOM AviAlABLE IN BLOCK
-                            <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                                @*<a href="/RoomTable/Index?DDID=2">*@
-                                <span class="badge badge-primary badge-pill">
-
-                                    @{ int RT = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();}
-                                    @RT
-                                </span>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
             </div>
         </div>
     </div>
+    <div class="col-md-5 text-center  ">
+        <div class="card text-white bg-secondary " style="  box-shadow:2px 4px 4px black ;z-index:10000">
+            <div class="card-header text-center">Block B Rooms</div>
+            <div class="card-body  ">
+                <ul class="list-group">
+                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                        ROOM AviAlABLE IN BLOCK
+                        <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                            @*<a href="/RoomTable/Index?DDID=2">*@
+                            <span class="badge badge-primary badge-pill">
+
+                                @{ int RT = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();}
+                                @RT
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+                                    <br />
     <div class=" row" id="2">
-        <div class="col-md-5  p-4">
-            <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+        <div class="col-md-5">
+            <div class="card text-white bg-primary mx-auto  " style="box-shadow:2px 4px 4px black ;z-index:10000">
                 <div class="card-header text-center">Block C ROOMS</div>
                 <div class="card-body  ">
                     <ul class="list-group">
@@ -85,8 +86,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5 text-center  p-4">
-            <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+        <div class="col-md-5 text-center">
+            <div class="card text-white bg-secondary " style="box-shadow:2px 4px 4px black ;z-index:10000">
                 <div class="card-header text-center">Block D Rooms</div>
                 <div class="card-body  ">
                     <ul class="list-group">
@@ -110,9 +111,8 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+
 }
 
 @if (Session["UserID"].ToString().Contains("2"))
@@ -120,8 +120,8 @@
 {
 
     <div class=" row" id="1">
-        <div class="col-md-5  p-4">
-            <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+        <div class="col-md-5">
+            <div class="card text-white bg-primary mx-auto  " style="box-shadow:2px 4px 4px black ;z-index:10000">
                 <div class="card-header text-center">Block A ROOMS</div>
                 <div class="card-body  ">
                     <ul class="list-group">
@@ -147,8 +147,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5 text-center  p-4">
-            <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+        <div class="col-md-5 text-center ">
+            <div class="card text-white bg-secondary " style=" box-shadow:2px 4px 4px black ;z-index:10000">
                 <div class="card-header text-center">Block B Rooms</div>
                 <div class="card-body  ">
                     <ul class="list-group">
@@ -170,7 +170,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-2 text-center  p-4">
+        <div class="col-2 text-center">
             <div class="card text-white bg-warning mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
                 <div class="card-header text-center">User Details</div>
                 <div class="card-body  ">
@@ -188,9 +188,10 @@
         </div>
 
     </div>
+    <br />
     <div class=" row" id="2">
-        <div class="col-md-5  p-4">
-            <div class="card text-white bg-primary mx-auto  " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+        <div class="col-md-5  ">
+            <div class="card text-white bg-primary mx-auto  " style=" box-shadow:2px 4px 4px black ;z-index:10000">
                 <div class="card-header text-center">Block C ROOMS</div>
                 <div class="card-body  ">
                     <ul class="list-group">
@@ -216,8 +217,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5 text-center  p-4">
-            <div class="card text-white bg-secondary " style=" max-width: 18rem ;box-shadow:2px 4px 4px black ;z-index:10000">
+        <div class="col-md-5 text-center  ">
+            <div class="card text-white bg-secondary " style=" box-shadow:2px 4px 4px black ;z-index:10000">
                 <div class="card-header text-center">Block D Rooms</div>
                 <div class="card-body  ">
                     <ul class="list-group">
