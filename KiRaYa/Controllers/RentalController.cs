@@ -133,13 +133,8 @@ namespace KiRaYa.Controllers
         {
             ViewData["RID"] = RID;
             ViewData["DDID"] = DDID;
-           
-            
             return View();
         }
-        public ActionResult HIDEFUNCTION(Rental objpad)
-        {
-            return View();
-        }
+         
     }
 }
