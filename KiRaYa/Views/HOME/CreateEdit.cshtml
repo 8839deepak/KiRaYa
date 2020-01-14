@@ -26,7 +26,7 @@
 
                     </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 p-4">
                         @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label  " })
                         @Html.TextBoxFor(Model => Model.Password, new { @class = "input100", type = "password", id = "psw", name = "pass", placeholder = "Type your password", required = "required" })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })

@@ -122,22 +122,19 @@ namespace KiRaYa.Controllers
         public ActionResult forgetPassword(int ID)
         {
             ViewData["msg"] = "";
-            Login OBJFORGET = new Login();
+            ForgetPassword OBJFORGET = new ForgetPassword();
             OBJFORGET = OBJFORGET.GetOne(ID);
             return View(OBJFORGET);
 
         }
         [HttpPost]
-        public ActionResult forgetPassword(Login OBJFORGET)
+        public ActionResult forgetPassword(ForgetPassword OBJFORGET)
         {
             //////---------------send E-mail-------------------- 
 
-            if (Request.QueryString["Password"] != null)
-            {
-                int i =int.Parse( Request.QueryString["Password"]);
-            }
+          
              
-            string msg = "<h1> Wel com in iT-Helper </h1> <br> <h2> click here to activate This Email <a href='http://192.168.1.8/Default/Activation?TokenKey=" + OBJFORGET.ID + "'><b>Activate</b></a></h2><br> <br> any problem call <u><mark>8839070602</mark><u>";
+            string msg = "<h1> Wel com in iT-Helper </h1> <br> <h2> click here to activate This Email <a href='http://192.168.1.8/Default/Activation?TokenKey=" + OBJFORGET.FID + "'><b>Activate</b></a></h2><br> <br>Your Password is updated successfully<br><br> any problem call <u><mark>8839070602</mark><u>";
             System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("957501deepak@gmail.com", OBJFORGET.EmailID, "iT-Helper", msg);
             mail.IsBodyHtml = true;
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
@@ -145,9 +142,19 @@ namespace KiRaYa.Controllers
             //client.UseDefaultCredentials = false;
             client.EnableSsl = true;
             client.Timeout = 20000;
+            //("Msg", "Password Change Successful");
+            
+            List<Login> listlogin = new Login().GetAll();
+            Login login = listlogin.Find(x => x.EmailID == OBJFORGET.EmailID);
+            if(login!=null)
+            {
+
+                login.Password=OBJFORGET.NewPassword;
+                login.Save();
+
+            }
+            
             client.Send(mail);
-            ViewData["mgs"] = "Your Password is updated successfully"; //("Msg", "Password Change Successful");
-            ViewData["mgs"] = "try again";
             return RedirectToAction("Login");
             //--------------End sent E-mail ----------------
             //MailMessage mailmsg = new MailMessage();
