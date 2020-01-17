@@ -17,7 +17,7 @@ namespace KiRaYa.Controllers
             if (Session["UserID"].ToString().Contains("2"))
             {
                 int ID = int.Parse(Session["ID"].ToString());
-                listrental = listrental.FindAll(x => x.RantalID == ID);
+                listrental = listrental.FindAll(x => x.RantalID != ID);
             }else
             {
                   listrental = new Rental().GetAll();
@@ -117,6 +117,14 @@ namespace KiRaYa.Controllers
 
         public ActionResult Delete(int ID)
         {
+            List<Rental> listrental = new Rental().GetAll();
+            Rental rental = listrental.Find(x => x.RantalID == ID);
+            if(rental.RID>0)
+            {
+             RoomTable OBJROOM = new RoomTable().GetOne(rental.RID);
+                OBJROOM.Status = false;
+                OBJROOM.Save();
+            }
             Rental ObjCon = new Rental();
             int d = ObjCon.Dell(ID);
             if (d > 0)

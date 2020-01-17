@@ -130,7 +130,7 @@
                 <div class="col-md-6">
                     @Html.LabelFor(model => model.PanNumber, htmlAttributes: new { @class = "control-label" })
 
-                    @Html.EditorFor(model => model.PanNumber, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.EditorFor(model => model.PanNumber, new { htmlAttributes = new { @class = "form-control", required = "required"  } })
                     @Html.ValidationMessageFor(model => model.PanNumber, "", new { @class = "text-danger" })
 
                 </div>
@@ -148,7 +148,7 @@
                     }
                     @Html.LabelFor(model => model.RentAgreementFor, htmlAttributes: new { @class = "control-label" })
 
-                    @Html.DropDownListFor(model => model.RentAgreementFor, items, new { @class = "form-control", required = "required" })
+                    @Html.DropDownListFor(model => model.RentAgreementFor, items, new { @class = "form-control", required = "required", id = "pan" })
                     @Html.ValidationMessageFor(model => model.RentAgreementFor, "", new { @class = "text-danger" })
 
                 </div>
@@ -186,7 +186,7 @@
 
 
                 <div class="col-sm-12 mt-3 text-right">
-                    <input type="submit" value="SaVe" class="btn btn-success"  />
+                    <input type="submit" value="SaVe" class="btn btn-success" id="submitButton" />
                 </div>
             </div>
         }
@@ -194,4 +194,17 @@
 
     </div>
 </div>
- 
+<script>
+    $(document).ready(function () {
+        var panvalue = $("#pan").val();
+        var submitbutton = $("#submitButton").hide();
+        if (panvalue != null) {
+            $("#submitButton").on("click", function () {
+                alert('Your Room Allot Succesfully');
+                $("#submitButton").show();
+            });
+        }
+       
+
+    });
+ </script>

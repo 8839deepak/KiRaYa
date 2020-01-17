@@ -247,35 +247,7 @@
     </div>
 }
 
-<script>
 
-    $("#RantalID").on("change", function () {
-        var PRID = $("#RantalID").val();
-        if (PRID != "" && PRID != 0) {
-            $.ajax({
-                url: "/HOME/HideFunction",
-                type: "GET",
-                data: { PRID: PRID },
-                success: function (data) {
-                    $(".1").hide();
-                    $(".2").hide();
-
-
-                    //alert(data.Name);
-                },
-                error: function (xhr) {
-                    alert("Error");
-                }
-            });
-        }
-        else {
-            $("#RID").html("<option value=0> Select Room No</option>");
-            $("#Amt").val(0);
-
-
-        }
-    });
-</script>
 <script>
     function my() {
         $("#waiting").show();

@@ -199,17 +199,7 @@ namespace KiRaYa.Controllers
                 return RedirectToAction("Login");
             return RedirectToAction("Error");
         }
-        public JsonResult HideFunction(Rental rental)
-        {
-            int i = rental.Save();
-            if(rental.RantalID>0)
-            {
-                
-            }
-            int currentid = rental.RantalID;
-           
-            return Json(new { RantalID = currentid }, JsonRequestBehavior.AllowGet);
-        }
+       
     }
 
 }
