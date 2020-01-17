@@ -41,7 +41,7 @@ namespace KiRaYa.Controllers
                 Session["UserName"] = ObjUSers.UserName;
                 Session["UserID"] = ObjUSers.UserID;
                 Session["EmailID"] = ObjUSers.EmailID;
-                return RedirectToAction("Admin");
+                    return RedirectToAction("Admin");
             }
 
             ViewData["msg"] = "Invalid User Name or Password";
