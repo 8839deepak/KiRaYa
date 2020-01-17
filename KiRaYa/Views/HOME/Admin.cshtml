@@ -5,59 +5,59 @@
 }
 @if (Session["UserID"].ToString().Contains("1"))
 {
-<div class=" row" id="1">
-    <div class="col-md-5  ">
-        <div class="card text-white bg-primary mx-auto  " style="  box-shadow:2px 4px 4px black ;z-index:10000">
-            <div class="card-header text-center">Block A ROOMS</div>
-            <div class="card-body  ">
-                <ul class="list-group">
-                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@ViewData["mgs"]</marquee>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        ROOM AviAlABLE IN BLOCK
-                        <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                            @* <a href="/RoomTable/Index?DDID=1" >*@
-                            <span class="badge badge-primary badge-pill">
-                                @{ int TR = roomTables.FindAll(x => x.DDID == 2 && x.Status == false).Count();
+    <div class=" row" id="1">
+        <div class="col-md-5  ">
+            <div class="card text-white bg-primary mx-auto  " style="  box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block A ROOMS</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@ViewData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
+                            <a onclick="m();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                @* <a href="/RoomTable/Index?DDID=1" >*@
+                                <span class="badge badge-primary badge-pill">
+                                    @{ int TR = roomTables.FindAll(x => x.DDID == 2 && x.Status == false).Count();
 
-                                }
-                                @TR
+                                    }
+                                    @TR
 
 
 
-                            </span>
-                        </a>
-                    </li>
+                                </span>
+                            </a>
+                        </li>
 
-                </ul>
+                    </ul>
 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 text-center  ">
+            <div class="card text-white bg-secondary " style="  box-shadow:2px 4px 4px black ;z-index:10000">
+                <div class="card-header text-center">Block B Rooms</div>
+                <div class="card-body  ">
+                    <ul class="list-group">
+                        <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
+                        <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
+                            ROOM AviAlABLE IN BLOCK
+                            <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                @*<a href="/RoomTable/Index?DDID=2">*@
+                                <span class="badge badge-primary badge-pill">
+
+                                    @{ int RT = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();}
+                                    @RT
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-5 text-center  ">
-        <div class="card text-white bg-secondary " style="  box-shadow:2px 4px 4px black ;z-index:10000">
-            <div class="card-header text-center">Block B Rooms</div>
-            <div class="card-body  ">
-                <ul class="list-group">
-                    <marquee behavior="scroll" direction="left" style="color:black;box-shadow:2px 4px 4px black;font-size:20px">@TempData["mgs"]</marquee>
-                    <li class="list-group-item d-flex text-dark justify-content-between align-items-center">
-                        ROOM AviAlABLE IN BLOCK
-                        <a onclick="y();" data-toggle="modal" data-target=".bd-example-modal-xl">
-                            @*<a href="/RoomTable/Index?DDID=2">*@
-                            <span class="badge badge-primary badge-pill">
-
-                                @{ int RT = roomTables.FindAll(x => x.DDID == 3 && x.Status == false).Count();}
-                                @RT
-                            </span>
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-        </div>
-    </div>
-</div>
-                                    <br />
+    <br />
     <div class=" row" id="2">
         <div class="col-md-5">
             <div class="card text-white bg-primary mx-auto  " style="box-shadow:2px 4px 4px black ;z-index:10000">
@@ -245,9 +245,56 @@
 
 
     </div>
+    
+   
+     
 }
+<script>
+    // list of languages is probably not loaded, wait for it
+    if (window.speechSynthesis.getVoices().length == 0) {
+        window.speechSynthesis.addEventListener('voiceschanged', function () {
+            textToSpeech();
+        });
+    }
+    else {
+        // languages list available, no need to wait
+        textToSpeech()
+    }
 
+    function textToSpeech() {
+        // get all voices that browser offers
+        var available_voices = window.speechSynthesis.getVoices();
 
+        // this will hold an english voice
+        var english_voice = '';
+
+        // find voice by language locale "en-US"
+        // if not then select the first voice
+        for (var i = 0; i < available_voices.length; i++) {
+            if (available_voices[i].lang === 'en-US') {
+                english_voice = available_voices[i];
+                break;
+            }
+        }
+        if (english_voice === '')
+            english_voice = available_voices[0];
+
+        // new SpeechSynthesisUtterance object
+        var utter = new SpeechSynthesisUtterance();
+        utter.rate = 1;
+        utter.pitch = 0.5;
+        utter.text = ' kiraya application me apka swagat hai';
+        utter.voice = english_voice;
+
+        // event after text has been spoken
+        
+
+        // speak
+        window.speechSynthesis.speak(utter);
+    }
+</script>
+
+ 
 <script>
     function my() {
         $("#waiting").show();
@@ -262,10 +309,47 @@
                 $("#waiting").hide();
                 $("#1").hide();
                 $("#2").hide();
-                //$(document).click(function (my) {
-                //    $("#1").show();
-                //    $("#2").show();
-                //});
+                if (window.speechSynthesis.getVoices().length == 0) {
+                    window.speechSynthesis.addEventListener('voiceschanged', function () {
+                        textToSpeech();
+                    });
+                }
+                else {
+                    // languages list available, no need to wait
+                    textToSpeech()
+                }
+
+                function textToSpeech() {
+                    // get all voices that browser offers
+                    var available_voices = window.speechSynthesis.getVoices();
+
+                    // this will hold an english voice
+                    var english_voice = '';
+
+                    // find voice by language locale "en-US"
+                    // if not then select the first voice
+                    for (var i = 0; i < available_voices.length; i++) {
+                        if (available_voices[i].lang === 'en-US') {
+                            english_voice = available_voices[i];
+                            break;
+                        }
+                    }
+                    if (english_voice === '')
+                        english_voice = available_voices[0];
+
+                    // new SpeechSynthesisUtterance object
+                    var utter = new SpeechSynthesisUtterance();
+                    utter.rate = 1;
+                    utter.pitch = 0.5;
+                    utter.text = ' Apne Block D  chuna hai ';
+                    utter.voice = english_voice;
+
+                    // event after text has been spoken
+
+
+                    // speak
+                    window.speechSynthesis.speak(utter);
+                }
             },
             error: function (jqXhr, textStatus, errorMessage) { // error callback
 
@@ -285,6 +369,47 @@
                 $("#waiting").hide();
                 $("#1").hide();
                 $("#2").hide();
+                if (window.speechSynthesis.getVoices().length == 0) {
+                    window.speechSynthesis.addEventListener('voiceschanged', function () {
+                        textToSpeech();
+                    });
+                }
+                else {
+                    // languages list available, no need to wait
+                    textToSpeech()
+                }
+
+                function textToSpeech() {
+                    // get all voices that browser offers
+                    var available_voices = window.speechSynthesis.getVoices();
+
+                    // this will hold an english voice
+                    var english_voice = '';
+
+                    // find voice by language locale "en-US"
+                    // if not then select the first voice
+                    for (var i = 0; i < available_voices.length; i++) {
+                        if (available_voices[i].lang === 'en-US') {
+                            english_voice = available_voices[i];
+                            break;
+                        }
+                    }
+                    if (english_voice === '')
+                        english_voice = available_voices[0];
+
+                    // new SpeechSynthesisUtterance object
+                    var utter = new SpeechSynthesisUtterance();
+                    utter.rate = 1;
+                    utter.pitch = 0.5;
+                    utter.text = 'Apne Block A  Choona Hai';
+                    utter.voice = english_voice;
+
+                    // event after text has been spoken
+
+
+                    // speak
+                    window.speechSynthesis.speak(utter);
+                }
             },
             error: function (jqXhr, textStatus, errorMessage) { // error callback
 
@@ -304,6 +429,47 @@
                 $("#waiting").hide();
                 $("#1").hide();
                 $("#2").hide();
+                if (window.speechSynthesis.getVoices().length == 0) {
+                    window.speechSynthesis.addEventListener('voiceschanged', function () {
+                        textToSpeech();
+                    });
+                }
+                else {
+                    // languages list available, no need to wait
+                    textToSpeech()
+                }
+
+                function textToSpeech() {
+                    // get all voices that browser offers
+                    var available_voices = window.speechSynthesis.getVoices();
+
+                    // this will hold an english voice
+                    var english_voice = '';
+
+                    // find voice by language locale "en-US"
+                    // if not then select the first voice
+                    for (var i = 0; i < available_voices.length; i++) {
+                        if (available_voices[i].lang === 'en-US') {
+                            english_voice = available_voices[i];
+                            break;
+                        }
+                    }
+                    if (english_voice === '')
+                        english_voice = available_voices[0];
+
+                    // new SpeechSynthesisUtterance object
+                    var utter = new SpeechSynthesisUtterance();
+                    utter.rate = 1;
+                    utter.pitch = 0.5;
+                    utter.text = ' Apne Block C  CHOONA HAI';
+                    utter.voice = english_voice;
+
+                    // event after text has been spoken
+
+
+                    // speak
+                    window.speechSynthesis.speak(utter);
+                }
             },
             error: function (jqXhr, textStatus, errorMessage) { // error callback
 
@@ -323,6 +489,47 @@
                 $("#waiting").hide();
                 $("#1").hide();
                 $("#2").hide();
+                if (window.speechSynthesis.getVoices().length == 0) {
+                    window.speechSynthesis.addEventListener('voiceschanged', function () {
+                        textToSpeech();
+                    });
+                }
+                else {
+                    // languages list available, no need to wait
+                    textToSpeech()
+                }
+
+                function textToSpeech() {
+                    // get all voices that browser offers
+                    var available_voices = window.speechSynthesis.getVoices();
+
+                    // this will hold an english voice
+                    var english_voice = '';
+
+                    // find voice by language locale "en-US"
+                    // if not then select the first voice
+                    for (var i = 0; i < available_voices.length; i++) {
+                        if (available_voices[i].lang === 'en-US') {
+                            english_voice = available_voices[i];
+                            break;
+                        }
+                    }
+                    if (english_voice === '')
+                        english_voice = available_voices[0];
+
+                    // new SpeechSynthesisUtterance object
+                    var utter = new SpeechSynthesisUtterance();
+                    utter.rate = 1;
+                    utter.pitch = 0.5;
+                    utter.text = 'Apne Block C  Choona hai';
+                    utter.voice = english_voice;
+
+                    // event after text has been spoken
+
+
+                    // speak
+                    window.speechSynthesis.speak(utter);
+                }
             },
             error: function (jqXhr, textStatus, errorMessage) { // error callback
 

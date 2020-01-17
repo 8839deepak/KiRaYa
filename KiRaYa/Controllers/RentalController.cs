@@ -128,7 +128,7 @@ namespace KiRaYa.Controllers
             Rental ObjCon = new Rental();
             int d = ObjCon.Dell(ID);
             if (d > 0)
-                  
+              
             return RedirectToAction("Index");
             return RedirectToAction("Error");
 

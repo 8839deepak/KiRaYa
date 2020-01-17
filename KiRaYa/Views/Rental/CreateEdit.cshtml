@@ -136,16 +136,16 @@
                 </div>
                 <div class="col-md-6">
                     @{ var items = new List<SelectListItem>
-                                 ()
-                                                                {
-                                       new SelectListItem(){Text ="Select Rental Months",Value ="0"},
-                                                                new SelectListItem() { Text = "1Month", Value = "1" },
-                                                                new SelectListItem() { Text = "3Month", Value = "3" },
-                                                                new SelectListItem() { Text = "5Month", Value = "5" },
-                                                                new SelectListItem() { Text = "7Month", Value = "7" },
-                                                                new SelectListItem() { Text = "10Month", Value = "10" },
-                                                                new SelectListItem() { Text = "12Month", Value = "12" },
-                                                                };
+                                   ()
+                                                                            {
+                                                   new SelectListItem(){Text ="Select Rental Months",Value ="0"},
+                                                                            new SelectListItem() { Text = "1Month", Value = "1" },
+                                                                            new SelectListItem() { Text = "3Month", Value = "3" },
+                                                                            new SelectListItem() { Text = "5Month", Value = "5" },
+                                                                            new SelectListItem() { Text = "7Month", Value = "7" },
+                                                                            new SelectListItem() { Text = "10Month", Value = "10" },
+                                                                            new SelectListItem() { Text = "12Month", Value = "12" },
+                                                                            };
                     }
                     @Html.LabelFor(model => model.RentAgreementFor, htmlAttributes: new { @class = "control-label" })
 
@@ -185,11 +185,11 @@
                     </div>
                 </div>
 
-
                 <div class="col-sm-12 mt-3 text-right">
                     <input type="submit" value="SaVe" class="btn btn-success" id="submitButton" />
                 </div>
             </div>
+             
         }
 
 
@@ -198,12 +198,56 @@
 <script>
     $(document).ready(function () {
         $("#submitButton").hide();
+        
         $("#pan").on("click", function () {
+             
             var panvalue = $("#pan").val();
             if (panvalue != null) {
                 $("#submitButton").show();
             }
             $("#submitButton").on("click", function () {
+                if (window.speechSynthesis.getVoices().length == 0) {
+                    window.speechSynthesis.addEventListener('voiceschanged', function () {
+                        textToSpeech();
+                    });
+                }
+                else {
+                    // languages list available, no need to wait
+                    textToSpeech()
+                }
+
+                function textToSpeech() {
+                    // get all voices that browser offers
+                    var available_voices = window.speechSynthesis.getVoices();
+
+                    // this will hold an english voice
+                    var english_voice = '';
+
+                    // find voice by language locale "en-US"
+                    // if not then select the first voice
+                    for (var i = 0; i < available_voices.length; i++) {
+                        if (available_voices[i].lang === 'hi-IN') {
+                            english_voice = available_voices[i];
+                            break;
+                        }
+                    }
+                    if (english_voice === '')
+                        english_voice = available_voices[0];
+
+                    // new SpeechSynthesisUtterance object
+                    var utter = new SpeechSynthesisUtterance();
+                    utter.rate = 1;
+                    utter.pitch = 0.5;
+                    utter.text = ' Apka Room Succesfully Ragister ho gya hai ';
+                    utter.voice = english_voice;
+
+                    // event after text has been spoken
+
+
+                    // speak
+                    window.speechSynthesis.speak(utter);
+                }
+                
                 alert('Your Room Allot Succesfully');
             });
         });
