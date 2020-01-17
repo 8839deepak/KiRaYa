@@ -8,7 +8,7 @@
 @if (Session["UserID"] != null && Session["UserID"].ToString().Contains("1"))
 {
 
-<div class="card">
+<div class="card w-100">
     <div class="card-header">
         <h5 style="text-align:center;color:#000000"><b>Rent Pay Details</b></h5>
     </div>
@@ -46,6 +46,7 @@
                         @Html.DisplayNameFor(model => model.Amt)
                     </th>
                     <th>EmailID</th>
+                    <th>Agreement</th>
                     <th></th>
                 </tr>
             </thead>
@@ -91,6 +92,10 @@
 
                         </td>
                         <td>
+                            @{ Rental rental = Listrental.Find(x => x.RantalID == item.RantalID);}
+                            @rental.RentAgreementFor
+                        </td>
+                        <td>
                             <a href="/RantPaid/CreateEdit?RPID=@item.RPID " class="btn btn-warning btn-sm "> Edit</a>
                             <a href="/RantPaid/Delete?ID=@item.RPID " class="btn btn-danger btn-sm "> Delete</a>
                         </td>
@@ -110,7 +115,7 @@
     </div>
     <div class="col-sm-4">
         <a href="/RantPaid/peytm" class="btn btn-success"><i class="fa fa-plus"></i> PAY RENT</a>
-        <button type="button" class="btn btn-vimeo" onclick="my();"  data-toggle="modal" data-target=".bd-example-modal-xl"><i class="fa fa-eye"></i>view</button>
+        <button type="button" class="btn btn-warning" onclick="my();"  data-toggle="modal" data-target=".bd-example-modal-xl"><i class="fa fa-eye"></i>view</button>
     </div>
    @* onclick="window.location.href = 'http://localhost:57665/RantPaid/Index*@
 </div>

@@ -130,21 +130,22 @@
                 <div class="col-md-6">
                     @Html.LabelFor(model => model.PanNumber, htmlAttributes: new { @class = "control-label" })
 
-                    @Html.EditorFor(model => model.PanNumber, new { htmlAttributes = new { @class = "form-control", required = "required"  } })
+                    @Html.EditorFor(model => model.PanNumber, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                     @Html.ValidationMessageFor(model => model.PanNumber, "", new { @class = "text-danger" })
 
                 </div>
                 <div class="col-md-6">
                     @{ var items = new List<SelectListItem>
-                                ()
-                                                        {
-                                                        new SelectListItem() { Text = "1Month", Value = "1Month" },
-                                                        new SelectListItem() { Text = "3Month", Value = "3Month" },
-                                                        new SelectListItem() { Text = "5Month", Value = "5Month" },
-                                                        new SelectListItem() { Text = "7Month", Value = "7Month" },
-                                                        new SelectListItem() { Text = "10Month", Value = "10Month" },
-                                                        new SelectListItem() { Text = "12Month", Value = "12Month" },
-                                                        };
+                                 ()
+                                                                {
+                                       new SelectListItem(){Text ="Select Rental Months",Value ="0"},
+                                                                new SelectListItem() { Text = "1Month", Value = "1" },
+                                                                new SelectListItem() { Text = "3Month", Value = "3" },
+                                                                new SelectListItem() { Text = "5Month", Value = "5" },
+                                                                new SelectListItem() { Text = "7Month", Value = "7" },
+                                                                new SelectListItem() { Text = "10Month", Value = "10" },
+                                                                new SelectListItem() { Text = "12Month", Value = "12" },
+                                                                };
                     }
                     @Html.LabelFor(model => model.RentAgreementFor, htmlAttributes: new { @class = "control-label" })
 
@@ -196,15 +197,16 @@
 </div>
 <script>
     $(document).ready(function () {
-        var panvalue = $("#pan").val();
-        var submitbutton = $("#submitButton").hide();
-        if (panvalue != null) {
+        $("#submitButton").hide();
+        $("#pan").on("click", function () {
+            var panvalue = $("#pan").val();
+            if (panvalue != null) {
+                $("#submitButton").show();
+            }
             $("#submitButton").on("click", function () {
                 alert('Your Room Allot Succesfully');
-                $("#submitButton").show();
             });
-        }
-       
+        });
 
     });
- </script>
+</script>

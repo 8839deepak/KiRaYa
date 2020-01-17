@@ -36,7 +36,7 @@
             <div class="col-md-4">
                 @Html.Label("Room Number")
 
-                @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber", Model.RID), new { @class = "form-control", required = "required" })
+                @Html.DropDownListFor(model => model.RID, new SelectList(new RoomTable().GetAll(), "RID", "RoomNumber", Model.RID),"Select Room", new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.RID, "", new { @class = "text-danger" })
 
             </div>
@@ -87,6 +87,13 @@
                 @Html.DropDownListFor(model => model.ID, new  SelectList(new Login().GetAll(), "ID", "EmailID",Model.ID),"Select EmailID", new { @class = "form-control", onchange = "change();" } )
                 @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
 
+            </div> 
+            <div class="col-md-4">
+                @Html.Label("Agreement ")
+
+                @Html.DropDownListFor(model => model.AggrementMonth, new  SelectList(new Rental().GetAll(), "RantalID", "RentAgreementFor", Model.AggrementMonth), "Select Rent Agreement", new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.AggrementMonth, "", new { @class = "text-danger" })
+
             </div>
 
 
@@ -111,10 +118,11 @@
                 type: "GET",
                 data: { PRID: PRID },
                 success: function (data) {
-                    $("#RID").html("<option value=" + data.RID + "> " + data.RoomNumber + " </option>");
+                    $("#RID").html("<option value=" + data.RID + "> " + data.RoomNumber + "" + data.DDID + " </option>");
                     $("#TotalRant").val(data.RantAmt);
                     $("#DDID").val(data.DDID);
                     $("#ID").val(data.ID);
+                    $("#AggrementMonth").val(data.RentAgreementFor)
                    
                     //alert(data.Name);
                 },
@@ -125,7 +133,8 @@
         }
         else {
             $("#RID").html("<option value=0> Select Room No</option>");
-            $("#Amt").val(0);
+            $("#DDID").html("<option value=0> Select Room No</option>");
+            $("#TotalRant").val(0);
 
 
         }

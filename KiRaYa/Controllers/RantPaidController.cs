@@ -66,17 +66,13 @@ namespace KiRaYa.Controllers
             Rental OnjRentals = ListRentals.Find(x => x.RantalID == PRID);
             List<RoomTable> ListRooms = new RoomTable().GetAll();
             RoomTable ObjRooms = ListRooms.Find(x => x.RID == OnjRentals.RID);
-
             List<RantPaid> ListRentPaids = new RantPaid().GetAll();
             RantPaid RentPaidsobj = ListRentPaids.Find(x => x.RantalID == PRID);
             List<BlockD> listblock = new BlockD().GetAll();
             BlockD objblock = listblock.Find(x => x.DDID == PRID);
             List<Login> listlogin = new Login().GetAll();
             Login OBJLogin = listlogin.Find(x => x.ID == OnjRentals.ID);
-            int BlockName = ObjRooms.DDID;
-            int RentPaid = ObjRooms.RantAmt;
-            int EmilID = OBJLogin.ID;
-            return Json(new { RID = ObjRooms.RID, RoomNumber = ObjRooms.RoomNumber, RantAmt = RentPaid,DDID=BlockName,ID=EmilID }, JsonRequestBehavior.AllowGet);
+            return Json(new { RID = ObjRooms.RID, RentAgreementFor = OnjRentals.RentAgreementFor , RoomNumber = ObjRooms.RoomNumber, RantAmt = ObjRooms.RantAmt, DDID = ObjRooms.DDID, ID= OBJLogin.ID }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult SentMail(RantPaid rant)
         {
@@ -126,6 +122,9 @@ namespace KiRaYa.Controllers
             html += "</div>";
             html += "<div>";
             html += " <label for='Amount'>Amount</label>----" + rant.Amt + "";
+            html += "</div>";
+            html += "<div>";
+            html += " <label for='Amount'>Amount</label>----" + rant.AggrementMonth + "";
             html += "</div>";
             mailmsg.Body = html;
             mailmsg.Priority = MailPriority.High;

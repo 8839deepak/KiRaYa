@@ -36,6 +36,7 @@ namespace KiRaYa.Models
         public DateTime Update_Date { get; set; }
         public int DDID { get; set; }
         public int ID { get; set; }
+        public string AggrementMonth { get; set; }
         public RantPaid()
         {
             Remaining = 0;
@@ -52,7 +53,7 @@ namespace KiRaYa.Models
                  
                 if (this.RPID  == 0)
                 {
-                    Query = "Insert into  RentPaid  values( @RantalID,@RID,@LastReading,@CurrentReading,@UsedElectricity,@TotalRant,@TotalPay,@Amt,@Remaining,@Create_By,@Create_Date,@Update_By,@Update_Date,@DDID,@ID);";
+                    Query = "Insert into  RentPaid  values( @RantalID,@RID,@LastReading,@CurrentReading,@UsedElectricity,@TotalRant,@TotalPay,@Amt,@Remaining,@Create_By,@Create_Date,@Update_By,@Update_Date,@DDID,@ID,@AggrementMonth);";
                     cmd = new SqlCommand(Query, Con);
                     cmd.Parameters.AddWithValue("@Create_By", HttpContext.Current.Session["ID"]);
                     cmd.Parameters.AddWithValue("@Create_Date", DateTime.Now);
@@ -63,7 +64,7 @@ namespace KiRaYa.Models
                     
                 else
                 { 
-                     Query = "update  RentPaid set RantalID =@RantalID,RID=@RID,LastReading =@LastReading,CurrentReading=@CurrentReading,UsedElectricity=@UsedElectricity,TotalRant=@TotalRant,TotalPay=@TotalPay,Amt=@Amt,Remaining=@Remaining,Update_By=@Update_By,Update_Date=@Update_Date,DDID=@DDID,ID=@ID where RPID=@RPID ";
+                     Query = "update  RentPaid set RantalID =@RantalID,RID=@RID,LastReading =@LastReading,CurrentReading=@CurrentReading,UsedElectricity=@UsedElectricity,TotalRant=@TotalRant,TotalPay=@TotalPay,Amt=@Amt,Remaining=@Remaining,Update_By=@Update_By,Update_Date=@Update_Date,DDID=@DDID,ID=@ID,AggrementMonth=@AggrementMonth where RPID=@RPID ";
                     cmd = new SqlCommand(Query, Con);
                     cmd.Parameters.AddWithValue("@RPID", this.RPID);
                     cmd.Parameters.AddWithValue("@Update_By", HttpContext.Current.Session["ID"]);
@@ -81,6 +82,7 @@ namespace KiRaYa.Models
                 cmd.Parameters.AddWithValue("@Remaining", this.Remaining);
                 cmd.Parameters.AddWithValue("@DDID", this.DDID);
                 cmd.Parameters.AddWithValue("@ID", this.ID);
+                cmd.Parameters.AddWithValue("@AggrementMonth", this.AggrementMonth);
                 Row = cmd.ExecuteNonQuery();
             
             }
@@ -121,6 +123,7 @@ namespace KiRaYa.Models
                     ObjTmp.Update_Date = SDR.GetDateTime(13);
                     ObjTmp.DDID = SDR.GetInt32(14);
                     ObjTmp.ID = SDR.GetInt32(15);
+                    ObjTmp.AggrementMonth = SDR.GetString(16);
 
                     ListTmp.Add(ObjTmp);
                 }
@@ -162,6 +165,7 @@ namespace KiRaYa.Models
                     ObjTmp.Update_Date = SDR.GetDateTime(13);
                     ObjTmp.DDID = SDR.GetInt32(14);
                     ObjTmp.ID = SDR.GetInt32(15);
+                    ObjTmp.AggrementMonth = SDR.GetString(16);
                 }
             }
             catch (System.Exception e)
