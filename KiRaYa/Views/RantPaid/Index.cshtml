@@ -46,7 +46,6 @@
                         @Html.DisplayNameFor(model => model.Amt)
                     </th>
                     <th>EmailID</th>
-                    <th>Agreement</th>
                     <th></th>
                 </tr>
             </thead>
@@ -91,10 +90,7 @@
                             @OBJLOGIN.EmailID
 
                         </td>
-                        <td>
-                            @{ Rental rental = Listrental.Find(x => x.RantalID == item.RantalID);}
-                            @rental.RentAgreementFor
-                        </td>
+                      
                         <td>
                             <a href="/RantPaid/CreateEdit?RPID=@item.RPID " class="btn btn-warning btn-sm "> Edit</a>
                             <a href="/RantPaid/Delete?ID=@item.RPID " class="btn btn-danger btn-sm "> Delete</a>

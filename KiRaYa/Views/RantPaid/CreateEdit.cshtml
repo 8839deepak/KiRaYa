@@ -88,16 +88,6 @@
                 @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
 
             </div> 
-            <div class="col-md-4">
-                @Html.Label("Agreement ")
-
-                @Html.DropDownListFor(model => model.AggrementMonth, new  SelectList(new Rental().GetAll(), "RantalID", "RentAgreementFor", Model.AggrementMonth), "Select Rent Agreement", new { @class = "form-control" } )
-                @Html.ValidationMessageFor(model => model.AggrementMonth, "", new { @class = "text-danger" })
-
-            </div>
-
-
-
             <div class=" col-sm-1">
                 @Html.Label("SAVE", new { @class = "text-white" })
                 <input type="submit" value="Sent MGS" class="btn btn-success" />
@@ -122,7 +112,6 @@
                     $("#TotalRant").val(data.RantAmt);
                     $("#DDID").val(data.DDID);
                     $("#ID").val(data.ID);
-                    $("#AggrementMonth").val(data.RentAgreementFor)
                    
                     //alert(data.Name);
                 },

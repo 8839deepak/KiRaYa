@@ -1,9 +1,11 @@
 ﻿using KiRaYa.Models;
-using System;
+using Nexmo.Api;
+u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 sing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+ 
 using System.Web;
 using System.Web.Mvc;
 
@@ -123,9 +125,6 @@ namespace KiRaYa.Controllers
             html += "<div>";
             html += " <label for='Amount'>Amount</label>----" + rant.Amt + "";
             html += "</div>";
-            html += "<div>";
-            html += " <label for='Amount'>Amount</label>----" + rant.AggrementMonth + "";
-            html += "</div>";
             mailmsg.Body = html;
             mailmsg.Priority = MailPriority.High;
             mailmsg.IsBodyHtml = true;
@@ -158,6 +157,22 @@ namespace KiRaYa.Controllers
         }
         public ActionResult peytm()
         {
+            return View();
+        }
+       
+        public ActionResult Send()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Send(string to, string text)
+        {
+            var results = SMS.Send(new SMS.SMSRequest
+            {
+                from = Configuration.Instance.Settings["appsettings:NEXMO_FROM_NUMBER"],
+                to = to,
+                text = text
+            });
             return View();
         }
     }
