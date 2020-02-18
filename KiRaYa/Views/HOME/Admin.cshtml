@@ -22,14 +22,6 @@
                                     }
                                     @TR
 
-<<<<<<< HEAD
-                        <a href="/RoomTable/Index" onclick="y(@roomTables.FindAll(x=>x.RID==2));"value="1">
-                            <span class="badge badge-primary badge-pill">
-                                @{ int TR =roomTables.FindAll(x=>x.DDID==1).Count();
-=======
->>>>>>> afce0d12ddc2faccaf3604021bde1d2e6d61dcfb
-
-
                                 </span>
                             </a>
                         </li>
@@ -38,6 +30,7 @@
 
                 </div>
             </div>
+
         </div>
         <div class="col-md-5 text-center  ">
             <div class="card text-white bg-secondary " style="  box-shadow:2px 4px 4px black ;z-index:10000">
@@ -63,6 +56,7 @@
             </div>
         </div>
     </div>
+
     <br />
     <div class=" row" id="2">
         <div class="col-md-5">
@@ -251,9 +245,9 @@
 
 
     </div>
-    
-   
-     
+
+
+
 }
 <script>
     // list of languages is probably not loaded, wait for it
@@ -293,14 +287,14 @@
         utter.voice = english_voice;
 
         // event after text has been spoken
-        
+
 
         // speak
         window.speechSynthesis.speak(utter);
     }
 </script>
 
- 
+
 <script>
     function my() {
         $("#waiting").show();
@@ -461,7 +455,7 @@
                     var utter = new SpeechSynthesisUtterance();
                     utter.rate = 1;
                     utter.pitch = 0.5;
-                    utter.text = ' Apne Block C  CHOONA HAI';
+                    utter.text = ' Apne Block B  CHOONA HAI';
                     utter.voice = english_voice;
 
                     // event after text has been spoken
